@@ -1,0 +1,29 @@
+SWCombine Contributor Agreement, 2013
+
+Per the terms of the SWCombine Development Team License, use of code included in the SWCombine repositories is limited to those purposes described in this Contributor Agreement. This agreement is broken into two sections. The first section, "Use of Code," describes limitations on general use of code contained in SWCombine repositories, by contributors and noncontributors alike. The second section, "Contribution Terms," describes the rules that all contributors must explicitly agree to before submitting code for inclusion in the main repository.
+
+Use of Code:
+
+1. You are not permitted to make use of the SWCombine code or libraries in any other projects without the explicit written consent of the SWCombine Administration.
+
+2. You are not permitted to redistribute the SWCombine code through a method outside of the official GitHub repository and related repositories ("forks" and local clones).
+
+3. You are permitted to modify all of the code in the repository for development purposes. This does not constitute the right to reuse this code outside of SWCombine development.
+
+4. You are permitted and encouraged to read any or all of the code.
+
+5. If you are the original copyright holder of specific code contributions, (1) and (2) do not apply to those contributions. They remain in force for the remainder of the codebase.
+
+Contribution Terms
+
+1. You must electronically submit a signed copy of your agreement to these terms before your sbumissions will be considered for inclusion in the SWCombine core repository.
+
+2. By submitting a "pull request" via GitHub, or any other changeset, you claim that you:
+   i.  Are the current copyright holder of the submission, or
+   ii. Have the copyright holder's permission and legal authority to assign licenses on the submission
+
+3. You agree to assign SWCombine an indefinite, nonterminable, transferrable, and assignable license to use or modify your contribution, subject to the restrictions in the "Use of Code" terms listed above.
+
+4. You retain the copyright for your code. This permits you to use your contributions alone as you see fit, whether within the context of SWCombine development or not. If your code has dependencies inside the SWCombine repository, this does not constitute a license or right to use the dependant code.
+
+5. If an updated version of this agreement is created, it will specify whether previous versions remain effective. If the updated version requires a new agreement to be signed, you will be barred from submitting new contributions until the new agreement is signed. Any previously assigned licenses are not affected by changes to the terms of the agreement.
