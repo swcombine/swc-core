@@ -4,7 +4,7 @@ Per the terms of the SWCombine Development Team License, use of code included in
 
 Use of Code:
 
-1. You are not permitted to make use of the SWCombine code or libraries in any other projects without the explicit written consent of the SWCombine Administration.
+1. You are not permitted to make use of the SWCombine code or libraries in any other projects without the express written permission of the SWCombine Administration.
 
 2. You are not permitted to redistribute the SWCombine code through a method outside of the official GitHub repository and related repositories ("forks" and local clones).
 
@@ -22,8 +22,8 @@ Contribution Terms
    i.  Are the current copyright holder of the submission, or
    ii. Have the copyright holder's permission and legal authority to assign licenses on the submission
 
-3. You agree to assign SWCombine an indefinite, nonterminable, transferrable, and assignable license to use or modify your contribution, subject to the restrictions in the "Use of Code" terms listed above.
+3. You agree to assign SWCombine an indefinite, nonterminable, transferrable, and assignable license to use or modify your submission, subject to the restrictions in the "Use of Code" terms listed above.
 
-4. You retain the copyright for your code. This permits you to use your contributions alone as you see fit, whether within the context of SWCombine development or not. If your code has dependencies inside the SWCombine repository, this does not constitute a license or right to use the dependant code.
+4. You retain a copyright to your code so that you may use your contributions alone as you see fit, whether within the context of SWCombine development or not. If your code has dependencies inside the SWCombine repository, this does not constitute a license or right to use the dependent code.
 
 5. If an updated version of this agreement is created, it will specify whether previous versions remain effective. If the updated version requires a new agreement to be signed, you will be barred from submitting new contributions until the new agreement is signed. Any previously assigned licenses are not affected by changes to the terms of the agreement.
