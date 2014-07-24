@@ -1,0 +1,154 @@
+/*These styles are copied from the SWC styles, slightly modified. Added the 'a' style. */
+body {
+	background-color: #000C1A;
+	padding: 0px;
+	margin: 0px;
+	color: #888888;
+}
+
+.coordTag {
+	position: absolute;
+	overflow: hidden;
+	background-color: #BBBBFF;
+	color: #000055;
+}
+
+/*used to make info fieldname text bold/styled.*/
+.s {
+	font-weight: bold;
+}
+
+/*value style*/
+.v {
+	color: #88BB22;
+}
+
+/*div menu style */
+.menudiv {
+	position: relative;
+	left: 2px;
+	right: 2px;
+	background-color: #00233E;
+	padding: 5px 5px 5px 5px;
+	width: 100%;
+}
+
+div {
+	cursor: default;
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/*for the rotate etc. command link*/
+.comlink {
+	cursor: pointer;
+	text-decoration: underline;
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+input {
+	border: 1px solid #11465F;
+	background: #00243D;
+	color: #888888;
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+select {
+	border: 1px solid #11465F;
+	background: #00243D;
+	color: #888888;
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.tab {
+	text-align: center;
+	border: 1px #000000;
+	width: 50px;
+	height: 20px;
+}
+
+.seltab {
+	background: #00243D;
+	border: 1px #000000;
+	width: 50px;
+	height: 20px;
+	background-image: URL('tab.gif');
+}
+
+.title {
+	text-align: center;
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+.selFacLink {
+	font-weight: bold;
+	color: #6F72FF;
+	text-decoration: underline;
+}
+
+.faclist {
+	margin: 0px;
+	padding: 0px;
+	font-size: 10px;
+	vertical-align: middle;
+	background-color: #00233E;
+}
+
+.facrow {
+	width: 100px;
+	margin: 0px;
+	padding: 0px;
+	font-size: 10px;
+	vertical-align: middle;
+}
+
+.faclink {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.faclinkr {
+	color: #AA1111;
+	cursor: help;
+	text-decoration: underline;
+}
+
+textarea {
+	border: 1px;
+	border: solid #11465F;
+	background: #00243D;
+	color: #888888;
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.statlist {
+	border-collapse: separate;
+	border-spacing: 0px;
+	margin: 1px;
+}
+
+td {
+	margin: 0px;
+	border: 0px;
+	background-color: #00354E;
+	color: #cccccc;
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+table {
+	margin: 0px;
+	background-color: #00354E;
+	color: #cccccc;
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+a {
+	color: #FFFFFF;
+}

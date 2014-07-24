@@ -1,0 +1,20 @@
+#html5uploader {
+	/*width: 25%;*/
+	/*width: 300px;*/
+}
+
+#html5uploader #uploader_drop_area {
+	border: none;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 13px;
+}
+
+#html5uploader.dragover {
+	border: 1px dashed #11465F;
+	min-height: 60px;
+}
+
+#html5uploader.dragover input {
+	display: none;
+}

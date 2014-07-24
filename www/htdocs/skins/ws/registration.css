@@ -1,0 +1,63 @@
+@CHARSET "ISO-8859-1";
+
+.right {
+    float: left;
+}
+
+.left {
+    float: left;
+}
+
+.block {
+	display: block;
+}
+
+.clear {
+	clear: both;
+}
+
+.editor-label {
+    margin: 0 10px 0 0;
+    padding: 8px 0 0;
+    text-align: right;
+    width: 50%;
+}
+
+.no-edit-input,
+.editor-input {    
+    font-size: 12px;    
+    padding: 5px 8px;
+   /* width: 260px;*/
+}
+
+.no-edit-input {
+    margin: 0 10px 0 0;
+    width: 45%;
+}
+
+input[type="text"], 
+input[type="file"], 
+select, 
+textarea {
+    width: 350px;
+}
+
+.submit-button {
+    width: 100%;
+    text-align: center;
+}
+
+.error {
+	background-color: #FFBABA;
+	border-color: #D8000C;
+	color: #D8000C;
+}
+
+label.error {
+	background: none;
+}
+
+input.AdditionalInfoURL {
+	display: block;
+	margin: 3px 0 5px 20px;
+}

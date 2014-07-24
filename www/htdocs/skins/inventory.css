@@ -1,0 +1,119 @@
+/* Inventory Actions Interface */
+div.action_pane label {
+	cursor: pointer;
+}
+
+div#inventory_action_errors {
+	color: #FF0000;
+	font-weight: bold;
+}
+
+div#action_confirm_pane {
+	width: 300px;
+	display: none;
+	padding: 3px;
+	position: absolute;
+	z-index: 110;
+}
+
+div#action_confirm_pane h2 {
+	text-align: center;
+}
+
+div#action_confirm_pane div.action_confirm_pane {
+	display: none;
+}
+
+div#action_confirm_pane div.acp_details_box {
+	width: 300px;
+	height: 250px;
+	overflow: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+div#action_confirm_pane div.acp_details_box ul {
+	list-style-type: none;
+	padding-left: 10px;
+}
+
+div#action_confirm_pane div.acp_buttons {
+	text-align: right;
+}
+
+div.action_pane_container {
+	width: 400px;
+	float: left;
+}
+
+div.name_panel {
+	padding: 5px;
+	clear: left;
+	width: 350px;
+}
+
+div.name_panel_label {
+	width: 100px;
+	float: left;
+	font-weight: bold;
+	font-variant: small-caps;
+	font-size: 115%;
+	"
+}
+
+div.name_panel_field {
+	width: 250px;
+	float: left;
+	position: relative;
+	top: -2px;
+}
+
+div.action_pane div.autocomplete {
+	position: absolute;
+	left: 0px;
+	top: 17px;
+	width: 169px;
+	z-index: 1;
+	/*display: none;*/
+}
+
+div.input_pane {
+	padding: 5px;
+	clear: left;
+	width: 200px;
+}
+
+div.input_pane_label {
+	width: 100px;
+	float: left;
+	font-weight: bold;
+	font-variant: small-caps;
+	font-size: 115%;
+}
+
+div.input_pane_field {
+	width: 100px;
+	float: left;
+	position: relative;
+	top: -2px;
+}
+
+div.action_help_text {
+	width: 300px;
+	float: left;
+}
+
+div.inventory_header a img,div.inventory_header span.inventory_options img
+	{
+	border: 1px solid transparent;
+}
+
+div.inventory_header a:hover img,div.inventory_header span.inventory_options img:hover,div.inventory_header a img.border3,div.inventory_header span.inventory_options img.border3
+	{
+	border: 1px solid #FFFFCC;
+}
+
+/* Miscellaneous Inventory Styles */
+tr.inv_tags a {
+	text-decoration: underline;
+}
