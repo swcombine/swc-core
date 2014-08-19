@@ -1,0 +1,1527 @@
+// Will be Imported
+// User Settings
+//@skin: "lightblue";
+@import: "@{skin}";
+//@bevel: false;
+//@font: Verdana, Arial, Helvetica, sans-serif;
+//@largeFont: 0;
+
+// Font Size
+@fontVerySmall: 9px+@largeFont;
+@fontSmall: 10px+@largeFont;
+@fontStandard: 11px+@largeFont;
+@fontLarge: 12px+@largeFont;
+@fontVeryLarge: 13px+@largeFont;
+
+// Background Colors
+//Body Background
+//@bodyBG: #313D4B;
+//Alert Bar Background
+//@alertBarBG: #31667F;
+//Clock Background
+//@clockBG: #335062;
+//Logout top line BG
+//@logoutTopBG: #031A33;
+//Logout Bottom line BG
+//@logoutBottomBG: #000C1A;
+//Hover Highlight [This is only used in CSS once... Don't know where in SWC its used?]
+//@hoverHL: #EEDD82;
+//Menu Header Background
+//@menuHeaderBG: #00243D;
+//Dark Colour Background!
+//@darkBG: #3C4F68;
+//Table row hover highlight colour
+//@tigerStripeHover: #54A0C4;
+//Table of contents background
+//@tocBG: #427790;
+
+// Font Colors
+//Body <a> Font Colour
+//@aFont: #CCCCCC;
+//Body <a> Hover Font
+//@aFontHover: #888888;
+//Header Font
+//@headerFont: #000000;
+//Alertbar top font
+//@alertTopFont: #FFFFFF;
+//Alertbar bottom font
+//@alertBottomFont: #98B4C5;
+//Top Bar <a>
+//@aTopBarFont: #CCCCCC;
+//Top Bar <a> Hover
+//@aTopBarFontHover: #888888;
+//Table Highlight
+//@tableFontHL: #000000;
+//Description Font Colour 
+//@forumDescFont: #999999;
+//<a> colour for the rules menu
+//@aFontRulesMenu: #98B4C5;
+//active page (highlight) for the rules menu
+//@aFontRulesMenuHL: #FFFFCC;
+
+// Border Colors
+//Top Menu Border Colour Note: Usually same as Body BG Colour
+//@topMenuBorder: #313D4B;
+//Alertbar Border
+//@alertBorder: #427790;
+//Alertbar Centre Border
+//@alertCentreBorder: #3C4F68;
+//Inventory Button selected Border
+//@invButtonBorder: #FFFFCC;
+//border of the 'Table of Contents'
+//@tocBorder: #313D4B;
+//Menu Highlight Colour [Where is this one used?]
+//@menuBorder: #256887;
+// Table Header border
+//@tableBorderHeader: #335062;
+
+// Non-Skin Colors
+//Rules menu font colour
+@rulesMenuFont: #ffffff;
+//Rules menu headers colour
+@rulesLevelsFont: #ffffff;
+//Inventory link border colour
+@inventoryBorder: #ffffff;
+//Block quote border colour
+@blockquoteBorder: #ffffff;
+
+// Mixins 
+// If user wants bevel, inputing only one color will default the bevels offcolor to #000 
+.generateBorders (@color, @offcolor:#000) when (@bevel = true) {
+    border-top: 1px solid @color;
+    border-right: 2px solid @offcolor;
+    border-bottom: 2px solid @offcolor;
+    border-left: 1px solid @color;
+}
+// If user doesn't want bevel 
+.generateBorders (@color) when (@bevel = false) {
+    border: 1px solid @color;
+}
+// Variations of bevel used 
+.tableBorderHighlightCell(){.generateBorders(@topMenuBorder)}
+.tableBorder(){.generateBorders(@alertBorder)}
+.tableBorderHeader(){.generateBorders(@tableBorderHeader)}
+
+// Cross-broswer support 
+// ex. .rounded(5px) 
+.rounded(@radius) {
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+    border-radius: @radius;
+}
+
+// ex. .boxShadow(0px, 0px, 0px, 0px, rgba(200,200,200,0.5))
+.boxShadow(@shadowdefine) {
+    -moz-box-shadow: @shadowdefine;
+    -webkit-box-shadow: @shadowdefine;
+    box-shadow: @shadowdefine;
+}
+
+// ex. .rulesBoxGenericStyle(#FF0000, "red")
+.rulesBoxGenericStyle(@color, @background) {
+    border: 1px solid @color;
+    background: url("@{semiTransImages}/@{background}_50.png");
+}
+
+//Background gradient
+// ex. .backgroundgradient(degree, colour1, colour2, colour3)
+.backgroundGradient(@deg, @a, @b, @c) {
+    background: -webkit-linear-gradient(0-@deg+90, @a, @b, @c);
+    background: -moz-linear-gradient(0-@deg+90, @a, @b, @c);
+    background: -o-linear-gradient(0-@deg+90, @a, @b, @c);
+    background: linear-gradient(@deg, @a, @b, @c);
+}
+
+// URLs 
+@darknessImagesPathweb: "http://images.swcombine.net";
+@skinImages: "@{darknessImagesPathweb}/skins/@{skin}";
+@semiTransImages: "@{darknessImagesPathweb}/semitrans";
+@clientCockpit: "@{darknessImagesPathweb}/client/cockpit";
+@sprites: "@{darknessImagesPathweb}/client/icons";
+
+// CSS Start 
+
+a {
+    &:link {
+        color: @aFont;
+        text-decoration: none; 
+        cursor: pointer; 
+    }
+    &:active {
+        &:extend(a:link);
+    }
+    &:visited {
+        &:extend(a:link);
+    }
+    &:hover {  
+    	color: @aFontHover;
+        text-decoration: none; 
+        cursor: pointer; 
+    }
+    img {
+    	border: 0px solid black;
+    }
+}
+
+.link {
+	&:extend(a:link);
+	&:hover {
+		&:extend(a:hover);
+	}
+}
+
+html {
+    background-color: @bodyBG;
+    padding: 0px;
+    margin: 0px;
+    font-family: @font;
+    line-height: 1.3;
+    font-size: @fontStandard;
+    color: @aFont;
+    height: 100%;
+}
+
+body {
+    &:extend(html);
+}
+
+input {
+    border: 1px solid @alertBorder;
+    background: @darkBG;
+    color: @aFontHover;
+    font-size: @fontStandard;
+    font-family: @font;
+}
+
+textfield {
+    &:extend(input);
+}
+
+textarea {
+    &:extend(input);
+}
+
+select {
+    &:extend(input);
+}
+
+input[type="text"] {
+    .rounded(4px);
+    border-style: solid;
+    border-width: 1px;
+    border: small solid;
+    padding: 5px 8px;
+}
+
+input[type="file"] {
+    &:extend(input[type="text"]);
+}
+//Conflicts?
+select {
+    &:extend(input[type="text"]);
+}
+//Conflicts?
+textarea {
+    &:extend(input[type="text"]);
+}
+
+radio {
+    background: #000000;
+    border: 1px solid #000000;
+}
+
+label {
+    cursor: pointer;
+}
+
+// Allows pre monospacing with decent line breaks 
+pre {
+    white-space: pre-wrap;
+}
+
+// Fixes up inconsistencies between browsers caused by other CSS in here 
+h1 { font-size: 22px+@largeFont; }
+h2 { font-size: 17px+@largeFont; }
+h3 { font-size: 13px+@largeFont; }
+h4 { font-size: 11px+@largeFont; }
+h5 { font-size: 9px+@largeFont; }
+h6 { font-size: 7px+@largeFont; }
+
+// Header Stuff 
+.header_spacer {
+    width: 772px;
+    height:1px;
+}
+        
+.header_spacer_minwidth {
+    min-width: 772px;
+}
+
+// Up the Very top
+div.header_topmenu {
+    width: 100%;
+    position: relative;
+    height: 18px;
+    background-image:url("@{skinImages}/menus/topmenu_bg.jpg");
+    background-position: top;
+    background-repeat: repeat;
+    ul {
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+        height: 18px;
+        top: 0px;
+        float: right;
+        position: relative;
+        li {
+            position: relative;
+            width: 75px;
+            height: 18px;
+            border-left: 2px solid @topMenuBorder;
+            float: left;
+            text-align:center;
+            padding-top: 0px;
+            // Fix for IE: Must have :link:active:visited etc
+            a {
+                &:link {
+                    font-family: @font;
+                    color: @aTopBarFont;
+                    //font-variant: small-caps;
+                    position: relative;
+                    bottom: 1px;
+                }
+                &:active {
+                    &:extend(div.header_topmenu ul li a:link);
+                }
+                &:visited {
+                    &:extend(div.header_topmenu ul li a:link);
+                }
+                &:hover {
+                    font-family: @font;
+                    color: @aTopBarFontHover;
+                    //font-variant: small-caps;
+                }
+            }
+        }
+    }
+}
+// With the Nice Images of Planets
+div.header_header {
+    height: 99px;
+    background-image: url("@{skinImages}/top_bg.gif");
+    background-repeat: repeat;
+    div#headerleft {
+        background-image: url("@{skinImages}/top_logo.jpg");
+        float: left;
+        width: 282px;
+        height: 99px;
+    }
+    div#headerright {
+        background-image: url("@{skinImages}/top_planet.jpg");
+        float: left;
+        width: 490px;
+        height: 99px;
+        float: right;
+    }
+}
+// Below the Header Images, the Bar that holds Events, Clock, logout.. etc 
+div.header_alertcontainer {
+    overflow: hidden;
+    width: 100%;
+    background-color:@alertBarBG;
+    padding: 0px;
+    margin: 0px;
+    position:relative;
+    border-top: 1px solid @alertBorder;
+    border-bottom: 1px solid @alertBorder;
+    max-height: 67px;
+}
+
+// Centre Section of Alert Bar
+div.header_alertbarevents {
+    padding: 2px;
+    height: 100%; 
+    // Event Icons
+    img {
+        border-left: 2px solid @alertCentreBorder;
+        border-right: 2px solid @alertCentreBorder;
+    }
+    #headerrightbookend {
+        border-left: 0px none @alertCentreBorder;
+        border-right: 0px none @alertCentreBorder;
+    }
+    div {
+        table {
+            tr {
+                td {
+                    background-image: url("@{skinImages}/main_status_rightgrad.gif");
+                    background-position: 0px 1px;
+                    background-repeat: no-repeat;
+                    padding: 0px 0px 0px 20px;
+                    height: 21px;
+                }
+            }
+        }
+    }
+}
+
+// Left Section of Alert Bar
+div.header_alertbarcounter {
+    width: 285px;
+    height: 100%;
+    background-color: @alertBarBG;
+    float: left;
+    #clock {
+        float: right; 
+        width: 160px; 
+        height: 28px; 
+        border-right: 1px solid @alertBorder
+    }
+    #counter {
+        font-family: @font; 
+        font-size: @fontVerySmall; 
+        color: @alertBottomFont; 
+        float: right; 
+        text-align:left; 
+        width: 120px; 
+        padding: 2px 3px 3px 0px; 
+        margin: 0px 0px 0px 0px; 
+    }
+}
+
+// Right Section of Alert Bar
+div.header_alertbarlogout {
+    width: 167px;
+    height: inherit;
+    max-height: none;
+    background-color: @alertBarBG;
+    float: right;
+    border-left: 1px solid @alertBorder; 
+    #alertbartable { 
+        padding:0px;
+        margin:0px;
+    }
+    #alertbarloggedin { 
+        font-size: @fontVerySmall; 
+        width: 132px;	
+        color: @alertTopFont; 
+        background-color: @logoutTopBG; 
+        padding: 0px;
+    }
+    #alertbarhandle { 
+        word-wrap: break-word; 
+        width: 132px; 
+        max-width: 132px;  
+        font-size: @fontVerySmall;	
+        color: @alertBottomFont; 
+        background-color: @logoutBottomBG; 
+        padding: 0px;
+    }
+}
+
+// Clock: 1/ Used for Displaying 'Day','Year','Time' Headers
+.header_clock1 {
+    font-size: @fontVerySmall;	
+    color: @alertTopFont;	
+    background-color: @clockBG; 
+    padding: 0px;
+}
+// 2/ Used for displaying the DYT Values
+.header_clock2 {
+    font-size: @fontVerySmall;
+    color: @alertBottomFont;	
+    background-color: @clockBG;	
+    padding: 0px;
+    }
+// 3/ Left of the Clock
+.header_clock3 {
+    background-image: url("@{skinImages}/main_status_rightgrad.gif"); 
+    width: 15px; 
+    height: 20px; 
+    background-position: right; 
+    background-repeat:repeat-y; 
+    padding: 3px 0px 0px 0px; 
+}
+// 4/ Right of the Clock
+.header_clock4 {
+        background-image: url("@{skinImages}/main_status_leftgrad.gif"); 
+        width: 15px; 
+        height: 20px; 
+        background-position: left; 
+        background-repeat: repeat-y;
+}
+// End Header Stuff 
+
+// Start Generic Font Stuff... 
+.title {
+    font-size: @fontLarge;
+    color: @alertTopFont;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.small {
+       font-size: @fontSmall;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+// Old School Replacements 
+.tableborder {
+    font-size: @fontStandard;
+    color: @aFont;
+}
+    
+.tablecell {
+    .tableBorder;
+    font-size: @fontStandard;
+    background: @alertBarBG;
+    color: @aFont;
+}
+
+.tableSection {
+    font-weight: bold;
+}
+
+.tableSectionHeader {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+    
+tr.tablecell td {
+    .tableBorder;
+    font-size: @fontStandard;
+    color: @aFont;
+}
+
+.tableheader {
+    .tableBorder;
+    font-size: @fontStandard;
+    background: @menuHeaderBG;
+    color: @alertTopFont;
+}
+
+tr.tableheader td {
+    .tableBorderHeader
+}
+
+.pagetitle {
+    font-size: @fontVeryLarge;
+    color: @alertTopFont;
+}
+    
+.tablehighlight {
+    .tableBorder;
+    font-size: @fontStandard;
+    background: @bodyBG;
+    color: @alertTopFont;
+}
+
+tr.tablehighlight td {
+    .tableBorderHighlightCell;
+    font-size: @fontStandard;
+    color: @alertTopFont;
+}
+
+.lowlight {
+    color: @aFontHover;
+}
+
+// Old Menu Stuff [Check still used?] 
+.lateralmenu {
+    .tableBorder;
+    background: @alertBarBG;
+    font-weight: bold;
+    color: @alertTopFont;
+}
+
+.menuheader {
+    .tableBorder;
+    font-size: @fontStandard;
+    background: @menuHeaderBG;
+    color: @alertTopFont;
+}
+
+.menucell {
+    .tableBorder;
+    font-size: @fontStandard;
+    background: @alertBarBG;
+    color: @aFont;
+}
+
+.highlight {
+    font-size: @fontStandard;
+    background: transparent;
+    color: @aFont;
+}
+
+.highlightHover {
+    cursor: default;
+    font-size: @fontStandard;
+    background: @hoverHL;
+    color: @headerFont;
+}
+
+.highlightHoverDark {
+    cursor: default;
+    font-size: @fontStandard;
+    background: @menuHeaderBG;
+}
+
+// Stuff merged from menu.php 
+div.rightmenuheader{
+    padding-bottom: 10px;
+    .header {
+        width: 100%;
+        padding-top: 30px;
+        text-align:center;
+        position:relative;
+        border: 1px;
+        background-repeat:repeat;
+        font-weight: bold;
+        font-size: @fontVeryLarge;
+        color: #ffffff;
+        background-image: url("@{skinImages}/menus/bg_menuTopic.gif");
+        span {
+            position:absolute;
+            left:30px;
+            top: 20%;
+        }
+    }
+}
+
+.rightmenuitem {
+    width: 100%;
+    margin: 0px -2px 0px 0px;
+    height: 18px;
+    text-align: left;
+    position:relative;
+    background-image: url("@{skinImages}/menus/bg_menuItem.gif");
+    background-repeat:repeat;
+    vertical-align:middle;
+    font-size: @fontSmall;
+}
+
+// CSS for Sim News 
+.simnews_body {
+    a {
+        text-decoration: underline;
+    }
+}
+
+.simnews_header {
+    position: relative;
+    height: 30px;
+    width: 100%;
+    background-repeat:repeat;
+    background-image: url("@{skinImages}/menus/bg_menuTopic.gif");
+    margin-top: 1px;
+    .simnews_title {
+        float: left;
+        text-indent: 20px;
+        padding-top: 5px;
+        background-repeat: no-repeat;
+        background-image: url("@{skinImages}/menus/bg_menuTopic_start.png");
+        color: #ffffff;
+        font-size: 10pt;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+        text-align: left;
+    }
+    .simnews_subtitle {
+        float: right;
+        margin-top: 8px;
+        margin-right: 10px;    
+        color: #cccccc;
+        font-size: 8pt;
+        text-align: right;
+        letter-spacing: 0.1em;
+    }
+}
+
+.menutablel {
+    background-image: url("@{skinImages}/menus/bg_menuItem_low.gif");
+    font-size:  @fontSmall;
+    color: #ffffff;
+}
+
+.menutabler {
+    background-image: url("@{skinImages}/menus/bg_menuItem_lower.gif");
+    font-size: @fontSmall;
+    color: #ffffff;
+}
+
+.InvBackground {
+    background-image: url("@{skinImages}/menus/bg_menuItem_low.gif");
+    background-repeat: repeat-x;
+}
+
+// Light Menu Stuff 
+ul.menu {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    li {
+        height: 18px;
+        background-image: url("@{skinImages}/menus/bg_menuItem.gif");
+        border-bottom: 1px solid #042807;
+        position:relative;
+        span {
+            background-image: url("@{skinImages}/menus/bullet_menuItem.gif");
+            background-repeat: no-repeat;
+            background-position: -2px -1px;
+            padding: 0px 0px 0px 9px;
+            position:relative;
+            left: 6px;
+            top:3px;
+            font-size:@fontSmall;
+        }
+        a {
+            &:extend(ul.menu li span);
+        }
+        ul {
+            position:absolute;
+            right: 100%;
+            width: 100%;
+            top:0px;
+            display: none;
+            padding: 0px 0px 0px 0px;
+            margin: 0px 0px 0px 0px;
+            list-style: none;
+            border-right:1px solid @menuBorder;
+            border-left:1px solid @menuBorder;
+            border-bottom:1px solid @menuBorder;
+            z-index:5000;
+           li {
+               padding: 0px;
+               margin: 0px;
+               width: 100%;
+               z-index:5000;
+               a {
+                   background-image: url("@{skinImages}/menus/bullet_menuItem.gif");
+                   background-repeat: no-repeat;
+                   background-position: -2px -1px;
+                   padding: 0px 0px 0px 9px;
+                   position:relative;
+                   left: 6px;
+                   top:3px;
+                   font-size:@fontSmall;
+                   z-index:5000;
+               }
+               span {
+                   &:extend(ul.menu li ul li a);
+               }
+           }
+        }
+        &:hover {
+            ul {
+                display: block;
+                cursor: pointer;
+                z-index:5000;
+            }
+        }
+        &.over {
+            ul {
+                &:extend(ul.menu li:hover ul);
+            }
+        }
+    }
+}
+
+// Dark Stuff 
+ul.menudark {
+    &:extend(ul.menu);
+    li {
+       &:extend(ul.menu li);
+       background-image: url("@{skinImages}/menus/bg_menuItem_low.gif");
+       span {
+           &:extend(ul.menu li span);
+       }
+       a {
+           &:extend(ul.menudark li span);
+       }
+       ul {
+           padding: 0px;
+           margin: 0px;
+           width: 100%;
+           z-index:5000;
+       }
+       &:hover {
+           ul {
+               &:extend(ul.menu li:hover ul);
+           }
+       }
+       &.over {
+           ul {
+               &:extend(ul.menudark li:hover ul);
+           }
+       }
+   }
+}
+
+// MISC 
+.border1 {
+    border: 1px solid @topMenuBorder;
+}
+
+.border2 {
+    border: 1px solid @alertBorder;
+}
+// Conflict?
+.border2 {
+    .tableBorder
+}
+
+.border3 {
+    border: 1px solid @invButtonBorder;
+}
+
+font.border3 {
+    font-weight: bold;
+    color: @invButtonBorder;
+    border: 0px ;
+}
+
+.background {
+    background-color: @darkBG;
+}
+
+.background-body {
+    background-color: @bodyBG;
+}
+
+.background-alert {
+    background-color: @alertBarBG;
+}
+
+.background-clock {
+    background-color: @clockBG;
+}
+
+.background-logout {
+    background-color: @logoutTopBG;
+}
+
+.background-logout-dark {
+    background-color: @logoutBottomBG;
+}
+
+.background-hover {
+        background-color: @hoverHL;
+    }
+.background-menu {
+        background-color: @menuHeaderBG;
+}
+
+.background-menu-dark {
+    background-color: @darkBG;
+}
+
+.background-highlight {
+       background-color: @tocBG;
+}
+
+// CSS for checklists 
+.checklist {
+    list-style: none;
+    overflow: auto;
+    cursor: pointer;
+    &:extend(.checklist li);
+    li { 
+        margin-left: 0px; 
+        margin-top: 1px; 
+        margin-bottom: 1px; 
+        padding: 0px; 
+    }
+    :hover { 
+        background: #777777; 
+        color: #ffffff; 
+    }
+}
+
+// Checklist 3 
+.cl { 
+    color: #a05a04; 
+    .alt { 
+        background: #f8f6ed;
+    }
+    label { 
+        padding: 0.2em 0.2em 0.2em 25px; 
+        &:hover { 
+            background: #EFE9D4; color: #a05a04; 
+        }
+        &.hover {
+            &:extend(.cl label:hover);
+        }
+    }
+}
+
+// CSS for the Menu Swapper 
+.menuswapper {
+    padding: 0px;
+    margin: 0px;
+    font: 9px white;
+    list-style-type: none;
+    text-align: center;
+    border: 0px;
+    li {
+        display: inline;
+        margin: 0px;
+        background: none;
+        border: 0px;
+        a {
+            text-decoration: none;
+            padding: 0px;
+            margin-right: 3px;
+            background: none;
+            border: 0px;
+        }
+    }
+}
+
+.menucontentarea {
+    border: 0px;
+    width: 150px;
+    margin: 0px;
+    padding: 0px;
+}
+
+// Auto-completer CSS 
+ul.ui-autocomplete {
+    position:absolute;
+    width:150px;
+    background-color: #CCCCCC;
+    border:1px solid #888;
+    margin:0px;
+    padding:0px;
+    color: @aFontHover;
+    list-style-type:none;
+    li {
+        list-style-type:none;
+        display:block;
+        margin:0;
+        cursor:pointer;
+        background-color: @menuHeaderBG;
+       &.ui-menu-item {
+           a {
+               display:block;
+               padding:2px;
+               padding-bottom: 4px;
+               &.ui-state-hover {
+                   background-color: @hoverHL;
+                   display:block;
+               }
+           }
+       }
+    }
+}
+
+// Button Styles 
+input.chunky_button {
+    padding: 3px;
+}
+
+// Horizontal Colour Bar Styles 
+div.bar_cont {
+    background-color: #111111;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #333333;
+}
+
+div.bar_bg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+div.bar_fg {
+    position: absolute;
+    left: 0px;
+    text-align: center;
+    width: 100%;
+    color: #FFFFFF;
+    font-family: "Courier New";
+    cursor: default;
+}
+
+.hidden {
+    display: none;
+}
+
+// Flash messages for position2 
+div.flash-msg {
+    width: 80%;
+    color: #C2C2A4;
+    border: 1px solid;
+    margin: 10px auto;
+    padding: 5px 5px 5px 5px;
+    font-size: 110%;
+    img {
+        float: right;
+        cursor: pointer;
+    }
+}
+
+div.flash-green {
+    color: #4F8A10;
+    border-color: #4F8A10;
+    background-color: #DFF2BF;
+    a {
+        color: #4F8A10;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+}
+
+div.flash-blue {
+    color: #00529B;
+    border-color: #00529B;
+    background-color: #BDE5F8;
+    a {
+        color: #00529B;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+}
+
+div.flash-red {
+    color: #D8000C;
+    border-color: #D8000C;
+    background-color: #FFBABA;
+    a {
+        color: #D8000C;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+}
+
+// Room Maps 
+.room {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+}
+
+.roommap {
+    background-color: black;
+    position: relative;
+    left: 0px;
+    top: 0px;
+}
+
+.roommain {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 46px;
+    height: 46px;
+}
+
+.roomimg {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 46px;
+    height: 46px;
+}
+
+.roomoverlay {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 46px;
+    height: 46px;
+    z-index: 400;
+    background-color: #2385f4;
+    opacity:0.4;
+    filter: alpha(opacity=40);
+}
+
+.roomoverlayup {
+    top: 0px;
+    left: 0px;
+    width: 12px;
+    height: 12px;
+    &:extend(.roomoverlay);
+}
+
+.roomoverlaydown {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 12px;
+    height: 12px;
+    z-index: 400;
+    background-color: #2385f4;
+    opacity:0.4;
+    filter: alpha(opacity=40);
+}
+
+// HP Status colours 
+.hp_status {
+    font-weight: bold;
+}
+
+.hp_dead {
+    color: #FFFFFF;
+}
+
+.hp_unconscious {
+    color: #C0C0C0;
+}
+
+.hp_unharmed {
+    color: #33FF00;
+}
+
+.hp_slightly_wounded {
+    color: #CCFF00;
+}
+
+.hp_wounded {
+    color: #FF9900;
+}
+
+.hp_badly_wounded {
+    color: #FF0000;
+}
+
+// Equipment and Party Screens 
+.selected_box {
+    border: 1px solid blue;
+}
+
+.drop_ground {
+    width: 330px;
+    height: 55px;
+    display: block;
+    margin: 3px;
+    div {
+        height: 50px;
+        width: 50px;
+        float: left;
+        margin-top: 2px;
+        margin-left: 20px;
+    }
+}
+
+.item_box_wrap {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.item_box {
+    width: 330px;
+    min-height: 100px;
+    display: inline-block;
+    margin: 1px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	.check_wrap {
+	    height: 55px;
+	    width: 20px;
+	    text-align: center;
+	    line-height: 55px;
+	    float: left;
+	    padding: 0px;
+	}
+	.image_wrap {
+	    height: 55px;
+	    width: 50px;
+	    padding: 0px;
+	    padding-top: 5px;
+	    margin: 0px;
+	    float: left;
+	}
+	.desc_wrap {
+	    margin-left: 75px;
+	    padding: 0px;
+	    padding-top: 5px;
+	    padding-bottom: 5px;
+	    min-height: 50px;
+	}
+	.action_wrap {
+	    margin-left: 75px;
+	}
+}
+
+.partyable_box {
+    width: 310px;
+    min-height: 65px;
+    position: relative;
+    display: inline-block;
+}
+
+.recycleable_box {
+    width: 350px;
+    height: 70px;
+    position: relative;
+    display: inline-block;
+}
+
+.partybox {
+    clear: both;
+    float: right;
+    border: 1px solid #333333;
+    width: 312px;
+    margin-bottom: 5px;
+}
+
+.medicaltargetbox {
+    width: 410px;
+    height: 110px;
+    position: relative;
+    display: inline-block;
+}
+
+.halfavatar_subimage {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+// NPC Fitouts 
+.fitoutbox {
+    width: 175px;
+    height: 250px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#npcfitout {
+    .assigned_item_type {
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+}
+
+// Menus 
+.horizontal-menu {
+    padding: 5px 5px 5px 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+// "Pretty" buttons 
+input[type=submit] {
+    .rounded(5px);
+    border: medium none;
+    display: inline-block;
+    color: #FFFFFF !important;
+    font-family: @font;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin: 2px;
+    .boxShadow(0 1px 3px 0 rgba(200,200,200,0.5));
+    text-shadow: 0 -1px 1px rgba(200,200,200,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    font-size: @fontStandard;
+    padding: 2px 11px;
+    // Bite me, Internet Explorer 
+    &:hover {
+        background: @menuHeaderBG;
+        .boxShadow(0 1px 3px 0 rgba(200,200,200,0.75));
+    }
+}
+
+input[type=reset] {
+    &:extend(input[type=submit] all);
+}
+
+input[type=button] {
+    &:extend(input[type=submit] all);
+}
+
+// New Tiger Stripe Table Style 
+table.tiger_stripes {
+    font-size: @fontStandard;
+    color: @aFont;
+    tr {
+        &.tiger_stripes_header {
+            background-color: @bodyBG;
+            color: red !important;
+        }
+        &:not(.tiger_stripes_header) {
+            &:not(.no_tiger_stripes) {
+                &:nth-child(odd) {
+                    background-color: @bodyBG;
+                }
+                &:nth-child(even) {
+                    background-color: @alertBarBG;
+                }
+                &:hover {
+                    td {
+                        cursor: default;
+                        background-color: @tigerStripeHover;
+                        color: @alertTopFont;
+                        a {
+                            &:hover {
+                                color: @alertTopFont;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    th {
+        font-weight: bold;
+        text-align: center;
+        padding: 5px;
+        a {
+            text-decoration: underline;
+        }
+    }
+    td {
+        .tableBorder;
+        padding: 3px;
+    }
+}
+
+td.tiger_stripes {
+    div {
+        &.tiger_stripes_header {
+            &:extend(table.tiger_stripes tr.tiger_stripes_header);
+        }
+        &:not(.tiger_stripes_header) {
+            &:not(.no_tiger_stripes) {
+                &:nth-child(odd) {
+                    &:extend(table.tiger_stripes tr:not(.tiger_stripes_header):not(.no_tiger_stripes):nth-child(odd));
+                }
+                &:nth-child(even) {
+                    &:extend(table.tiger_stripes tr:not(.tiger_stripes_header):not(.no_tiger_stripes):nth-child(even));
+                }
+            }
+        }
+    }
+}
+
+ul.tiger_stripes {
+    li {
+        &.tiger_stripes_header {
+            &:extend(table.tiger_stripes tr.tiger_stripes_header);
+        }
+        &:not(.tiger_stripes_header) {
+            &:not(.no_tiger_stripes) {
+                &:nth-child(odd) {
+                    &:extend(table.tiger_stripes tr:not(.tiger_stripes_header):not(.no_tiger_stripes):nth-child(odd));
+                }
+                &:nth-child(even) {
+                    &:extend(table.tiger_stripes tr:not(.tiger_stripes_header):not(.no_tiger_stripes):nth-child(even));
+                }
+                &:hover {
+                    &:extend(table.tiger_stripes tr:not(.tiger_stripes_header):not(.no_tiger_stripes):hover td all);
+                }
+            }
+        }
+    }
+}
+
+// Place for manual definitions of our style colours for use in JavaScriptland 
+.background1 {
+    background-color: @bodyBG;
+}
+
+.background2 {
+    background-color: @alertBarBG;
+}
+
+.background9 {
+    background-color: @tigerStripeHover !important;
+}
+
+// New CSS Table Display Layout 
+#layout-main {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#layout-header {
+    display: table-row;
+    height: 150px;
+}
+
+#layout-middle {
+    display: table;
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    div.content-header-bar {
+        .tableBorder;
+        font-size: @fontStandard;
+        background: @menuHeaderBG;
+        color: @alertTopFont;
+        font-weight: bold;
+        margin-bottom: 3px;
+        h3 {
+            margin: 3px;
+        }
+    }
+    div.content-cell {
+        padding: 2px;
+        .tableBorder;
+        font-size: @fontStandard;
+        background: @alertBarBG;
+        color: @aFont;
+    }
+}
+
+#layout-content {
+    display: table-cell;
+}
+
+#layout-right {
+    display: table-cell;
+    width: 150px;
+    padding-left: 3px;
+}
+
+#layout-footer {
+    display: table-row;
+    height: 20px;
+}
+
+// Flashers Panel (News, DMs, Events, etc) 
+.flasher-dms {
+    img {
+        position: absolute;
+        z-index: 1;
+    }
+    span {
+        position: absolute;
+        z-index: 2;
+        font-weight: bold;
+        font-size: @fontVerySmall;
+        padding-left: 9px;
+        padding-top: 4px;
+    }
+}
+
+.ajax_spinner {
+    width: 16px;
+    height: 16px;
+}
+
+.ajax_checkbox_spinner {
+    width: 13px;
+    height: 13px;
+    margin-left: 3px;
+    margin-top: 3px;
+    margin-right: 4px;
+}
+
+.thumbs-up {
+    background: url("@{sprites}/ratings_sprite.png") 0 0 no-repeat;
+    width: 20px;
+    height: 24px;
+    text-indent: -9999px;
+    display: inline-block;
+    background-position: 0 0;
+    &.selected {
+        background-position: 0 -25px;
+    }
+    &:hover {
+        &:extend(.thumbs-up.selected);
+    }
+}
+
+.thumbs-down {
+    &:extend(.thumbs-up);
+    background-position: -25px 0;
+    &.selected {
+        background-position: -25px -25px;
+	}
+	&:hover {
+	    &:extend(.thumbs-down.selected);
+	}
+}
+
+a.button {
+	background: url("@{sprites}/button_sprite.png") right -64px no-repeat;
+	display: inline-block;
+	font-size: 14px+@largeFont;
+	height: 55px;
+	margin-right: 6px;
+	padding-right: 18px;
+	.button-right {
+	    background: url("@{sprites}/button_sprite.png") no-repeat;
+	    display: block;
+	    line-height: 16px;
+	    padding: 19px 0 19px 20px;
+	}
+}
+
+.attacker {
+	cursor: pointer;
+	img {
+	    margin: 1px 1px 1px 1px;
+	}
+}
+
+.clicked img {
+	margin: 0px 0px 0px 0px;
+    border: 1px solid blue;
+}
+
+// CSS for WS Documentation Tables 
+ table.ws_styles {
+     border-collapse: collapse;
+     border: 1px solid #fff;
+     th {
+         background-color: #1F8175;
+         font-size: @fontVeryLarge;
+     }
+     td {
+         padding: 5px 10px;
+         border: 1px solid #fff;
+     }
+     tr {
+         &:nth-child(odd) {
+             background: #1F5C81;
+         }
+     }
+ }
+    
+.ws_styles.rules_box_important {
+    > h3 {
+        font-weight: bold;
+        font-color: #F00;
+    }
+}
+
+// Generic Table for Layout 
+.swc-table {
+	display: table;
+	border-collapse: separate;
+	border-spacing: 4px;
+}
+.swc-table-row {
+    display: table-row;
+}
+
+.swc-table-cell {
+    display: table-cell;
+    padding: 3px;
+}
+
+.swc-table-header {
+    display: table-cell;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+    font-size: @fontStandard;
+    background: @menuHeaderBG;
+    color: @alertTopFont;
+}

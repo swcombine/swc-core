@@ -1,0 +1,179 @@
+@import "globalstyle";
+
+body {
+	background-repeat: no-repeat;
+	background-color: #001020;
+	color: #ffffff;
+	text-align: center;
+	font-family: @font;
+	font-size: 7pt;
+}
+
+textarea {
+    border-bottom: #666666 1px solid;
+	border-left: #666666 1px solid;
+	border-right: #666666 1px solid;
+	border-top: #666666 1px solid;
+	//conflict?
+	border-color: #848484;
+	background: #000000;
+	color: #999999;
+}
+
+input {
+	&:extend(textarea);
+	font-size: 9pt;
+	padding: 2px;
+}
+
+select {
+	&:extend(textarea);
+	font-size: 7pt;
+}
+
+textfield {
+    border-bottom: #CCCCCC 1px solid;
+	border-left: #CCCCCC 1px solid;
+	border-right: #CCCCCC 1px solid;
+	border-top: #CCCCCC 1px solid;
+	border-color: #FFFFFF;
+	background: #000000;
+	color: #ffffff;
+	font-size: 8pt;
+}
+
+buttons {
+	border: 0;
+	background: #000000;
+	color: #CCCCCC;
+	font-size: 7pt;
+	font-family: verdana;
+}
+
+a {
+    &:active {
+	text-decoration: none;
+	color: #c0c0c0;
+    }
+    &:link {
+        text-decoration: none;
+        color: #ffffff; 
+    }
+    &:visited {
+        &:extend(a:link);
+    }
+    &:hover {
+        text-decoration: underline;
+        color: #c0c0c0;
+    }
+}
+
+table {
+	font-size: 7pt;
+	color: #ffffff;
+}
+
+.title {
+	font-weight: bold;
+	font-size: 10pt;
+	color: #FFFFFF;
+}
+
+.pagetitle {
+	font-size: 9pt;
+	color: #FFFFFF;
+}
+
+radio {
+	border: 0;
+	border-bottom: #000000 1px solid;
+	border-left: #000000 1px solid;
+	border-right: #000000 1px solid;
+	border-top: #000000 1px solid;
+	//Potential Conflict?
+	border-color: #000000;
+	background: #000000;
+}
+
+div.main {
+	padding-left: 23px;
+	padding-top: 10px;
+	padding-bottom: 50px;
+}
+
+.formFieldOut {
+    font-family: @font;
+    font-size: 100%;
+    color: #ffffff;
+    background: #000000;
+    border: 1px solid #000000;
+}
+
+.formFieldIn {
+    background: #747474;
+    border: 1px ridge #fff;
+    color: #ffffff;
+}
+
+label {
+	cursor: pointer;
+	font-size: 11px;	
+}
+
+// Styles for fancy buttons.
+// With inspiration from 
+// http://www.zurb.com/article/266/super-awesome-buttons-with-css3-and-rgba
+.fancybutton {
+    .rounded(5px);
+	border: medium none;
+	display: inline-block;
+	color: #FFFFFF !important;
+	font-family: Verdana, Arial, Helvetica, Helvetica Neue, Verdana, sans-serif;
+	font-weight: bold;
+	letter-spacing: 1px;
+	//padding: 4px 23px;
+	padding: 3px 8px 4px 8px;
+	cursor: pointer;
+	position: relative;
+	//text-shadow: 0px 0.25px 1px #FFFFFF;
+	margin: 0px;
+	.boxShadow(0 1px 3px rgba(200,200,200,0.5));
+	text-shadow: 0 -1px 1px rgba(200,200,200,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	&:hover {
+	    background-color: #242424;
+	    .boxShadow(0 1px 3px rgba(200,200,200,0.75))
+	}
+	&:active {
+	    top: 1px;
+	}
+	&:disabled {
+	    background: #DFDFDF !important;
+	    cursor: auto;
+	    &:active {
+	        top: 0px !important;
+	    }
+	}
+	// Sizing
+	.small& {
+	    font-size: @fontStandard;
+	    padding: 2px 11px;
+	}
+	.medium& {
+	    font-size: @fontVeryLarge;
+	    font-weight: bold;
+	    line-height: 1;
+	}
+	.large& {
+	    font-size: 14px+@largeFont;
+	    padding: 8px 14px 9px 14px;
+	}
+	// Colours
+	.black& {
+	    background: #4F4F4F;
+	    .backgroundGradient(105deg, #444444, #333333 70%, #000000);
+	    &:hover {
+	        color: rgb(227, 140, 26);
+	    }
+	}
+}

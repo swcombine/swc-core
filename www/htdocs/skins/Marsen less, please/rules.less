@@ -1,0 +1,183 @@
+@import "globalstyle";
+// RULES STYLES 
+// Rules Menu 
+.rulesMenu_category {
+    font-size: 16px+@largeFont;
+    color: @rulesMenuFont;
+    font-weight: bold;
+    background-image: url("@{skinImages}/menus/bg_menuItem_low.gif");
+}
+
+.rulesMenu_section {
+    font-size: @fontSmall;
+    color: @aFontRulesMenu;
+    font-weight: bold;
+}
+.rulesMenu_subPagesEdge {
+    background-image: url("@{skinImages}/menus/main_submenu_left.gif");
+    background-position: top right;
+    background-repeat: no-repeat;
+}
+        
+.rulesMenu_active {
+    color: @aFontRulesMenuHL;
+}
+
+.rulesMenu_page {
+    font-size: @fontSmall;
+    color: @aFontRulesMenu;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+a.rules_link {
+    text-decoration: underline;
+}
+
+// The Levels (ie: 1/, 1.1/ etc)
+.rules_sectionHeader {
+    font-weight: bold;
+    font-size: 14px+@largeFont;
+    text-decoration: underline;
+    color: @rulesLevelsFont;
+    margin-bottom: 5px;
+}
+
+.rules_level1 {
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.rules_level1Header {
+    font-size: @fontStandard;
+    font-weight: bold;
+    color: @rulesLevelsFont;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+}
+
+.rules_level2 {
+    padding-bottom: 20px;
+    padding-left: 40px;
+}
+
+.rules_level2Header {
+    color: @rulesLevelsFont;
+    font-size: @fontSmall;
+    font-weight: bold;
+    padding-bottom: 15px;
+    padding-left: 30px;
+}
+
+.rules_level3 {
+    padding-bottom: 20px;
+    padding-left: 60px;
+}
+
+.rules_level3Header {
+    color: @rulesLevelsFont;
+    font-size: @fontSmall;
+    font-weight: bold;
+    text-decoration: underline;
+    padding-bottom: 5px;
+    padding-left: 50px;
+}
+
+.rules_level4 {
+    padding-bottom: 20px;
+    padding-left: 80px;
+}
+
+.rules_level4Header {
+    color: @rulesLevelsFont;
+    font-size: @fontSmall;
+    font-weight: bold;
+    text-decoration: underline;
+    padding-bottom: 5px;
+    padding-left: 70px;
+}
+
+.rules_tooltip {
+    cursor: pointer;
+    margin-bottom: 0px;
+    text-decoration: underline;
+}
+
+// Table of Contents
+.rules_toc_box {
+    width: 300px;
+    border: 1px solid @tocBorder;
+    background-color: @tocBG;
+    padding: 4px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.rules_toc {
+    margin-left: -20px;
+    &:extend(.rules_toc li ul);
+    li ul {
+        list-style-type: none;
+    }
+}
+
+li.rules_toc_item {
+    padding-top: 5px;
+} 
+
+.rules_toc_list {
+    padding-bottom: 5px;
+}
+
+// Fancy Boxes
+.rules_box_equations {
+    position: relative;
+    margin: 10px 20px 10px 20px;
+    color: #FFFFFF;
+    text-align: left;
+    padding: 7px 0px 10px 15px;
+    display: table-cell;
+}
+.rules_box_important {
+    &:extend(.rules_box_equations);
+}
+
+.rules_box_tip {
+    &:extend(.rules_box_equations);
+}
+
+.rules_box_note {
+    &:extend(.rules_box_equations);
+}
+
+.rules_box_example {
+    &:extend(.rules_box_equations);
+}
+        
+.rules_box_equations_style {
+    display: block;
+    padding: 5px 10px 5px 10px;
+    margin-top: 5px;
+    .rulesBoxGenericStyle(#EAD663, "yellow");
+}
+
+.rules_box_important_style {
+    &:extend(.rules_box_equations_style);
+    .rulesBoxGenericStyle(#FF0000, "red");
+}
+
+.rules_box_tip_style {
+    &:extend(.rules_box_equations_style);
+    .rulesBoxGenericStyle(#00C000, "green");
+}
+
+.rules_box_note_style {
+    &:extend(.rules_box_equations_style);
+    .rulesBoxGenericStyle(#FFFFFF, "white");
+}
+
+.rules_box_example_style {
+    &:extend(.rules_box_equations_style);
+    .rulesBoxGenericStyle(#0099FF, "lightblue");
+}

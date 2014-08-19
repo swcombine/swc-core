@@ -1,0 +1,197 @@
+@import "globalstyle";
+// Web Services Client List
+ul#ws_client_list{
+    li {
+        list-style-type: none;
+        display: inline-block;
+        padding: 5px;
+        margin: 5px 2px 2px 2px;
+        .rounded(4px);
+        cursor: pointer;
+        width: 300px;
+        img.ws_client_logo {
+            margin-bottom: 0px;
+        }
+       h3 {
+           margin-top: 0px;
+           margin-bottom: 0px;
+       }
+    }
+}
+
+img.ws_client_logo {
+	width: 300px;
+	height: 100px;
+}
+
+// Client Details Popup
+div.client_details {
+    display: none;
+    h3 {
+        margin: 0px 0px 3px 0px;
+	}
+	h4 {
+	    margin: 0px 3px 3px 0px;
+	}
+}
+
+div.vote {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	margin-left: 10px;
+	/*border: 1px solid;*/
+}
+
+div.score {
+	border: 1px #1F5CA5 white;
+	margin-top: -14px;
+	padding: 2px 5px;
+	float: right;
+	display: inline-block;
+	background-color: #1F5C81;
+	text-align: center;
+	.label {
+	    font-size: @fontVeryLarge;
+	}
+	.value {
+	    font-size: 15px+@largeFont;
+	}
+	&.green .value {
+	    color: #00B000;
+	}
+	&.red .value {
+	    color: #9C0000;
+	}
+}
+
+div.votes {
+	padding: 2px 0;
+	border-top: 1px solid white;
+}
+
+img.os_icon {
+	float: left;
+	padding: 2px;
+}
+
+div.comments-wrapper {
+    display: none;
+}
+
+div.comments {
+	margin-top: 10px;
+	border-bottom: 1px solid white;
+	border-top: 1px solid white;
+	overflow: auto;
+	max-height: 300px;
+	ul {
+	    list-style: none;
+	    padding: 0;
+	}
+	li {
+	    border-top: 1px solid #fff;
+	    min-height: 20px;
+	    padding: 10px 5px;
+	    margin: 2px 0;
+	   .rating {
+	       float: right;
+	   }
+	   .comment {
+	       padding-right: 24px;
+	   }
+	}
+}
+
+// Client Filter List
+div#ws_client_filter {
+	padding: 3px;
+	img.os_icon {
+	    padding: 0px;
+	}
+	h3 {
+	    margin-bottom: 0px;
+	}
+}
+
+ul#ws_runs_on_filter {
+	margin-top: 0px;
+	padding-left: 0px;
+	margin-bottom: 0px;
+	li {
+	    list-style-type: none;
+	    display: inline-block;
+	    padding: 3px;
+	    .rounded(4px;)
+	}
+}
+
+// Override jquery.fancyzoom styles
+div#zoom {
+	width: 360px !important;
+	height: 215px !important;
+	td.mm {
+	    background-color: #000C1A !important;
+	}
+}
+
+// Client Management Table
+table#ws_client_list th {
+	font-size: @fontVeryLarge;
+	padding: 7px;
+}
+
+/* Client Editing Form */
+#ws_client_list td {
+	cursor: pointer;
+}
+
+input[type="text"] {
+    &:extend(textarea);    
+}
+input[type="file"] {
+    &:extend(textarea);    
+} 
+
+select {
+    &:extend(textarea);    
+} 
+
+textarea {
+    width: 200px;
+}
+
+.editor-label {
+    width: 25%;
+}
+
+div.client_details_edit {
+	display: none;
+	width: 450px;
+	h3 {
+	    margin: 0px 0px 3px 0px;
+	}
+	h4 {
+	    margin: 0px 3px 3px 0px;
+	}
+}
+
+
+#comment-wrapper {
+    display: none;	
+}
+
+#comment-modal {
+    width: 350px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+input.AdditionalInfoURL {
+	display: block;
+	margin: 3px 0 5px 20px;
+}
+
+.spinner {
+	text-align: center;
+}

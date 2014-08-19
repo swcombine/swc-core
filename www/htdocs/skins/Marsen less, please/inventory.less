@@ -1,0 +1,178 @@
+@import "globalstyle";
+// Inventory Actions Interface
+div.action_pane {
+    label {
+        cursor: pointer;
+    }
+    div.autocomplete {
+        position: absolute;
+        left: 0px;
+        top: 17px;
+        width: 169px;
+        z-index: 1;
+        //display: none;
+    }
+}
+
+div#inventory_action_errors {
+	color: #FF0000;
+	font-weight: bold;
+}
+
+div#action_confirm_pane {
+    width: 300px;
+	display: none;
+	padding: 3px;
+	position: absolute;
+	z-index: 110;
+    h2 {
+        text-align: center;
+    }
+   div.action_confirm_pane {
+       display: none;
+   }
+   div.acp_details_box {
+       width: 300px;
+       height: 250px;
+       overflow: auto;
+       margin-top: 10px;
+       margin-bottom: 10px;
+       ul {
+           list-style-type: none;
+           padding-left: 10px;
+       }
+   }
+   div.acp_buttons {
+       text-align: right;
+   }
+}
+
+div.action_pane_container {
+	width: 400px;
+	float: left;
+}
+
+div.name_panel {
+	padding: 5px;
+	clear: left;
+	width: 350px;
+}
+
+div.name_panel_label {
+	width: 100px;
+	float: left;
+	font-weight: bold;
+	font-variant: small-caps;
+	font-size: 115%;
+}
+
+div.name_panel_field {
+	width: 250px;
+	float: left;
+	position: relative;
+	top: -2px;
+}
+
+
+div.input_pane {
+	padding: 5px;
+	clear: left;
+	width: 200px;
+}
+
+div.input_pane_label {
+	width: 100px;
+	float: left;
+	font-weight: bold;
+	font-variant: small-caps;
+	font-size: 115%;
+}
+
+div.input_pane_field {
+	width: 100px;
+	float: left;
+	position: relative;
+	top: -2px;
+}
+
+div.action_help_text {
+	width: 300px;
+	float: left;
+}
+
+div.inventory_header {
+    a {
+        img {
+            border: 1px solid transparent;
+            &.border3,
+            {
+                &:extend(div.inventory_header a:hover img);
+            }
+        }
+        &:hover {
+            img {
+                border: 1px solid #FFFFCC;
+            }
+        }
+    }
+    span.inventory_options {
+        img {
+            &:extend(div.inventory_header a img);
+            &:hover {
+                &:extend(div.inventory_header a:hover img);
+            }
+            &.border3,
+            {
+                &:extend(div.inventory_header a:hover img);
+            }
+        }
+    }
+}
+
+// Miscellaneous Inventory Styles
+tr.inv_tags a {
+	text-decoration: underline;
+}
+
+// Inline Inventory Editing 
+.inlineEditing {
+    cursor: pointer;
+}
+
+.textInlineEdit {
+    &:extend(.inlineEditing);
+}
+
+// Inventory Menu 
+#listinventory-personal {
+    padding: 2px 1px 1px 1px;
+    margin: 0px -2px 0px 0px;
+    .menucell{
+        position: relative;
+        padding: 1px 1px 1px 1px;
+       a {
+            border: 1px none @inventoryBorder;
+            img {
+                width: 30px;
+                height: 30px;
+                border: 1px none @inventoryBorder;
+            }
+        }
+        .InvMenuAmount {
+            position: absolute;
+            top: 17px;
+            left: 31px;
+            width: 77%;
+        }
+        .InvMenuLink {
+            position: absolute;
+            top: 2px;
+            left: 31px;
+            width: 77%;
+        }
+    }
+}
+
+#listinventory-faction {
+    &:extend(#listinventory-personal all);
+}
