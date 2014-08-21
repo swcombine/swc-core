@@ -1,0 +1,102 @@
+@import "globalstyle";
+// Forum Stuff 
+.forumPost {
+    a {
+        &:link {
+            text-decoration: underline; 
+            cursor: pointer;
+        }
+        &:active {
+            &:extend(.forumPost a:link);
+        }
+        &:visited {
+            &:extend(.forumPost a:link);
+        }
+    }
+}
+
+.forumSelected {
+    font-weight: bold;
+    color: #FFFF00;
+    text-decoration: none
+}
+
+.threadName {
+        font-weight: bold;
+        font-size: @fontLarge;
+        color: @alertTopFont;
+}
+
+.threadDescription {
+       font-size: @fontSmall;
+       color: @aFont;
+}
+
+.forumName {
+    font-weight: bold;
+    font-size: @fontLarge;
+    color: @alertTopFont;
+}
+    
+.forumDescription {
+    font-size: @fontSmall;
+    color: @aFont;
+}
+
+.warning {
+    font-weight: bold;
+    font-size: @fontStandard;
+    color: #FF0000;
+}
+
+// Sourced from defusion.org.uk, slightly modified to suit our needs. All credit and whatnot is entirely theirs 
+blockquote {
+    margin: 1em 0;
+    padding: 0;
+    position: relative;
+    text-indent: 2em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid @blockquoteBorder;
+    border-bottom: 1px solid @blockquoteBorder;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+// apply IE specific rules first 
+.bqstart {
+    font-size: 300%; 
+    text-indent: 0;
+    margin: -0.6em 0 -2em 0;
+    float: left;
+    position: relative; // relative positioning to stop from disappearing in IE when the blockquote has a background color - probably peek-a-boo or something 
+    blockquote > & {
+        // add extra non-ie rules 
+        position: absolute;
+        top: -0.2em;
+        left: 0;
+        // remove IE specific rules 
+        float: none;
+        margin: 0;
+        padding-top: 10px;
+    }
+}
+
+.bqend {
+    font-size: 300%; 
+    position: absolute;
+    margin-top: -0.6em;
+    right: 0;
+    text-indent: 0;
+    margin-right: 25px;
+    blockquote > & {
+    margin-top: -0.2em;
+    }
+}
+
+.quotePerson {
+    font-size: smaller;
+    font-weight: bold;
+    margin: 15px!important;
+    padding: 0;
+}

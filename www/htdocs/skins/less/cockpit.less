@@ -1,0 +1,89 @@
+@import "globalstyle";
+// Cockpit 
+// Is the row at the very top of the cockpit, which contains the location, etc and entity
+.cockpitTop {
+    background-image: url("@{clientCockpit}/top-bg.png");
+    width: 100%;
+    height: 104px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    .cockpitRow {
+        .cockpitContent {
+            padding-top: 10px;
+        }
+    }
+}
+
+// Is the map on the left in the middle
+.cockpitLeftMap {
+    position: relative;
+    background-color: black;
+}
+
+// Is the row to the middle which contains the hull, shields, etc status
+.cockpitMiddleStatus {
+
+}
+
+.cockpitMiddleStatusLeft {
+    background-image: url("@{clientCockpit}/middle-side.png");
+    background-repeat: repeat-y;
+    background-position: top left;
+}
+
+.cockpitMiddleStatusCenter {
+    background-image: url("@{clientCockpit}/middle-top-center.png");
+    background-repeat: repeat-x;
+    background-position: top;
+}
+
+.cockpitMiddleStatusRight {
+    background-image: url("@{clientCockpit}/middle-side.png");
+    background-repeat: repeat-y;
+    background-position: top right;
+}
+
+.cockpitMiddleStatusBottom {
+    background-image: url("@{clientCockpit}/middle-bottom-center.png");
+    }
+
+// Progress bars, as displayed in the cockpit
+.cockpitBar {
+    height: 18px;
+    width: 85%;
+    position: relative;
+    overflow: hidden;
+    .cockpitBarInner {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 18px;
+    }
+    .cockpitBarText {
+        position: absolute;
+        top: 2.5px;
+        left: 0px;
+        text-align: center;
+        width: 100%;
+        color: #FFFFFF;
+        font: 'Courier New';
+        font-size: @fontSmall;
+        height: 18px;
+        cursor: default;
+    }
+}
+
+// The Action bar that sits ontop of and below the cockpit iframe
+.cockpitActionBar {
+    background-image: url("@{clientCockpit}/actions-middle.png");
+    width: 100%;
+    tr {
+        td {
+            form {
+                input {
+                    top: -10px;
+                }
+            }
+        }
+    }
+}

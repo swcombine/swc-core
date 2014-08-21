@@ -1,0 +1,38 @@
+@import "globalstyle";
+
+select {
+    color: #FFFFFF; 
+    border: 1px solid #D7D7D7; 
+}
+
+input {
+    color: #FFFFFF; 
+    border: 1px solid #D7D7D7; 
+    &[type="button"] {
+        width: auto;
+        border: 2px double #212121; 
+        border-top-color: #5A5A5A;
+        border-left-color: #5A5A5A; 
+        background-color: #101010; 
+        background-image: url('@{darknessImagesPathweb}/client/production/background_button_brown.gif'); 
+        background-repeat: repeat-x; 
+        color: #333333; 
+        color: #FFFFFF; 
+        font-size: 90%; 
+        font-family: @font; 
+        font-weight: 500; 
+        letter-spacing: 1.5px; 
+    }
+}
+
+
+.ui-sortable { 
+    list-style-type: none;
+    margin: 0;  
+    margin-bottom: 10px; 
+    &:extend(.ui-workers);
+}
+
+.ui-workers { 
+    padding: 0; 
+}
