@@ -1,0 +1,91 @@
+Block: start
+*A friendly, but slightly frazzled looking %npc.race% greets you*
+Hello, friend. How are you on this fine %time.ofday%?
+Responses:
+I'm good, you looked tired though. -> tired
+Better than you it would appear. -> appear
+
+Block: tired
+That's good to hear. I do probably look a little worn out, I've been working some long hours lately.
+Responses:
+Well you know what they say...more work equals more credits. What do you do? -> work
+
+Block: appear
+*%npc.name% sighs loudly*
+You would look this bad too, if you had been working as hard as I have been lately.
+Responses:
+I work plenty hard myself. What do you do? -> work
+
+Block: work
+I am an alazhi biological engineer for %faction.name%.
+Responses:
+I have no idea what that even means. -> what
+Oh wow, important scientist keeping the galaxy alive. -> alive
+
+Block: what
+*%npc.name% laughs*
+I suppose those are some big words, huh? In short I work in a medical facility turning alazhi into bacta. I am going assume you know what bacta is, right?
+Responses:
+Of course I know what bacta is, but I have no idea what alazhi is. -> alazhi
+So how does that work? -> how
+
+Block: alive
+I guess it is pretty important. I have to remind myself of that on days like this.
+Repsonses:
+What exactly's got you down? ->down
+Why don't you quit and get another job then? ->another
+
+Block: alazhi
+!ifnot character.race=Vratix! Alazhi is a bacteria that grows on xoorzi fungus. It comes from Thyferra, where the Vratix learned how to use it to make bacta.
+!ifnot character.race=Vratix! !if npc.race=Vratix! Alazhi is a bacteria that grows on xoorzi fungus. It comes from Thyferra, where we learned how to use it to make bacta.
+!if character.race=Vratix! How does a Vratix not know about alazhi?! You are trying to pull a prank on me or something aren't you?
+Responses:
+!if character.race=Vratix! Yeah, you caught me, actually I was just making sure that you were telling the truth. -> exit1
+!ifnot character.race=Vratix! So bacta, the stuff that saves lives, is bacteria that grows on fungus? That's almost crazy. -> crazy
+!ifnot character.race=Vratix! So how exactly do you make fungus bacteria into medicine? -> how
+
+Block: how
+The alazhi is combined with kavam and ambori. If all three are balanced correctly you get bacta. Well even if they aren't perfectly balanced you will still have bacta, but it probably wouldn't work as well or at all.
+Responses:
+Interesting, what's kavam? -> kavam
+Fascinating, what's ambori? -> ambori
+That's it? I should let you get back to it then. -> exit1
+
+Block: down
+Today's just been one of those days, ya know? Too much to do, not enough time to do it.
+Responses:
+I know the feeling. In fact, I had better get back to it myself. -> exit1
+
+Block: another
+If it were only that easy. Plus like you just reminded me, it is a very important job. Thousands of people could die or become crippled if we all just gave up when it gets tough.
+Responses:
+Other people would pick up the slack. Probably. -> slack
+You are right, and I should let you get back to it. -> exit1
+
+Block: exit1
+Yeah, I do have quite a bit to get done. Have a nice %time.ofday%.
+
+Block: crazy
+A little strange maybe, but not crazy. It works and it works really well.
+Responses:
+I guess you are right. So how do you turn bacteria into medicine? -> how
+I still think it sounds crazy. But I should let you get back to work. -> exit1
+
+Block: slack
+You might be right. But you know I don't think that I would be happy doing anything else.
+Responses:
+Well to each their own. You should get back to work I guess. -> exit1
+
+Block: kavam
+If you thought that bacteria from fungus was a strange ingredient, hold on tight. Kavam is a chemical that is excreted by the Vratix. It also contains bacteia that like the alahzi speed the healing process.
+Responses:
+This just keeps getting weirder. I am afraid to ask, but what is ambori? -> ambori
+
+Block: ambori
+Ambori is the least strange of the ingredients. It is a colorless liquid that is used as a suspension medium for bacta. It mimics the vital fluids found in the body of most living beings.
+Responses:
+This is all very strange. But also very educational. Thank you for the explanation. -> exit
+Okay so what is kavam? -> kavam
+
+Block: exit
+You are most welcome friend. And now that I have had a nice break, I should go back to work.

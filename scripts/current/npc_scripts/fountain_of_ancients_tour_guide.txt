@@ -1,0 +1,115 @@
+Block: start
+*Before you stands a well dressed, uniformed %npc.gender% Klatooinian. On the lapel of the uniform is a name tag that reads: %npc.name%, Tour Guide*
+!if character.race=Klatooinian! *%npc.name% smiles widely* Greetings, friend. It is always good to see a fellow Klatooinian visit The Fountain of the Ancients. Tell me, what is the purpose of your visit this fine %time.ofday%?
+!if character.race=Wookiee! *npc.name% speaks the following in Basic* Greetings, Master Wookiee and welcome to the Fountain of the Ancients here in the Derelkoos Desert, on Klatooine. Before we begin the tour I must inform you that while I am fluent in understanding your native tongue of Shyriiwook, I unfortantly I am unable to speak it. I can continue in Basic or another language of your choice.
+!ifnot character.race in [Wookiee, Hutt]! Greetings, Master %character.race% and welcome to the Fountain of the Ancients here in the Derelkoos Desert, on Klatooine.
+!if character.race=Hutt! *%npc.name% greets you in Huttese* Honorable Master Hutt, I am humbled by your presence and desire to learn more about The Fountain of the Ancients here in the Derelkoos Desert, on Klatooine. I will do my best to answer all your questions.
+Responses:
+!if character.race=Wookiee! Yes, Basic will be just fine. -> part1
+!if character.race=Hutt! You flatter me. Please tell me about the fountain. -> part1
+!ifnot chatacter.race in [Hutt, Wookiee]! I have never been here before, what exactly is this place? -> part1
+!if character.race=Klatooinian! My parents left Klatooine before my birth. This is my first visit to our homeworld. -> klatoo
+!if character.race=Klatooinian! I often visit the Fountain to seek inspiration from its beauty and story. Please, if you would continue as if I were a first time visitor. -> part1
+
+Block: klatoo
+Fantastic, fantastic. Please if you have questions do not hesitate to ask.
+*%npc.name% looks very happy and excited to take you on the tour*
+Responses:
+Thank you. -> part1
+
+Block: part1
+Before we make the journey to the fountain itself, I must ask, in accordance with the Council of Elders decree, that you check all technological devices with the guards here. They will be returned to you upon the conclusion of the tour.
+*Two large Klatooinians open a cargo container to hold your items. After turning them in, you follow %npc.name% to the fountain site*
+The Fountain of Ancients began forming many thousands of years ago. If you look closely at the base of the structure you can see the fissure where wintrium seeps to the surface and comes in contact with the dry desert air of Klatooine. As the winds cool the wintrium it adds to the frozen plume making the Fountain a slowly evolving, almost living scuplture.
+*%npc.name% pauses for a moment and looks at you as if to invite questions*
+Responses:
+What is wintrium? I have never heard of it before. -> wintrium
+So, the fountain is ever changing? -> changing
+Please continue. -> part2
+
+Block: part2
+when the early Klatoonians discovered the Fountain, they revered it as a gift from the Ancients symbolizing that age brings strength and the necessity for tenacity and patience. Since its discovery, the Fountain has held a central place in all Klatooinian religion and politics. It is considered the most holy of all holy sites for my people.
+*Once again the guide pauses, waiting for questions*
+Responses:
+When was the fountain discovered? -> when
+Who are the Ancients? -> ancients
+Please continue. -> part3
+
+Block: part3
+That concludes the tour of The Fountain of the Ancients. Please free to spend as much time as you wish admiring this treasure of the galaxy. Also feel free to ask any other questions that you might have.
+*%npc.name% stands quietly to side, awaiting your response*
+Responses:
+*After waiting a few minutes...* Okay I am ready to leave now. -> leave
+I am ready to leave now. -> leave
+I have a few questions. -> questions
+
+Block: wintrium
+Wintrium is one of the rarest substances in the galaxy. It is only found here on Klatooine, under the surface of the planet. In its cooled form, as seen here at the Fountain, it is virtually indestrucible. It is also thought to be the reason why Klatooine is the only place where the delicious pak'pah fruit grows.
+Responses:
+Pak'pah fruit? I have never heard of that. -> pakpah
+Indestructible? Someone could make a fortune using it to make armor or starship hulls. -> fortune
+Ah, okay. You said the fountain is 'almost living' what do you mean? -> changing
+Thank you, please continue with the tour. -> part2
+
+Block: wintriumb
+Wintrium is one of the rarest substances in the galaxy. It is only found here on Klatooine, under the surface of the planet. In its cooled form, as seen here at the Fountain, it is virtually indestrucible. It is also thought to be the reason why Klatooine is the only place where the delicious pak'pah fruit grows.
+Responses:
+Pak'pah fruit? I have never heard of that. -> pakpah
+Indestructible? Someone could make a fortune using it to make armor or starship hulls. -> fortune
+Thank you, please continue with the tour. -> part2
+
+Block: pakpah
+Pak'pah is a delicious fruit that is only known to grow here on Klatooine. It is dark purple in color and tastes better than anything you have ever eaten. Word of caution though, you will need to peel the skin from the pak'pah before you attempt to eat it. I highly recommend that you try some during you stay here on Klatooine.
+Responses:
+Interesting. I will try to remember to track some down before I leave. Please continue with the tour. -> part2
+
+Block: changing
+Yes, the Fountian of the Ancients is a current, although extremely slow, state of flux. As more wintrium seeps to the surface and cools it adds to the structure. Given enough time between visits, you would see these changes. Although I fear there are few races with lifespans long enough to be able to notice the changes.
+Responses:
+I see, thank you. Please continue. -> part2
+You said the fountain is made of wintrium, what is that? -> wintriumb
+
+Block: when
+Although the exact date of the discovery has been lost to the ages, it is known to have happened over 10,000 years ago.
+Responses:
+Wow, that is old. Is that why it is called the Fountian of the Ancients? -> ancients
+Thank you, please continue. -> part3
+
+Block: ancients
+!if character.race=Hutt! Please excuse my assumption, Most honorable Master Hutt, but I thought all Hutts knew of the legend claiming that they are thought by many to be the Ancients.
+!ifnot character.race=Hutt! The Ancients are the deities of the Klatooinian religion. We believe that strength is born of age, so those who are the oldest are therefore the strongest. No one would be stronger than one who is Ancient.
+Responses:
+!if character.race=Hutt! You consider my race to be the gods of your people? -> old
+!ifnot character.race=Hutt! So the Ancients are just really old Klatooinians? -> old
+When was the fountain discovered? -> whenb
+
+Block: whenb
+Although the exact date of the discovery has been lost to the ages, it is known to have happened over 10,000 years ago.
+Responses:
+Wow, that is old. Thank you, please continue. -> part3
+
+Block: questions
+Go ahead, I will do my best to answer them.
+Responses:
+What is wintrium? -> wintrium
+Who are 'the Ancients'? -> ancients
+You said the fountain is 'almost living' what do you mean? -> changing
+when was the fountian discovered. -> when
+Nevermind, I think I am ready to leave now. -> leave
+
+Block: fortune
+Although cooled wintrium is indestrucable to the point of not being able to be cut or shaped, the Council of Elders would never allow the mining of liquid wintrium. The point is moot.
+*The guide is visibly sickened by the thought of using wintrium for any commerical purpose*
+Responses:
+Just saying, it could be a major money maker and change the way wars are fought. But please continue the tour. -> part2
+I apologize if I offended you, I let my entrepreneurial nature control my mouth. Please continue the tour. -> part2
+
+Block: old
+There are many Klatooinians who believe that the Hutts are in fact the Ancients, or atleast as close to knowing them as we can get. Because of the generous opportunities afforded to us by the most honorable Hutts, they are held in very high regard even by the ones who do not believe them to be deities.
+Responses:
+Fascinating, I had no idea that was the case. Please continue with the tour. -> part3
+
+Block: leave
+*As you return to the starting point of the tour and begin collecting your checked belongings, %npc.name concludes the tour*
+Thank you again for your interest in the wonderful treasure of the galaxy that is The Fountain of the Ancients. If you ever find yourself on Klatooine in the future, please return and bring a friend with you.
+*%npc.name% smiles at you and moves to greet the next group of visitors*

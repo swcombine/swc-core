@@ -1,0 +1,65 @@
+Block: start
+*The %npc.race% is attentively cleaning a small blade*
+!if npc.ally! !if character.issupervisor! *The soldier snaps to attention and salutes you* How may I help you today %character.formal%?
+!if npc.ally! !if character.ismanager! *The soldier snaps to attention and salutes you* How may I help you today %character.formal%?
+!if npc.ally! !if character.isowner! *The soldier stops cleaning his blade and snaps to attention* Is all well sir? Do we prepare for battle?
+!ifnot npc.ally!*The soldier glances at you and stops cleaning his weapon* What do you want?
+!if npc.ally! *The soldier stands to greet you* Hey mate. What do you need help with today?
+Responses:
+!if npc.ally! !if character.isowner! Prepare yourself, we may need your fine skills soon. -> myskills
+!if npc.ally! !if character.isowner! At ease trooper. Now then, how is your training progressing? -> training1
+!if npc.ally! !if character.issupervisor! At ease trooper. Tell me then, how is your training progressing? -> training2
+!if npc.ally! !if character.ismanager! At ease trooper. Now then, how is your training progressing? The boss wishes to know how his investments are going. -> training1
+!if npc.ally! How go your duties, soldier? I hope all is well. -> howarethings
+!ifnot npc.ally!So what is a soldier like yourself doing here? -> whatareyoudoing
+Never mind, I'll be leaving now. -> leaving
+!ifnot npc.ally! Can I just ask a quick question of a fighter as esteemed as yourself? -> questions
+
+Block: myskills
+You know my skills are always at your service, %character.formal%. I shall prepare. Is there anything else you wanted?
+Responses:
+I have nothing else to discuss, so I'll be leaving -> leaving
+
+Block: leaving
+!if npc.ally! !if character.isowner! I shall see you later then, %character.formal%.
+!ifnot npc.ally! Then leave, you insolent !random [bantha dung, wermo, bantha fodder]!
+!if npc.ally! Good bye then friend, and good luck with your ventures.
+
+Block: howarethings
+Things are going quite well for me, %character.formal%. Excellent pay, fun work, and an awesome boss. Will that be all for today?
+Responses:
+Yes it will be, keep up the good work. -> leaving
+
+Block: whatareyoudoing
+Why, it's none of your business. Now get out of here, you insolent vermin, before I run this blade through you!
+
+Block: training1
+Quite nicely, %character.formal%. My skills increase with every day of this training.
+Responses:
+Excellent, excellent. We may have to take you into the field one of these days for some real combat experience. -> fieldwork
+
+Block: training2
+Sorry %character.formal%, but I don't think you have the clearance to be asking those kinds of question.
+Responses:
+Right then, I'll be leaving. -> leaving
+
+Block: fieldwork
+Why, I'd love some field experience, %character.formal%. Let me know when some becomes available.
+Responses:
+Of course. Be ready for my call. In the meantime however, I shall take my leave. -> leaving
+
+Block: questions
+Sure, I guess. What is it you would like to know?
+Responses:
+I was wondering who has such a skilled fighter within their forces. -> owner
+How does one get as skilled as yourself? -> tipsandtricks
+Whats your biggest kill? -> boasting
+
+Block: owner
+Why, just %owner.name%. A really fair employer, couldn't be happier. Now that was your one question, so scoot off quickly before the sarge notices you.
+
+Block: tipsandtricks
+Well, plenty of training with your weapon of choice, and then get some real combat experience using it. That's your only question, so buzz off quickly before we both get in trouble.
+
+Block: boasting
+Well, if you really want to know, I once killed a full grown Rancor with this very knife. Just about killed me, but I still bested the blasted thing. Now off with you, before someone sees!

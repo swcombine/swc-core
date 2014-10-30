@@ -1,0 +1,43 @@
+Block: start
+!if npc.ally! *%npc.name% nods slightly acknowledging your presence*
+!ifnot npc.ally! *%npc.name% brandishes a sidearm* Halt! You are not authorized to be here. State your business or leave.
+Responses:
+!if npc.ally! *You nod back* How is everything today? -> today
+!ifnot npc.ally! Cool your jets, chief. I am just passing through. -> jets
+!ifnot npc.ally! What are you guarding here anyway? -> guarding
+
+Block: today
+Everything is just fine, *character.formal%.
+Responses:
+Anything exciting happen lately? -> lately
+
+Block: jets
+Then pass through a little faster. Loitering will not be tolerated.
+Responses:
+What sort of <i>important</i> thing are you guarding here anyway? -> guarding
+Yes, %npc.formal%, no need to get angry. I'll be on my way. -> way
+
+Block: guarding
+*%npc.name% narrows his eyes at you* That is not the business of members of %faction.name%. Please be on your way.
+Responses:
+Geeze, I was just trying to make some small talk. -> talk
+Alright, alright. I'm just passing through anyway. -> way
+
+Block: talk
+No more talk. Move on citizen.
+
+Block: lately
+No, %character.formal%. Just the typical stuff. I'd kill for a little action around here.
+Responses:
+I hear, ya. Atlest you get to look important while not really doing anything. -> look
+
+Block: way
+Then be quick about it, will ya.
+
+Block: look
+And the credits aren't bad either.
+Responses:
+I'll let you get back to it then. Be safe. -> safe
+
+Block: safe
+You as well. *%npc.name% resumes standing at attention keeping a watch eye on the area*

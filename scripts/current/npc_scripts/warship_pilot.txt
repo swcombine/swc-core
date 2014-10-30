@@ -1,0 +1,61 @@
+Block: start
+Welcome %character.formal% . I am %npc.infofield% %npc.name%. What can I help you with?
+Responses:
+!if container.entityType=Ship! Can you tell me something about this ship? -> ship
+!ifnot container.entityType=Ship! What are you doing here? -> plans
+Nothing, just passing by. -> Leaveg
+
+Block: ship
+We are on board the %container.name% which is a %container.type%. She is a thing of beauty, isn't she?
+Responses:
+Yes, she is. Can you tell me where are we heading to? -> Destination
+Yes, she is. Can you tell me when will we arrive to our destination? -> ETA
+Well... I do not like this ship's looks, it is just not of my taste. -> taste
+Yes she is. Anyhow I have to go. -> Leaveg
+It is just a ship, nothing special. I must go now. -> Leaveb
+
+Block: taste
+%character.formal% , I think you should check in a medic with those eyes of yours
+* %npc.gender% smiles for a second, then continues *
+Sorry %character.formal% , so why did you need me?
+Responses:
+I would like to know where are we going currently. -> Destination
+I was hoping you can tell me the time of our arrival. -> ETA
+
+Block: ETA
+*Quickly glances on a monitor on his right*
+%location.eta% , %character.formal%. Anything else?
+Resonses:
+Nothing for now -> Leavec
+I would also like to know where we are heading to. -> Destination
+
+Block: Destination
+*%npc.gender% takes a look on his datapad*
+We are currently %location.destination% .
+Responses:
+Nothing else, thank you. -> Leavec
+I almost forgot, could you tell me when will we arrive there? -> ETA
+
+Block: Leavec
+Good bye, do not forget to check the cantina next to the crew quarters. *The %npc.race% winks as you were leaving*
+
+Block: Leaveg
+Very well, safe journeys to you, %character.formal% .
+
+Block: Leaveb
+You have no sense of beauty, %character.formal%. Farewell.
+
+Block: Leavet
+Thank you, best wishes for you %character.formal%.
+
+Block: plans
+I am currently doing nothing. I am waiting to get employed on a warship, and feel again the thrill of battle.
+Responses:
+It seems you enjoy being on the battlefield. -> battle
+That is good, I hope you will find something soon. Farewell. -> Leavet
+
+Block: battle
+Of course! The battlefield has a unique atmosphere; it is like a giant game of two minds, and the one who is brave and cunning will always win there. But... %owner.name% does not give me much to do these days.
+Responses
+I may ask around if someone could employ you. Farewell. -> Leaveg
+I must go now, good luck to you. -> Leavet

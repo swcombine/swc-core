@@ -1,0 +1,90 @@
+Block: start
+!if npc.ally! *%npc.name% comes to attention and salutes you*
+!if npc.ally! Greetings %character.formal%! I'm glad to see you. Have you come to check on me? Rarely do we get visitors here in the Engineering Bay.
+!ifnot npc.ally! Hello %character.formal%, how can I help?
+Responses:
+!if npc.ally! At ease, what can you tell me about the %container.name%? -> about
+!if npc.ally! At ease Engineer, how are you handling here? -> handle
+!ifnot npc.ally! Are you in charge of this place? -> place
+
+Block: about
+Well I won't bore you with details %character.formal%, I can say the ship is in a top shape, the Engines are running good and all systems are vital. You might want to check that !random [depressurised zone we closed last week, hull breach in the lower deck, computers failure in Navigation's]!, if we engage in battle it may cause some major damage.
+Responses:
+I will leave this situation in your capable hands. -> situation
+I don't think we will engage in combat any time soon, let's talk about you instead. -> join
+Why wasn't I informed about these problems? I will attend to this immediately. -> problem
+
+Block: handle
+Everything seems to be fine %character.formal%, me and my crew were just discussing the Engines.
+Responses:
+Couldn't care less, mind telling me what's going on in my ship? -> about
+Carry on. -> leave
+
+Block: engine
+You see %character.formal%, me and the crew were thinking how can we improve our Engines quality. Right now we are running on the producer's designs, and personally I think we can do better.
+Responses:
+I don't think we can afford such upgrades currently. -> bad
+
+Block: bad
+That's too bad, maybe in the future. Anything else %character.formal%?
+Responses:
+Tell me about yourself. -> join
+No, carry on. -> leave
+
+Block: great
+That's great news %character.formal%! It will allow us to increase our Engine capacity as well as speed and maneuverability. It will take some time however, such changes will have to be made gradually until we can enhance our systems. For now, how else can I help you %character.formal%?
+Responses:
+Tell me about yourself. -> join
+Tell me about my ship. -> about
+That will be all, carry on. -> leave2
+
+Block: place
+Yes, I am %npc.infofield% %npc.name% and I'm running this place. I don't see any suspicious activity in the ship, have you come to report something?
+Responses:
+Actually I was wondering where the Crew Quarters in this ship are. -> direction
+I heard the Captain was calling all officers to the main deck, maybe you should check it out? -> game
+
+Block: problem
+Sorry %character.formal%, I thought you were aware of the situation.
+Responses:
+Aren't you supposed to be in charge of this? -> situation
+
+Block: situation
+I will take care of it right now %character.formal%! Crew, assemble!
+Responses:
+Excellent work %npc.name%, I will check on your progress later. -> leave2
+That's alright, you can take care of it later. Let's talk a little about yourself instead. -> join
+
+Block: direction
+You go back, turn right, continue down the hallway and you should see a sign that says "Crew Quarters".
+Responses:
+Thank you. -> leave
+
+Block: leave
+Goodbye %character.formal%.
+
+Block: leave2
+Thank you again for going down here %character.formal%, goodbye!
+*%npc.name% smiles and heads to the nearby panel to continue the work*
+
+Block: game
+I didn't hear anything in the PA system, please don't play games with me %character.formal%. I should get back to work, do you need anything else?
+Responses:
+Alright then, goodbye. -> leave
+Actually I was wondering where the Crew Quarters in this ship are. -> direction
+
+Block: join
+About me %character.formal%? Well I am just an Engineer, nothing special about me. I lived most of my life in space, handling Starships is all I know. I graduated from the Engineering Academy with my !seed [brother, sister]! and we both went to work in a Shipyard in the !seed [Corellian, Trax, Coruscant]! Sector. We haven't spoken in a while, maybe I'll do so next time we dock in a port. You see I just love Starships, this is why I find great pleasure taking care of them so much. Your fine ship is in good hands %character.formal%. Oh well... That's enough about me, hope I haven't wasted your time %character.formal%.
+Responses:
+You didn't waste my time, I'm happy to get to know my crew. -> good
+
+Block: good
+Thank you %character.formal%, I hope you'll come see me again sometimes.
+Responses:
+That would be a pleasure. -> leave2
+Don't count on it. -> leave
+
+Block: yes
+Of course %character.formal%, sorry.
+Responses:
+Ok then, goodbye. -> leave

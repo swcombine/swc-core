@@ -1,0 +1,76 @@
+Block: start
+!if npc.race=Dug! !if character.race=Dug! *%npc.name% stamps its right foot on the ground twice, making a clicking sound with its mouth at the same time. A greeting of indifference.*
+!if npc.race=Dug! !if character.race=Gran! *A stout Dug glares at you, it's best not to approach it.*
+!if npc.race=Dug! !ifnot character.race=Dug! !ifnot character.race=Gran! What, what... what do you want, %character.race%?
+!ifnot npc.race=Dug! *A confident %npc.race% presents their hand to you, waiting for you to shake it.*
+Responses:
+!if npc.race=Dug! !if character.race=Dug! *Repeat %npc.name%'s actions.* -> dancedance
+!if npc.race=Dug! !ifnot character.race=Dug! Why the long face? -> joke
+!ifnot npc.race=Dug! *Shake* -> shake
+*Shrug and walk away* -> leave
+
+Block: dancedance
+Yes, yes... I've heard about you. 
+*%npc.name% produces his hand, waiting for you to shake it* 
+It is a pleasure and...gratifying. Hearing about other Dugs off of Malastare. Another racer, correct?
+Responses:
+!if npc.ally! *Shake* -> shake
+I don't want to get into that. What about you? You seem busy. -> purpose
+I don't have time for this. -> leave
+
+Block: joke
+!if character.race=Gran! *The seemingly angry creature refuses to so much as acknowledge your presense, perhaps you'll have better luck elsewhere.*
+!ifnot character.race=Gran! Yeah, yeah. Heard them all %character.race%. What do you want?
+Responses:
+%character.race%? Not the warmest of welcomes... -> xenophobe
+Whatever. -> leave2
+
+Block: xenophobe
+No, no, don't try to lecture me. You know nothing of this. Ever been to Malastare? Didn't think so. No... not going to explain it now. What do you want?
+Responses:
+Yeah, you're right... I should probably go. -> leave
+Uh huh. *Leave* -> leave2
+
+Block: shake
+Don't mind me, just checking for weapons... Haha! I kid, I kid. Anyway, what is it that you want?
+Responses:
+Well, you didn't look very hard, did you...? -> weapon
+Yes, very witty... What is it that you're doing here? -> purpose
+Yeah, uh. I'm going... over... -> leave
+
+Block: weapon
+%owner.name%'s got my back... or at least I like to think so.
+Responses:
+You don't sound terribly confident about that... -> signedup
+Yeah... I think I'll do without angering %owner.name%. -> leave
+Well, I have things to do. -> leave
+
+Block: purpose
+*Shrugs, taking a seat with no regard as to whether you wished to either*
+Bah, you'd have to go ask %owner.name%. Whatever that %owner.entityType% has me do, it sure ain't what I signed up for.
+Responses:
+Not what you signed up for? -> signedup
+Where can I find %owner.name%. -> owner
+Well, you sound like you're busy. Bye. -> leave
+
+Block: signedup
+*%npc.name% lets out a deep sigh*
+Yeah, I should've seen it coming. "Know your way around a speeder and like to live your life on the edge?" they said, "Come and join %owner.name% and experience every day as though it were your last!" they said... 
+I spend half my time waiting for them to load up only to find some freelance freighter pilot has "taken care of it".
+!if npc.race=Dug! It's just not the same as back on Malastare...
+!ifnot npc.race=Dug! Nothing like the Galactic Circuit...
+Responses:
+Well, good luck. -> leave
+
+Block: raced
+Yeah. Good pay, but there just aren't enough races to make a stable living out of it. Not unless you go pro.
+
+Block: owner
+Beats me.
+
+Block: leave
+See ya.
+
+Block: leave2
+*The Dug shakes his head when you walk away, lightly muttering under its breath*
+Chesko, sleemo.

@@ -1,0 +1,57 @@
+Block: start
+Howdy stranger! I'm %npc.name% the Pilot. Do you need my services?
+Responses:
+Actually, I might have something for you. -> yes
+Not really. -> no
+
+Block: no
+Come on, you have one and only chance to hire the best pilot in the sector!
+Responses:
+Well, ok, maybe I'll find something for you. -> yes
+I'll pass. -> pass
+
+Block: yes
+Woohoo! I'm tired of sitting in cantinas and drinking my ass off...
+Responses:
+Wait, what?! -> what
+Yeah, I know the feeling all to well. I don't like spending to much time on the ground too. -> pilot
+Maybe I don't have a job for you after all. -> no2
+
+Block: what
+Oh, don't worry, I never drink before a job. As my father used to say: 'Remember kids, never drink and fly!'.
+Responses:
+Well, maybe I'll reconsider letting you fly my ship... -> no2
+Ok, I'm going to go stand over there now -> go
+
+Block: go
+Suit yourself.
+*%npc.name% returns to his previous activity, as you walk away*
+
+Block: no2
+Come on, you have one and only chance to hire the best pilot in the sector!
+Responses:
+Well, ok... -> ok
+I'll pass. -> pass
+
+Block: pass
+Ok, your loss.
+
+Block: pilot
+So, you are a fellow pilot? Why didn't you say so? Let me buy you a drink!
+Responses:
+Sure! -> ok
+I shouldn't... -> shouldnt
+
+Block: shouldnt
+Oh, come on!
+Responses:
+Ok. -> ok
+No, really. Now let me tell you about the assignment I have for you. -> listen
+
+Block: listen
+I'm listening.
+*You describe what you need from %npc.name%*
+
+Block: ok
+Great! I know the best tavern and they play the holovid of the prettiest Twi`lek dancers. We can talk about my assignment there.
+*%npc.name% takes you to a nearby tavern*

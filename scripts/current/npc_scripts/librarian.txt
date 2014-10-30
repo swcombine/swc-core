@@ -1,0 +1,56 @@
+Block: start
+*A %npc.gender% %npc.race% is wandering around the area*
+Responses:
+Ahem. -> hmm
+Excus... -> interupt
+I wa... -> interupt
+
+Block: hmm
+Yes? Can I help you?
+Responses:
+Maybe. Do you know where I can search for a planet? -> planet
+Not particularly, was just looking around. -> wander
+!if player.gender=Male! !if npc.gender=Female! You're one foxy lady. -> foxy
+
+Block: interupt
+SILENCE! You will be quite in this place!
+Responses:
+But I... -> cont
+*Nod your head and walk away* -> leave
+*Whisper* Can you help me? -> help
+
+Block: leave
+*The Librarian watches you walk off, staring at you as though they could kill you with a stare*
+
+Block: help
+Maybe. What are you after. Quietly!
+*The Librarian wags a finger in your face*
+Responses:
+Maybe. Do you know where I can search for a planet? -> planet
+Not particularly, was just looking around. -> wander
+!if player.gender=Male! !if npc.gender=Female! You're one foxy lady. -> foxy
+
+Block: cont
+I WILL HAVE SILENCE! Please remove yourself from this place before I do something I may regret.
+Reponses:
+*Walk away ... quietly* -> leave
+!if player.gender=Male! !if npc.gender=Female! You're one foxy lady. -> foxy
+
+Block: planet
+Thats simple. There are many terminals around here that connect to the holonet. A rudimentary map of the galaxy is available to anyone with basic understandings of anything.
+Oh, look, here.
+*The Librarian points at a link on the nearest terminal: <a href="http://www.swcombine.com/rules/?Galaxy_Map">Galaxy Map</a>*
+Responses:
+Thanks. -> leave
+
+Block: wander
+Well, wander around quietly then - I'll have no ragamuffin making a horrendous din in my place.
+Be warned, I am watching you. And listening.
+Responses:
+Ok. -> leave
+Actually, I had a question about planets: -> planet
+
+Block: foxy
+Excuse me? Thats ... quite stirring. No-ones ever said that to me. Thank you.
+Responses:
+Sure, glad to say it. -> leave

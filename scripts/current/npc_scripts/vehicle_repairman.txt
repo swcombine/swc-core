@@ -1,0 +1,45 @@
+Block: start
+!if npc.ally! *%npc.name% look at you and salutes you*
+!if npc.ally! Hey, if it isn't %character.infofield% %character.name%, what brings you here in this %time.ofday%?
+!ifnot npc.neutral! Uh... excuse, need any help?
+Responses:
+What are you doing? -> doing
+I was just passing by. -> leave
+Not from you! -> angry
+
+Block: aboutlife
+*%npc.name% begins to smile, while he was putting a cigarette in his mouth and lighting it*
+Oh... you know, one speeder here, one there, just doing my job. Things are better now, but we can't let down our guard or life will punch us in the face. I... I hope you're doing well too.
+Responses:
+I am. That's the way of it. Keep up the good work, my friend. -> needanything
+I know very well how it is. Life is hard in these parts of the galaxy. That reminds me that I have some unfinished business to do. -> leave
+Do you smoke very much? -> smoke
+Isn't it dangerous to smoke near oil and batteries? -> dangerous
+
+Block: doing
+Oh, me? I was repairing a speeder, but you know... I needed a cigarette, so I took a break to smoke.
+Responses:
+Do you smoke very much? -> smoke
+Isn't it dangerous to smoke near oil and batteries? -> dangerous
+
+Block: smoke
+You know... I need my hands steady when I'm working, and when I'm nervous they start shaking, then I smoke a cigarette to calm down.
+Responses:
+Isn't it dangerous to smoke near oil and batteries? -> dangerous
+
+Block: dangerous
+Look, I've been working here since a teenager. I've had my accidents, but I've never blew up because of cigarettes, so I think it's ok.
+Responses:
+Uh... that's fair... I think. -> needanything
+
+Block: needanything
+By the way... do you need anything? You know... I've got a lot of work to do, and I don't have much time for chat.
+Responses:
+Nah... it's nothing. You can go back to work. See you later my friend. -> leave
+
+Block: angry
+I've got work to do, stop bothering me!
+*%npc.name% starts to mumbling around*
+
+Block: leave
+Ok, them.

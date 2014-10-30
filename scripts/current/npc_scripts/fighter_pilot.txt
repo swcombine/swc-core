@@ -1,0 +1,44 @@
+Block: start
+!if npc.ally! Greetings %character.formal%, how are you today?
+!ifnot npc.ally! Hey, don't I recognize you?
+Response:
+!if npc.ally! I'm doing well %npc.name%. You waiting on someone? -> question 
+!if npc.ally! Not so good. -> negative
+!ifnot npc.ally! Umm, I don't think so, why? -> confused
+
+Block: question
+No, I'm just waiting until my commanding officer gives me my orders.
+Response:
+So I assume that ship over there is yours? -> question2
+Okay, I will leave you alone then. -> leave
+
+Block: question2
+Why yes it is. My faction gave it took me just last week.
+Response:
+Good for you! I hope things go well for you with your new ship. -> leave3
+
+Block: negative
+What's wrong?
+Response:
+I lost all my credits playing Sabaac. -> Sabaac
+Nothing really, just having a bad day. -> leave2
+
+Block: Sabaac
+Well, I hope you have better luck next time.
+
+Block: leave
+Okay, see you later.
+
+Block: leave2
+I hope things go better for you then.
+
+Block: leave3
+Thanks! Have a great day!
+
+Block: confused
+No, I'm sure I saw you in a recruitment commercial.
+Response:
+Umm, no I don't think you did. I'm going to go now. -> leaveconfused
+
+Block: leaveconfused
+I'm sure it was you, but if you are going to leave, I'm not stopping you.

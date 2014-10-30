@@ -1,0 +1,23 @@
+Block: start
+*The Incubator beeps and whirs. Lights inside blinking seemingly at random*
+Run: ItemHandler->holding_item[item_type=347] => holding_egg : not_holding_egg
+
+Block: holding_egg
+*Detecting the egg you're holding, the Incubator opens up, revealing some sort of chamber*
+Responses:
+*You place the egg inside the Incubator* -> hatch_egg
+*You walk away* -> end
+
+Block: hatch_egg
+Run: ItemHandler->hatch_egg => hatched : rotten_eggs
+
+Block: hatched
+*The egg, encouraged by the electrical current provided by the incubator, hatches!*
+
+Block: rotten_eggs
+*Somehow, before putting it into the Incubator, you've managed to misplace the egg. Clumsy...*
+
+Block: end
+
+
+Block: not_holding_egg

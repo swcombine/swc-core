@@ -1,0 +1,53 @@
+Block: start
+*Pacing back in forth in front of you is a rather intimidating %npc.race%*
+!ifnot npc.ally! *The guard stops, standing extremely close to you* Hold it right there, show me identification, and state your business here.
+Responses:
+Excuse me guard, I have a question. -> question
+!if npc.ally! How's it going around here today? -> today
+!ifnot npc.ally! *You pretend to search your pockets for an ID* I seem to have left my ID back on my ship. Someone told me my !random [uncle, cousin, bother, sister] got arrested and brought here. -> here
+
+Block: question
+*The guard stops, standing extremely close to you* I don't have time to chat, make it quick.
+Responses:
+I was just wondering if anyone has ever broken out on your watch. -> watch
+How many prisoners you got in there? -> many
+I thought that the prisoners would be the ugly, smelly ones. -> ugly
+
+Block: today
+*The guard continues pacing, speaking without breaking stride*
+I have more important things to do. Please state your business or leave.
+Responses:
+Hey, I was just trying to be friendly. You probably don't get many visitors. -> visitors
+
+Block: here
+That is privileged information, and you do not have the privilege of knowing it. If your relation is here, they will serve their time and be released...or executed.
+Responses:
+Only if they aren't <i>released</i> early... -> watch
+
+Block: watch
+For as long as I have been guarding these cells for %owner.name%, there have be exactly zero escapes. I predict that number to remain the same.
+Responses:
+That's amazing, and surprising especially on this %container.entityType%. -> end1
+!ifnot npc.ally! Right...even the best Imperial prisons can't make claims like that. -> end2
+
+Block: many
+That is privileged information, and you do not have the privilege of knowing it. The records are kept in the %faction.name% headquarters, you can make your inquiries there. Please remove yourself from this area before we need to add to those records.
+
+Block: ugly
+!random [You're mother is the ugly one., It takes ugly and smelly to know itself., *The %npc.race% looks angry in only the way a %npc.race% can*]
+Responses:
+*You decide your best course of action is to leave before this situation turns uglier than the guard* -> end3
+
+Block: visitors
+I'm not sure what you do for a living, but I do not have time for visitors while I am working. Now if you would kindly leave before I make you a premanant visitor.
+
+Block: end1
+What's surprising is your ability to waste my time. 
+*The guard goes back to patrolling the area*
+
+Block: end2
+!if faction.name=Galactic Empire! This is the best Imperial prison. Now make yourself scarce, before I make you a resident.
+*The guard ignores your previous comment and goes back to patrolling the area*
+
+Block: end3
+*You quickly walk away, making sure the guard is not following you*

@@ -1,0 +1,79 @@
+Block: start
+*As you approach, the scout's sharp eyes focus in on you* 
+!if npc.ally! !if character.isowner! *The scout snaps to attention* Good %time.ofday% %character.formal%. %npc.name% reporting for duty!
+!if npc.ally! !ifnot character.owner! !ifnot character.manager! !if container.entityType=Planet! Hello, hello. What brings you to these parts? Your not my replacement are you? Can't stand the bugs out here.
+!ifnot npc.ally! Halt stranger. I noted your approach some time ago. You should remember the keen eyes of a scout such as myself before wandering about uninvited.
+!if npc.ally!!if character.manager! Well %character.formal%, what brings you to these horrid parts of the galaxy?
+!if npc.ally! !ifnot character.owner! !ifnot character.manager! !ifnot container.entityType=Planet! Why, hello there. Can't get past me, sorry. It's my line of work and all you know.
+Responses:
+!if npc.ally! !ifnot character.owner! !ifnot character.manager! !if container.entityType=Planet! No, I'm not your replacement. Must admit though that these bugs are quite ravenous, got bites all over the place. -> bugs
+!if npc.ally! !ifnot character.owner! !ifnot character.manager! !ifnot container.entityType=Planet! Of course, scouts such as yourself must note everything they see. It must be a hard life. -> howislife
+!ifnot npc.ally! I am sorry, I forget the distances those such as yourself can see. -> flattered
+!ifnot npc.ally! Yes, but you cannot see past your own ego! -> insulted
+!if npc.ally! !if character.isowner! Stand at ease soldier. Now tell me, how have your missions been going? -> reportkind
+!if npc.ally! !if character.isowner! Report soldier! I do not expect to have to tell you twice! -> reportunkind
+!if npc.ally! !if character.manager! Just checking on your progress, scout. -> progressreport
+!if npc.ally! !if character.manager! Just looking to have a chat with a sentient such as yourself. -> chat
+!ifnot character.owner! So how are things going? -> howislife
+Sorry, but I have to leave, in a hurry you know. -> leave
+
+Block: howislife
+All's good I guess. Fairly stable employment, getting to visit all these new places. And I might even get to be famous!
+Responses:
+Sounds great. Now then, if you don't mind, I have to leave. I'll see you around. -> leave2
+
+Block: insulted
+You insult me %character.formal%. I demand you apologize at once!
+Responses:
+I am sorry for insulting you. Do I have your forgiveness? -> forgive
+Never, you egotistical !random [scum, slime, worm]!. -> begone
+
+Block: forgive
+I suppose. Begone and leave me alone, fool!
+
+Block: begone
+Gah, your kind are all the same. Leave me be.
+
+Block: flattered
+Why, thank you for the compliment. I try my hardest to keep my place as one of the top scouts around.
+Responses:
+Well, I guess I have to go. Bye. -> leave2
+No problem. So how's life for you? -> howislife
+
+Block: leave
+Of course, I understand that there must be some important endeavour for you to attend to. I'll see you later then.
+
+Block: reportkind
+Well, we seem to be making alright progress. The expected assortment of native creatures are present in the area, and we are yet to find any worthwhile deposits of minerals. Is that good, %character.formal%?
+Responses:
+Yes. That will be all. You are dismissed. -> dismissed
+
+Block: reportunkind
+We have barely progressed with the mission, %character,formal%. We hope to make some kind of breakthrough soon, so as to please your wishes master. *The scout smirks at his own sarcasm*
+Responses:
+I will not tolerate such insolence! You are to return to your post at once! -> returntopost
+
+Block: dismissed
+*The scout returns to their previous position*
+
+Block: returntopost
+As you wish, %character.formal%. *The scout returns to their post*
+
+Block: chat
+Sorry, but I'm on duty and can't at the moment. Maybe some other time then?
+Responses:
+Yeah, I guess. See you later. -> leave2
+
+Block: progressreport
+We seem to be making fairly good progress at the moment. Sadly, no mineral deposits yet, but plenty of creatures and a nice little place to set up a base. Will that be all?
+Responses:
+Yes it will be. Good day to you. -> leave2
+
+Block: leave2
+Rightio then, I'll see you round some time.
+
+Block: bugs
+Your telling me? I've been here for weeks! These bugs will be the death of me I reckon. But away from that, it makes me itch. Is there anything else you wish to speak of?
+Responses:
+So apart from this, how's life going? -> howislife
+Sorry, but I have to leave now. Bye. -> leave2

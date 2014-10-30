@@ -1,0 +1,11 @@
+Block: start
+Hey honey, wanna cup of Jawa Juice?
+Responses:
+Sure. -> sure
+Nah, not thirsty. -> no
+
+Block: sure
+Ok, take a seat and I'll bring it to you.
+
+Block: no
+Ok, see you later.

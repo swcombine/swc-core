@@ -1,0 +1,80 @@
+Block: start
+!if npc.ally! *%npc.name% comes to attention and salutes you*
+!if npc.ally! It's nice to see you again %character.formal%
+!ifnot npc.ally! *%npc.name% stands infront of you menacingly*
+!ifnot npc.ally! %character.formal%, you're not on my list and i have never seen you before.. what's that you want from here?
+Responses:
+Hey! *%npc.name% what's up? -> talk
+Good, nice to see you again too *%npc.name%, by the way, nice armor. -> end
+I have important information I must deliver to %owner.name%, and I must go in to do it. -> Information
+*throw rock and run* -> fleave
+I see you're tired, need some help? -> help
+I just came here to talk.. -> talk
+
+Block: talk
+*npc.name stares at %character.formal%*
+It's been a long time I didn't talk to anyone, I guess being a stormtrooper made me a little more anti-social...
+*%npc.name% sighs*
+Well, if you want to talk, let's talk. What do you want to talk about?
+Responses:
+Let's talk about your life -> interested
+Nothing, I was just teasing you, why in the world would I want to talk with a stormtrooper? -> fleave
+
+Block: end
+Thank you %character.formal%. It was nice to talk with you, but I have to leave now, %owner.name% is calling me!
+
+Block: end2
+Haha! really, I was, but not anymore, leave or %owner.name% will surely yell at me for talking to you while on duty.
+
+Block: Information
+I can't let you in, if you want to deliver that information, tell %owner.name% to come here and tell me you can come in, or tell him to put you on the entrance list.
+Responses:
+Ok, I will -> leave
+If you don't let me in I'll enter either way -> leave2
+Get out of the way or I kill you! -> fleave
+
+Block: leave
+Goodbye %character.formal%.
+
+Block: leave2
+*%npc.name% gets angry%*
+You have two options, you either leave now and come back when the boss allows you to go in, or I will take you out myself and not by the better means, you understand what this means!? 
+I highly suggest you to leave before I get annoyed, if you appreciate your own life.
+*%npc.name% points his gun towards %character.formal%'s head*
+Responses:
+Ok, I will leave, calm down... -> leave
+If you want me to leave, it will have to be OVER MY DEAD CORPSE -> fleave
+
+Block: fleave
+So that's what you want huh?
+*%npc.name%* shoots his gun towards %character.formal% missing repeatedly*
+
+Block: help
+Well yes... I've been here for months and I can't stand this anymore, there's never anything to shoot and there's always something boring to do... 
+*%npc.name% sighs*
+But hey, that's the tough job of a stormtrooper.
+Responses:
+That must be a tough life, was the training as tough as your current job? -> training
+Tell me more about your job as a stormtrooper -> confidential
+Stop whining and get over it dude -> fleave
+
+Block: training
+The training? nah.. it was not as boring as this job, it was actually pretty awesome, we used to do every kind of things you know, parachuting from THETA launchers, practicing amphibian atacks, learning about proton and ion cannon systems, learning to shoot accurately with our different kinds of blasters.. oh yes, the good life.. the good life... I was expecting this to be as good as the training, to get some action you know, but hey, not everything on this life is fair or fun!
+Responses:
+Oh well, I hope that you get some action soon %npc.name%. I have to leave now, many things to do, not much time to do it, see you soon! -> leave
+That's so cool! tell me more! -> confidential
+
+Block: confidential
+Sorry %character.formal%, that's top secret confidential information that only stormtroopers and associates have access to.
+Perhaps you should enlist for one, I think you would become a great stormtrooper if you did!
+Responses:
+Perhaps, I'll think on that for the future, but for now, I have things to do, goodbye %npc.name%! -> leave
+... No, stormtroopers stink -> fleave
+
+Block: interested
+Oh, so you're interested on my life hum?
+My life is so...! not interesting, I just stay here all day doing nothing at all, waiting for %owner.name% to give me a boring task to do, you know, that's basically what I do every day of my life.
+Believe me, you would never want to have a life like mine..
+Responses:
+Thanks for the tip, goodbye! -> leave
+No, I don't want to have a life as sucky as yours, you and your life both fail -> fleave

@@ -1,0 +1,53 @@
+Block: start
+Hi there. I've heard that your family have been trying to contact you. 
+Why don't you go contact them?
+Responses:
+I'm not sure how to actually? -> contact
+Oh them. I've been ignoring them now for the last few years. -> ignore
+I have no family. -> confusion
+
+Block: contact
+Really? That explains the incessant messages I've been receiving. 
+In that case, would you like me to show you?
+Responses:
+Sure, why not. -> explain
+Nah, I think I can work it out myself. -> work
+Actually, I have places to be. -> leave
+
+Block: ignore
+Really? Why? It must be something important, they've been trying to contact you for a while now.
+You really should - its getting annoying.
+Responses:
+Ah. But could you show me how then? -> explain
+
+Block: confusion
+Oh really? You sure? You are %character.name% aren't you?
+Responses:
+Yeah. My family died when I was just a young %character.race%. -> family
+No, not me. Sorry. I should leave though. -> leave
+
+Block: leave
+Oh ok then. Be like that. Sod's law that I meet a sourpuss.
+
+Block: work
+Oh ok. You sure? I'll leave it up to you, but remember I'm always here if you get confused.
+
+Block: explain
+Sure thing. Lets get your datapad, and I'll point out the Messaging system that's inbuilt to it.
+*%npc.name% reaches over and presses some buttons on your datapad, opening the page: <a href="http://www.swcombine.com/members/messages/">Messages</a>*
+Responses:
+Oh, didn't realize that that was it. -> continue
+Hmm, sure. Already did that. -> work
+
+Block: family
+Oh, I'm sorry. Must be someone trying to con you or something like that. Sorry to waste your time.
+
+Block: continue
+Aye. Well pretty much, this is where you deal with all your messages. When you initially open it, it will ether show all new messages, or all your messages if you have no new ones.
+You can also look at any messages you have sent to others, and also send messages to other sentients.
+Just be warned though that the memory of the datapad limits stored messages to those in the last 30 days. Any older and they are deleted automatically.
+Responses:
+Ah, thank you. Much appreciated. -> leave2
+
+Block: leave2
+Sure thing. See you around. Hope you catch up with your folks.

@@ -1,0 +1,72 @@
+Block: start
+Excuse me, %character.formal%, would you like a tour?
+Responses:
+Yes, please. -> tour
+I was wondering where the bathroom was. -> bathroom
+I had some questions for you. -> questions
+No, thanks, just checking out the area. -> leave
+
+Block: questions
+I will answer any questions you have to the best of my ability, %character.formal%.
+Responses:
+What's it like being a tour guide? -> guide
+Why is this Rock Garden so special? Isn't it just a big pile of rocks? -> special
+Who owns this place? -> owner
+Never mind, I'll be going now. -> leave
+
+Block: special
+Oh, no, %character.formal%, these Rock Gardens have been part of Ryloth's history for thousands of years.
+Responses:
+I think I'll be leaving now. -> leave
+
+Block: owner
+Why, this is all the property of %npc.owner%.
+Responses:
+Where can I find %npc.owner%? -> find
+I had some other questions for you. -> questions
+I think I'll be going now. -> leave
+
+Block: find
+Oh, I'm afraid that %npc.owner% is not available right now. But if you'd like, I can take a message.
+Responses:
+Tell %npc.owner% that I think the Rock Garden is lovely -> leave2
+No, thank you, I'd much rather speak in person. I'll just be going now -> leave
+I had some other questions for you. -> questions
+
+Block: leave2
+Oh, I will, %character.formal%. Have a nice day and do come again.
+
+Block: guide
+I enjoy my job very much, %character.formal%. In fact, I left my home planet of %npc.homeplanet% just to see the Rock Gardens of Ryloth.
+Responses:
+Was it worth it? -> worth
+I had some other questions for you. -> questions
+I have to be going now. -> leave
+
+Block: worth
+Oh, very much so, %character.formal%. I'm having a wonderful time showing tourists such as yourself the wonders of the Rock Gardens of Ryloth.
+Responses:
+I had some other questions for you. -> questions
+I must be going now. -> leave
+
+Block: leave
+Please come again, %character.formal%.
+
+Block: tour
+The Floating Rock Gardens have been on Ryloth for thousands of years. They were caused by the erosion from the ancient water ways that passed through here. The planet's high force concentration caused the rocks to float.
+Responses:
+Please, tell me more. -> more
+I had some other questions for you. -> questions
+I have to be going now. -> leave
+
+Block: more
+If you'll look over here, you'll see the damage caused by the Ryloth civil war, which took place on this very ground. In fact, these Rock gardens have been part of Ryloth's history for more than 3,000 years. If you'd like more information, a pamphlet can be found in the building.
+Responses:
+Thank you for giving me this tour. -> thanks
+I had some other questions for you. -> questions
+
+Block: thanks
+You're quite welcome %character formal%, and I do hope you'll come again soon
+
+Block: bathroom
+It's in that building right there, %character.formal%.

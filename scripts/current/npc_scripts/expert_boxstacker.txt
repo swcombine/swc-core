@@ -1,0 +1,76 @@
+Block: start
+!if npc.ally! *%npc.name% greets you with a deferential nod*
+!if npc.ally! Good %time.ofday% to you. I'm due for a break, so I have some time to chat.
+!if npc.neutral! *%npc.name% nods in your direction and continues stacking boxes*
+!if npc.neutral! If you'll wait, %character.formal%, I can get to you when I'm done with this job.
+!if npc.enemy! *%npc.name% stares at you and edges toward a nearby alarm*
+!if npc.enemy! This area is off-limits to members of %character.faction%. Do you require direction to the nearest exit?
+Responses:
+!if npc.ally! Excellent, you're just the %npc.race% boxstacker I'm looking for. -> stacker
+Please enjoy your break, I shouldn't bother you. -> break
+Could you tell me anything about our location? -> location
+Good to hear, but I have pressing business. Please carry on. -> end
+!if npc.enemy! Forget it. I'll show myself out. -> end
+
+Block: stacker
+*%npc.name% stacks a final box and walks casually up to you*
+Yes, what can I do for you %character.formal%?
+Responses:
+I'm curious: What is your job like? -> stacker2
+You don't see many %npc.race% boxstackers. -> backstory
+Tell me about our current location. -> location
+Nothing, actually, carry on. -> end
+
+Block: stackerfoe
+*%npc.name% stacks a final box and walks suspiciously up to you*
+OK, but I will not divulge any sensitive information, and that alarm is within reach. What do you require?
+Responses:
+I'm curious: What is your job like? -> stacker2
+You don't see many %npc.race% boxstackers. -> backstory
+Tell me about our current location. -> location
+Nothing, actually, carry on. -> end
+
+Block: stackerredux
+Can I help you with anything else?
+Responses:
+I'm curious: What is your job like? -> stacker2
+You don't see many %npc.race% boxstackers. -> backstory
+
+Block: break
+*%npc.name% stacks a final box and takes a deep pull from a canteen*
+I'm free at the moment %character.formal%, it's no bother.
+Responses:
+I'd like to know more about your job. -> stacker2
+I'm just struck by something: You don't see many %npc.race% boxstackers. -> backstory
+Tell me about our current location. -> location
+Well, I've got more pressing business. Please carry on. -> end
+
+Block: stacker2
+There's much more to being an expert boxstacker than merely stacking boxes. We also have to lift boxes, decide where to put them, and of course do all the little jobs required to keep this place running. My people have the perfect combination of brains and brawn.
+
+Block: backstory
+*%npc.name% smiles briefly and takes another sip*
+!if npc.race=Ortolan! I actually replaced another Ortolan when I took this job. He was working here to put himself through the Music Academy back on Orto. Then he got a scholarship and left, which created the opening for me. We're actually good at this sort of work.
+!ifnot npc.race=Ortolan! True, true. An Ortolan had been working this job before I took it. I suppose he couldn't handle it. My people are well-suited for this line of work.
+Responses:
+Oh, why is that? -> stacker2
+Interesting. I guess you learn something every day. -> stackerredux
+
+Block: location
+!if location.sector! !if location.system! !if location.planet! !if location.city! We're in scenic %location.city% on %location.planet%. That's of course in the %location.system% system of %location.sector%. Right now, you're standing aboard the %container.type% %container.name%.
+!if location.sector! !if location.system! !if location.planet! !ifnot location.city! We're on %location.planet%. That's of course in the %location.system% system of %location.sector%. Right now, you're standing aboard the %container.type% %container.name%.
+!if location.sector! !if location.system! !ifnot location.planet! !ifnot location.city! We're in the %location.system% system of %location.sector%. Right now, you're standing aboard the %container.type% %container.name%.
+!if location.sector! !ifnot location.system! !ifnot location.planet! !ifnot location.city! We're located in the %location.sector%. Right now, you're standing aboard the %container.type% %container.name%.
+!ifnot location.sector! !ifnot location.system! !ifnot location.planet! !ifnot location.city! We're in Deep Space, aboard the %container.type% %container.name%.
+Responses:
+I see. Nice place you've got here. -> job
+Pretty dumpy surroundings. -> job
+
+Block: job
+Well, it's a good job. They don't pay me any different based on the surroundings.
+Responses:
+I hear you. Well, I've got more pressing business. Please carry on. -> end
+
+Block: end
+*%npc.name% nods*
+Good %time.ofday% to you, %character.formal%.

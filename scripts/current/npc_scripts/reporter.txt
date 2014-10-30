@@ -1,0 +1,41 @@
+Block: start
+*The sentient in front of you is staring into a holocam and speaking to it*
+!if location.planet! Today on %location.planet% we have had news of a mass breakout of slaves. Here with me is %character.name% from %faction.name%.
+!ifnot location.planet! Today we are onboard the %container.entityType% <i>%container.name%</i> discussing recent slave breakouts. Here with me is %character.name% from %faction.name%.
+Responses:
+Why yes. Hello there. -> talk
+Umm, I think you mean someone else. -> else
+
+Block: talk
+So, you have been talking with the prison guards. Whats their opinion on the escape? Anything out of the ordinary?
+Responses:
+Well, there are many varied hypotheses on the escape. -> escape
+Actually, you have the wrong person. -> else
+No comment -> else
+
+Block: leave
+Oh, leaving so soon? Must have an important meeting. And that was the interview with %character.name%. I am %npc.name% for %owner.name%.
+
+Block: else
+Are you sure? I have your name as our expert. Sorry people, but it seems we've had a bit of a technically difficulty. 
+Please bear with us for just one moment.
+Responses:
+Oh, sorry, forgot where I was for a second there. Please continue. -> talk
+
+Block: escape
+Indeed. So what is you're opinion then, %character.name%? Is it a case of accidents, or bumbling officers?
+Responses:
+Well, not to tread on toes, but the security was pretty lax. -> lax
+I find that nothing about this interests me. I must be going. -> leave
+No comment -> else
+
+Block: lax
+Really? That's quite contrary to public announcements don't you think?
+Responses:
+Well obviously. They aren't going to make themselves look bad, are they? -> leave
+Oh, you think? I don't read any news I'm afraid. -> leave
+
+Block: anyone
+That's what is being spread, but don't you think that they would say that anyway?
+Responses:
+Actually, now you come to say that, they would. -> leave

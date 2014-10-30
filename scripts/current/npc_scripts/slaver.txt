@@ -1,0 +1,78 @@
+Block: start
+Hi there, me buddy, me ole pal! Hows life treating you? Doing well I see.
+Anything I can help you with?
+Responses:
+Why yes good sir, I am looking to acquire certain assets. -> acquire
+Buddy! <b>Pal!</b> You, sir, will feel the sting of my blaster! -> fight
+
+Block: acquire
+Are you indeed? Are you quite sure? Some of my wares are, shall we say, quite rare. Rare and illegal. Mostly illegal. Generally.
+Do you care to peruse my stock. I am quite certain there are no law enforcement officers of any real consequence around here.
+Responses:
+I'm always looking for such things -> look
+Sure, I like that sound of tha ... SLAVES! -> indignation
+Indeed, I live on the wild side. -> slave
+Hmm, after some thought, no. Sorry. -> leave
+
+Block: fight
+Really? I find you very much mistaken my very young vigilante.
+Guards, remove this %character.race% from my sight. I tire of their presence.
+
+Block: look
+Really? I may be of some assistance in that regard. I know the lands and people around here quite well. 
+Tell you what, why don't you step into my tent here, I have some maps and such in there.
+Responses:
+Excellent, I've been looking for someone to help me for hours. -> tent
+Hmm, you know what, I think I may be better off on my own. -> leave
+
+Block: indignation
+Yeah, of course. What did you think I was selling over here? Cupcakes? Deathsticks? Ears?
+Do you mean that you are not looking for some slaves?
+Responses:
+There does seem to be some miscomunication here. Goodbye. -> leave
+Umm, maybe then. Show me what you have. -> slave
+
+Block: leave
+Really? Oh well, what fun times we could have had together. Enjoy yourself.
+
+Block: tent
+Many wondrous thanks. Just step this way, and we'll have you set up in just a jiffy.
+Responses:
+Sounds good -> inside
+Actually, maybe not. -> leave
+
+Block: inside
+Ah there we go. Just sit down there a second, this won't take a minute.
+<a style="color:#FF0000">*As you sit down, you vision fades. After a while it returns.*</a>
+Wakey, wakey sunshine. You're all mine now, don't struggle.
+Responses:
+Wha, whats going on? -> capture
+
+Block: capture
+You are now a slave of mine. I hope you didn't have many plans for the future.
+Haha, just a joke of mine. Here, lets free you.
+Responses:
+You know what, let me see your other slaves. -> slave
+
+Block: slave
+Excellent, most glorious of days! I have recently just had in some new stock that you may be interested in.
+I have a fine selection of sentients from all over the galaxy. Which stock are you interested in?
+Responses:
+Well, I'm actually after some form of personal slave. -> personal
+I have need for some heavy set guys. -> heavy
+
+Block: personal
+Sure thing, over here are my slaves...
+Umm, maybe over there...
+I'm sorry, seems I've run out of those slaves.
+Responses:
+Oh, thats disappointing. Any others? -> slave
+Shame. Oh well, see you around. -> leave
+
+Block: heavy
+Excellent, you see these beast of creatures over here? Hes stronger than a Krayt Dragon, and twice as stupid. Of course he costs the same a small planet.
+This one here, small but wiry, he can level a forest in just a few hours. Cost is the same as a large battleship.
+I have a few others, but by the look of you you cannot afford any of that.
+Responses:
+Ah. Well then. I'll just be off then huh? -> leave
+Hmm, a bit pricey. Anything else? -> slave

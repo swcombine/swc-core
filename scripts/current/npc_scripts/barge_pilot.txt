@@ -1,0 +1,68 @@
+Block: start
+*An older looking %npc.race% is looking over a datapad while softly talking to themselves*
+Check...check...better load a few more of those...where is that shipment of !random [Cheefa cakes, zoochberries, bofa fruit]!.
+*The %npc.race% stashes the datapad as you approach*
+Finally, I thought you wouldn't make it on time. Show me where to sign and I will show you where to unload the cargo. I've got hungry soliders to feed.
+Responses:
+What are you talking about? -> about
+That stuff doesn't sound like solider food. -> solider
+Aren't you a little old to be in the military? -> old
+Yeah, sorry I don't have time to indulge the local crazies. -> leave
+
+Block: about
+The shipment I have been waiting for, I've only got a couple hours before I need to head out...wait you aren't from the delivery service are you?
+Responses:
+No, I am not. And shouldn't you be waiting for some kind of rations if you are feeding soliders? -> solider
+I am still a little confused, what exactly is going on here? -> here
+
+Block: solider
+I like to have something different for the troops. They get their fill of rations. I mean right now I have crates and crates of ration cubes, ration bars, ready rations, q-rations, Gleb rations. Heck, I've even got a couple dozen of K-18 rations ready to go. It's nice to have something with a little taste to it, ya know.
+Responses:
+Yeah I guess so. Aren't you a little old to be in the military, though? -> old
+So you're a supplier for the military, which military do you work for? -> work
+
+Block: old
+*The %npc.race% chuckles*
+My friend, I am probably older than you even think. Been many places and seen many things. I've been keeping armies well feed for longer than you've been alive and from the looks of ya, I'll be doing it long after you're gone too.
+Responses:
+So you just feed soliders? That seems like a pretty thankless job. -> job
+So you aren't actually in the military? I was hoping for some good war stories. -> story
+
+Block: here
+*The %npc.race% chuckles a bit*
+Good to see I'm not the only one. It's actually not that confusing, really. The name's %npc.name%, and I move cargo, mostly food. I take it from the warehouses into the field so that the grunts don't die of starvation. I've been waiting here to meet a courier so I can finish loading up the barge and head out.
+Responses:
+Oh, I see now, but I thought the only food soliders ate were rations. -> solider
+Ah, okay. Thanks for explaining that. I will let you get back to waiting. Be careful out there. -> leave
+
+Block: leave
+*%npc.name% goes to back to checking the manifest as you walk away*
+
+Block: work
+Not to be a braggart, but I like to think of myself as more than a supplier. A well fed solider is a happy solider, so think of me more as an unoffical morale officer. And as for who I am currently working for...I think it's best to keep that confidential, makes us all a little safer.
+Responses:
+I see, well I should be going now. -> leave
+I bet you have all kinds of good stories, huh? -> story
+
+Block: job
+I am sure it would seem that way, but its not at all. I am usually the most popular person in the camp. I have even heard from families of fallen troops telling how they would talk about being to see me roll up.
+Responses:
+Wow. I guess soliders eating was something I never really thought about before now. -> bye
+I guess you are more important than I thought. I bet you are full of stories, huh? -> story
+
+Block: story
+Stories, have I got stories. My favorite is the one where old %npc.name% here drove a transport into the heart of battle. It was during the Clone Wars, on !random [Malastare, Christophsis, some backwater rock in the Outer Rim]!, I had shown up with rations for a battalion of clone troopers. Their regular barge pilot had celebrated his birthday a little too hard the night before. I've never seen a hangover like that before, and the sounds he was making...like a gundark getting its ears torn off, let me tell ya. Being the only one around with any driving experience, the general in charge handed me a map and told me to be quick.
+Responses:
+Exciting! -> story2
+Likely story, but please go on. -> story2
+
+Block: story2
+Where was I?...Oh yeah, so he hands me the datapad with the map on it, showing me where to go. We loaded the troopers up in an HTB, thirty of Kamino's finest, full load out of gear, and your's truly headed into the fray. Of course I got them in record time. After I got back to the camp, the general told me he would file the forms to get me a commendation for my service. I told him I didn't do it for a medal, I was just doing my job afterall. Not long after, I was awarded this...
+*%npc.name% reaches into a pocket and produces a very worn looking commendation medal*
+Responses:
+Very impressive, and here I was thinking you were just an old, senile %npc.race%. I should let you get back to your work, war hero. -> bye
+Where did you find that medal, you old fool? I don't have time for this. -> leave
+
+Block: bye
+An army does move on its stomach you know, and I do have alot of work to do. So if, you'll excuse me.
+*The %npc.race% goes back to checking the manifest as you walk away*

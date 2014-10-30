@@ -1,0 +1,53 @@
+Block: start
+Hello there. Got any scrap on ya?
+Responses:
+Scrap? -> scrap
+Sorry, I need everything. -> need
+Sure, I think I have something around here. -> have
+
+Block: scrap
+Yeah. Scrap, refuse, garbage. Stuff you feel has no more use. 
+I take what no-one else wants, and turns it into much, much more valuable material.
+Responses:
+Cool. What do you take? -> take
+Pah, sounds boring. -> boring
+Hmm, may have something. -> have
+Nope, nothing here. -> need
+
+Block: need
+Thats a shame. Could use a good piece of scrap. Not had much these last few weeks.
+Well, if you see a rusting metal carcass somewhere, don't hesitate to give me a shout.
+Responses:
+Sure thing. -> leave
+Actually, may have something on me. -> have
+
+Block: have
+Really? That would make my day. Let me have a look.
+*The %npc.race% looks through what you offer*
+Gah, that stuff is useless to even me! There is nothing worthwhile in here at all.
+Responses:
+What would you take then? -> take
+Really? Thats a shame. -> leave
+
+Block: take
+Pretty much anything. So long as its large and near total destruction, I can deal with it.
+Stations I can rip up in a few days or so. Ships are a nice challenge and I get a lot out of them after stripping them down.
+Responses:
+Oh. I don't have any of those. -> leave
+
+Block: boring
+Well, not a job for many I suppose. I like the challenge of stripping something of all its valuables, and then melting down the remaining shell.
+Actually quite theraputic after a stressful day with the wife, if you get my meaning.
+Responses:
+Yeah, sometimes I wish I could do that. -> help
+Still doesn't sound that great. Sorry. -> leave
+Note quite sure I have anything for you though. -> need
+
+Block: leave
+Going so soon? Make sure you have some scrap when you come back!
+
+Block: help
+Well, maybe you could. I know of several groups that I work for that arrange such duties.
+Take a look around, I could possibly give you a reference if you want.
+Responses:
+That would be great. -> leave

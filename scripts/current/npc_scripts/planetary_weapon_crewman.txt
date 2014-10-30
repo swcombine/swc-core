@@ -1,0 +1,83 @@
+Block: start
+!if character.isowner! *Snaps to attention and salutes*
+!if character.isowner! %character.formal%! It's good to see you, %character.formal%.
+!if character.isowner! How may I be of service?
+!if npc.neutral!*Eyes you suspiciously*
+!if npc.neutral! !if container.type in [LNR I Series Turbo Laser Cannon, LNR II Series Turbo Laser Cannon, KDY v-150 Planet Defender, Anti-Air Battery, SAM Launcher]! What is it you want? I'm quite busy calibrating the targeting systems. 
+!if npc.neutral! !ifnot container.type in [LNR I Series Turbo Laser Cannon, LNR II Series Turbo Laser Cannon, KDY v-150 Planet Defender, Anti-Air Battery, SAM Launcher]! What is it you want? Just because I'm not in my gunnery station doesn't mean I have time to waste chattering with a %character.race%.
+!if npc.ally!!ifnot character.isowner!*Smiles at you warmly*
+!if npc.ally!!ifnot character.isowner!Good %time.ofday% to you %character.formal%! What brings you to my gunnery station?
+!if npc.enemy!*Pulls his blaster and points it at you threatingly*
+!if npc.enemy!Leave here immediately or I will call the guards!
+Responses:
+!if npc.ally! !if container.type in [LNR I Series Turbo Laser Cannon, LNR II Series Turbo Laser Cannon, KDY v-150 Planet Defender, Anti-Air Battery, SAM Launcher]!I'm here to inspect the %container.type%. This is %container.name%, is it not? -> inspect
+!ifnot npc.enemy!Just looking around. -> looking_around
+!ifnot npc.enemy!I'm lost, can you give me directions? -> directions
+!ifnot npc.enemy!I wanted to see how you're doing. -> inquire
+!ifnot npc.enemy!Mind your own business. -> mind_own
+
+Block: enemy_leave
+!if npc.gender=Male!*Stares at you down the length of his blaster while you walk away*
+!if npc.gender=Female!*Stares at you down the length of her blaster while you walk away*
+
+Block: inquire
+!if container.type in [LNR I Series Turbo Laser Cannon, LNR II Series Turbo Laser Cannon, KDY v-150 Planet Defender, Anti-Air Battery, SAM Launcher]!*Slumps a little and looks around*
+!if container.type in [LNR I Series Turbo Laser Cannon, LNR II Series Turbo Laser Cannon, KDY v-150 Planet Defender, Anti-Air Battery, SAM Launcher]!Ah, things could be better. We're having a little trouble with the targeting calibrations.
+!if npc.ally!*Looks at you with interest*
+!if npc.ally!%character.formal%, you're a member of %character.faction% aren't you?
+!ifnot npc.ally!%character.formal%, we're kind of busy around here. Is there anything I can do for you?
+Responses:
+!if npc.ally!Yes -> ally_faction_yes
+!if npc.ally!No -> ally_faction_no
+!ifnot npc.ally! Just looking around. -> looking_around
+!ifnot npc.ally! Mind your own business -> mind_own
+
+Block: ally_faction_yes
+!if location.planet! I thought so! I bumped into %faction.leader% in a tavern here on %location.planet% a while back.
+!ifnot location.planet! I thought so! I bumped into %faction.leader% in a tavern on Coruscant a while back.
+Always a pleasure to meet a friend in arms.
+!ifnot character.race in [Verpine, Gand, Vratix, Yam`rii, Arcona, Hutt, Dug]! *Grips your hand and gives it a firm shake.*
+!if character.race in [Verpine, Gand, Vratix, Yam`rii, Arcona, Hutt, Dug]! *Offers a slight bow avoiding eye contact.*
+Now, what can I do for you, %character.formal%
+Responses:
+!if container.type in [LNR I Series Turbo Laser Cannon, LNR II Series Turbo Laser Cannon, KDY v-150 Planet Defender, Anti-Air Battery, SAM Launcher]!I'm here to inspect the %container.type%. This is %container.name%, is it not? -> inspect
+!if character.gender=Male!!if npc.gender=Female!You're quite lovely, want to meet later for a drink? Or a meal... perhaps something else? -> romance
+!if character.gender=Female!!if npc.gender=Male!You're quite handsome, do you want to meet later for a drink? -> romance
+I'm lost, can you give me directions? -> directions
+Just looking around. -> looking_around
+Mind your own business, %npc.race%. -> mind_own
+
+Block: ally_faction_no
+Ahh, I see. Undercover. Got it.
+*Offers you a conspiratorial wink.*
+What can I do for you?
+Responses:
+!if container.type in [LNR I Series Turbo Laser Cannon, LNR II Series Turbo Laser Cannon, KDY v-150 Planet Defender, Anti-Air Battery, SAM Launcher]!I'm here to inspect the %container.type%. This is %container.name%, is it not? -> inspect
+Just looking around. -> looking_around
+Mind your own business, %npc.race%. -> mind_own
+
+Block: looking_around
+Well, we're kind of busy around here today. Try not to get in anybody's way.
+
+Block: mind_own
+*%npc.name% glares at you*
+!if container.type in [LNR I Series Turbo Laser Cannon, LNR II Series Turbo Laser Cannon, KDY v-150 Planet Defender, Anti-Air Battery, SAM Launcher]!%character.formal%, we are incredibly busy here. I insist you leave immediately.
+!ifnot container.type in [LNR I Series Turbo Laser Cannon, LNR II Series Turbo Laser Cannon, KDY v-150 Planet Defender, Anti-Air Battery, SAM Launcher]!I seem to recall I was minding my own business when you decided to bother me.
+
+Block: inspect
+*%npc.name% snaps to attention*
+Yes %character.formal%. I'm sure you'll find everything in order here in the %container.name%. We're in the middle of calibrations, so please give the technicians room to work, otherwise, feel free to look around.
+
+Block: romance
+!ifnot character.race in [Verpine, Gand, Vratix, Yam`rii]!*Looks about awkwardly.*
+!ifnot npc.race in [Verpine, Gand, Vratix, Yam`rii, Arcona, Hutt, Dug]!!if character.race in [Verpine, Gand, Vratix, Yam`rii, Arcona, Hutt, Dug]!*Vomits all over you*
+!if npc.race in [Verpine, Gand, Vratix, Yam`rii]!*Twitches antennae nervously.*
+!if container.type in [LNR I Series Turbo Laser Cannon, LNR II Series Turbo Laser Cannon, KDY v-150 Planet Defender, Anti-Air Battery, SAM Launcher]!Ah, %character.formal%, that is quite inappropriate. I am on duty! Please excuse me.
+!ifnot container.type in [LNR I Series Turbo Laser Cannon, LNR II Series Turbo Laser Cannon, KDY v-150 Planet Defender, Anti-Air Battery, SAM Launcher]!!ifnot character.race in [Verpine, Gand, Vratix, Yam`rii, Arcona, Hutt, Dug]!I think that would be wonderful, let's go!
+!ifnot container.type in [LNR I Series Turbo Laser Cannon, LNR II Series Turbo Laser Cannon, KDY v-150 Planet Defender, Anti-Air Battery, SAM Launcher]!!if character.race in [Verpine, Gand, Vratix, Yam`rii, Arcona, Hutt, Dug]!I don't think so.
+
+Block: directions
+!if npc.neutral!What do I look like? A tour guide? Get lost!
+!if npc.ally!!if location.planet!!ifnot location.city!You are on %location.planet%. Please excuse me, I need to get back to work.
+!if npc.ally!!if location.city!You are in %location.city%, but I am much too busy to show you around.
+!if npc.ally!!ifnot location.planet!You are aboard the %container.name%. See you around!

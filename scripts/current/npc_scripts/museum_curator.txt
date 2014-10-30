@@ -1,0 +1,58 @@
+Block: start
+!if npc.ally! *%npc.name% smiles and nods his head to you as a greeting.*
+!if npc.ally! Welcome to the museum! How can I help you, %character.formal%?
+!ifnot npc.ally! *%npc.name% inspects you from head to toe.*
+!ifnot npc.ally! What brings you here, stranger?
+Responses:
+!ifnot npc.ally! None of your business. Get lost. -> rude
+What is this place? -> place
+I'm looking for the person in charge of this museum. -> curator
+
+Block: friendly
+Of course not, go ahead. I'm glad to see that museums still interest people. Take all the time you need.
+Responses:
+Where can I find the museum curator? -> curator
+How much do I need to pay to enter? -> fee
+
+Block: rude
+You are talking to the curator of this museum. I suggest you show some respect, or I will have to ask you to leave.
+Responses:
+I apologize, I shouldn't have been so rude. -> apologize
+Alright, alright, I'll leave. -> leave2
+
+Block: place
+Well, this is a museum called %container.name%. It is owned by %owner.name% and I, %npc.name%, am the curator. Nice to meet you.
+Responses:
+Nice to meet you too. My name is %character.name%. -> meeting
+Thanks for the information, I'll be on my way now. -> leave2
+
+Block: fee
+Well, normally it's 50 credits to enter, but you seem like a respectable person to me, so I will let you enter for free. How does that sound?
+Responses:
+That's great! Thank you. -> leave3
+
+Block: curator
+That would be me. I am %npc.name%. I run this museum on behalf of the owner, %owner.name%.
+Responses:
+Nice to meet you. My name is %character.name%. -> meeting
+How much do I need to pay you to enter the museum? -> fee
+
+Block: apologize
+Don't worry, I'm used to it. People these days just don't have respect for museums anymore.
+Responses:
+I didn't mean to be so rude. Please, tell me something about this place. -> place
+Just kidding, I'm not sorry. This place looks like a pile of Bantha dung. -> leave
+
+Block: leave
+Get out of my sight. And don't show yourself around here anymore.
+
+Block: leave2
+Have a nice day.
+
+Block: meeting
+I'm glad to see that there are still friendly people on this planet. I was starting to have my doubts about that.
+Responses:
+I have to go now though. Goodbye. -> leave2
+
+Block: leave3
+No problem. I hope you like the museum, and feel free to talk to me again if you need anything.

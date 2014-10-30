@@ -1,0 +1,69 @@
+Block: start
+*The sentient grabs you on the shoulder, leaning in close to your face*
+Have ye heard? Have ye seen? Are ye marked?
+Responses:
+Excuse me? -> huh
+Urgh, I, umm, have to be somewhere else. -> leave
+This is a gun, and I know how to use it. -> gun
+
+Block: huh
+Are ye deaf as well as blind siree? Have ye seen the sun recently?
+'tis a grand new sport the rich and bored have taken to trying.
+Responses:
+I'm sorry, the sun? Sport? Care to elaborate? -> sun
+Oh that. Thats old news. Already tried it a few times. -> credulation
+You know what? I've had it with crazy people. -> leave
+
+Block: leave
+Well, best be off then, hadn't ye? Can't leave that sun alone. It may become lonely!
+Hahaha...hrmph... cough cough.
+
+Block: gun
+Oh, it be like that I see? I be an old man, m'lord.
+*He moves like lightning and relieves you of your gun*
+Ohh, 'tis mighty fine indeed, yes siree.
+Responses:
+Umm, gun please. Now. -> return
+Pah, beggars. -> leave
+
+Block: return
+*They return the gun just as swiftly, making you almost think that they hadn't taken it in the first place*
+What gun, m'lord? The one in your belt there? Ye must think me one o' the rich and bored with them kinds of reflexes.
+Responses:
+Oh, umm, yeah. About that sun sport. -> sun
+Pah, I know you took it, old man. Goodbye. -> leave
+
+Block: sun
+Aye, 'tis a grand sport, practiced all over the galaxy. Many a young fool 'as taken it into 'is head that he can fly closer to the nearest sun than none 'as before.
+Usually 'tis true, but they generally would prefer to be alive on the other side. Ye see, none comes back from these trips.
+Responses:
+People fly <i>into</i> a sun? Why? -> why
+So not much of a repeat sport then huh? -> jest
+
+Block: why
+Why not? They are bored. Of course, they are also generally too stupid to realize that they won't survive a trip near the sun of their choice, but that's natural selection for you.
+Of course, if they are poor, bored people they usually steal other peoples ships. They get quite angry when someone destroys their ship in such a foolhardy quest.
+Responses:
+So, I gather that there aren't too many people that perform it a second time huh? -> jest
+Well, I quite like the sound of that. I may try it. -> leave2
+
+Block: leave2
+Oh, ye're one of them. I thought ye were of a better class. Nonetheless, good luck with ye venture.
+
+Block: jest
+Oh, I see. A joke, no? Very witty. I haven't heard that one since, ooh, ten minutes ago.
+'tis no joking matter, me friend. Many a good person 'as felt the sway of the nearest ball of plasma and gas and left for other places.
+Responses:
+Oh. I'm sorry. -> leave
+
+Block: credulation
+*The sentient in front of you splutters incoherently for a bit*
+Ye, ye what!? Are ye sure that's what happened? Was't not merely a light show ye got taken to, ye simpleton?
+Responses:
+Aye that may of been it. -> leave
+Why, what is it really? -> sun
+No, idiot. I have powers beyond mere mortal ken. -> silly
+
+Block: silly
+Oh. Right. Umm, I'll just pop around here a sec. Got a, umm, drink to get. Yes, that's it, a drink. 
+I'll be back in, oh, say a couple of weeks.

@@ -1,0 +1,61 @@
+Block: start
+Hi there, how can I help you?
+Responses:
+I'm actually looking for a way off this planet. -> trans
+Can you point me to the nearest bar? -> bar
+You can't. Nobody can. -> leave
+
+Block: leave
+Oh ok then, Goodbye.
+
+Block: bar
+A bar? Oh a tavern. Sorry, I'm not well acquainted with any of those establishments.
+Best thing to do would be to look around the city yourself, see if you can spot one.
+Responses:
+Oh thanks. -> leave
+Can you help me with anything then? -> help
+
+Block: help
+Sure. I can tell you how to get off this godforsaken rock, but not much else I'm afraid.
+Responses:
+Oh. Thanks anyway then. -> leave
+
+Block: trans
+Ah. Sure thing. Well there are several methods for it, though some are better than others for different reasons.
+There is the Transport Network, Classifieds, and Factions. Which would you like to know about?
+Responses:
+Transport Network. -> net
+Factions. -> faction
+
+Block: class
+*%npc.name% points out something on your datapad: <a href="http://www.swcombine.com/members/classifieds/">Classifieds</a>*
+Have a look there. The Transportation section has a list of people that are offering transport services. 
+You can also make a post asking for a pickup. However, this area is not that great compared with the others.
+Responses:
+Transport Network. -> net
+Factions. -> faction
+Anything else? -> else
+
+Block: faction
+There are many factions out there, and there is a chance you are already with one. Generally they can arrange a pickup for you either using their own guys, or hired help.
+However, there is a ground of factions, the Transport factions, that generally deal with this sort of thing. If you contact them, they should be able to tell you costs and times.
+Responses:
+Transport Network. -> net
+Anything else? -> else
+
+Block: net
+The Transport Network. A fine undertaking, by any standard. If you head to the nearest starport, you can see if it can arrange transport for you. 
+There is usually one starport on each races homeworld that will allow you to travel to any of the other starports on homeworlds. It can also take you to a startport owned by your faction.
+There are a few other restrictions and such about this form of travel. Best to look at this information flyer.
+*%npc.name% passes you a flyer, with the following information: <a href="http://www.swcombine.com/rules/?NPC_Transport">Transport Network<a>*
+Responses:
+Classifieds. -> class
+Factions. -> faction
+Anything else? -> else
+
+Block: else
+Not much. If none of those help you, best to ask around see if anyone can help. There are the odd one or two kindly souls who help out.
+Other than that, not much more I can tell you.
+Responses:
+Ok, thanks. -> leave
+Can you repeat that please? -> trans

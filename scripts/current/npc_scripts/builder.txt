@@ -1,0 +1,95 @@
+Block: start
+!if character.gender=Male! !if npc.gender=Female! Oh hi there handsome. Got some time for a poor old gal with some free time on her hands?
+!if character.gender=Female! !if npc.gender=Male! Hello beautiful! You got some lovely ones on you - care to share?
+!if character.gender=Male! !if npc.gender=Male! Hey mate, fancy a beer? Check out those chicks over the way.
+!if character.gender=Female! !if npc.gender=Female! Hey sister, have a look at these shoes! Useless for this work, but what a way to show off huh?
+Responses:
+!if character.gender=Male! !if npc.gender=Female! Maybe. Going to make it worth my while? -> worth
+!if character.gender=Male! !if npc.gender=Male! Sure, why not. -> beer
+!if character.gender=Female! !if npc.gender=Female! Wow, they are lovely! -> shoes
+!if character.isowner! WHAT! Why are you not working? -> work
+Nah, sorry. Got something else to do. -> else
+
+Block: worth
+Ooh, a challenge! I'm sure I can think of a thing or two to intice you. Come here big boy!
+*You are dragged around the corner and out of sight*
+Responses:
+That was wonderful. -> wonder
+Thanks. I'd better leave though. -> leave
+
+Block: wonder
+Any time baby, any time. See you later honey, I'll always have my lunch break with you.
+Responses:
+Can't wait. -> leave
+
+Block: leave
+Oh, have fun. See you around.
+
+Block: split
+Oh I see, playing hard to get huh? Two can play at that game. Hey boys, come take a gander at this one.
+Responses:
+More? Oh dear. -> leave
+Gather round gentlemen! -> gather
+
+Block: gather
+Oh yeah, move them up and down! Work that makeup. We like a girl in makeup don't we lads?
+Responses:
+Thats all folks! -> leave
+
+Block: beer
+Excellent. Grab a cold one, and grab a crate to sit on. The foreman hasn't been around in days, so lately we've taken to enjoying the view.
+Responses:
+I see what you mean. -> mean
+Ah, that was nice. Gotta go though! -> leave
+
+Block: mean
+Oh yeah. Could spend many an hour watching those lucious curves and bountiful motion across the way there. In fact, I do!
+
+Block: shoes
+Why thank you. Got them in a sale, half price. Then knocked them down another few credits. Cheap as chips, and designer too!
+Responses:
+They are hideous actually! -> hide
+I ilke them. -> like
+Gotta run, sorry. -> leave
+
+Block: hide
+Aarrgghh!
+*The %npc.race% slaps you and runs off*
+
+Block: like
+Actually, you can have them. I have another pair, twice as nice, and half as expensive at home. I just like to try to make others jealous of me.
+Responses:
+Oh. -> leave
+
+Block: else
+Oh really? Just like that I'm not good enough for you huh? Well, I don't want to speak with you either. Goodbye.
+
+Block: work
+Oh, umm, well, see, umm, it was his fault!
+*%npc.name% points to another builder nearby*
+Responses:
+Sure, like I've never heard that one before. -> heard
+Well then. -> well
+You're fired! -> fire
+
+Block: heard
+But, its the truth! I swear. I was working one minute, and then they said it was time for a break. Everyone else did it, so I joined up.
+Responses:
+Pah, don't let the door hit you on the way out. -> fire
+Ok, I'll have a talk with them. -> leave2
+
+Block: well
+Its true! Let me finish my break though?
+Responses:
+Ok then. -> thank
+No. -> leave2
+
+Block: leave2
+Oh. Ok then.
+
+Block: thank
+Thanks. Much appreciated.
+
+Block: fire
+But, but, but, it wasn't my FAULT!
+*The rush out the place in a storm8

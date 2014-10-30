@@ -1,0 +1,47 @@
+Block: start
+Alright me, old chiina? You got any bees and honey for you're Denny Glaver?
+Responses:
+Excuse me? -> excuse
+You 'avin a bath? -> laugh
+Yeah, ok. I see the white men coming. -> leave
+
+Block: leave
+You scapa now, y'hear! Its time to go, yeah?
+
+Block: excuse
+You, geezer, you're a right ancient greek. Gotta Botany Bay, the pork chops are after me.
+Lor' luv a duck! Meet up later, yeah. Know what I mean?
+Responses:
+No actually, I have no clue what you're on about. -> clue
+!if time.ofday=Evening! They won't catch you in this darkness though. -> dark
+
+Block: laugh
+Awright geeezzaa! No mate, just need some Cyril Ash fer da frod an' toad. Sorted mate.
+Responses:
+No actually, I have no clue what you're on about. -> clue
+Lawd above! Sure, 'ave some beans n 'oney then, innit. -> money
+I'm getting a headache. See ya. -> leave
+
+Block: cops
+Blimey! well duh. Got me some dogs dinner clothes from what lady. Nuff said, yeah?
+Responses:
+Thats it, my mind has been blown. -> clue
+
+Block: money
+Lor' luv a duck! cheers mate, michael owen ter spend i' on some ladies. Know what I mean?
+Responses:
+Yeah, enjoy yourself. -> leave
+Not really. -> clue
+
+Block: clue
+Sheesh, I'll speak slowly for the stupid then. I'm just on my way outta here, with these nice new things I got from that lady over there.
+Do you understand? Or would you rather I speak in Huttese?
+Responses:
+Ah, much better. I can understand you now. -> finally
+You're still speaking in another language. I'm off. -> leave
+
+Block: finally
+Wow, well done for the hard of hearing. Anyway, gotta run, places to be, places not to be. Catch my drift?
+
+Block: dark
+Lor' luv a duck! yeah, all da be'er ter do me drives me bizurke 'uh. Know what I mean?

@@ -1,0 +1,53 @@
+Block: start
+Oh, hi there. Umm, did you want something?
+Responses:
+What are you doing? -> doing
+!if location.city! What is this place? -> place
+No, I'm just taking a look around. -> look
+
+Block: doing
+Me? Oh. I'm designing a brand new engine. See I'm working for %owner.name% designing this new ship. Its going to be a paradigm shift in space technologies.
+At the moment I'm working on a new method of using the ion engines to create more thrust.
+Responses:
+New ships huh? -> new
+I'll just take a look around. -> look
+
+Block: look
+!if npc.enemy! NO! You can't. Its not allowed. You must leave.
+!if npc.enemy! *The %npc.race% waves his hands at you and pushes you out*
+!if npc.neutral! NO! You can't. Its not allowed. You must leave.
+!if npc.nuetral! *The %npc.race% waves his hands at you and pushes you out*
+!if npc.ally! Oh. Ok. Have a look around then, and ask any questions if you see something interesting.
+Responses:
+!if npc.neutral! But, but ... oh. -> leave
+!if npc.ally! Sure thing. See you around. -> leave
+!if npc.ally! Hmm, what are you doing there? -> doing
+
+Block: leave
+Yes, yes, goodbye.
+
+Block: place
+This? Its %location.city% don'tcha know? Have a look around, maybe you'll go bother someone else who isn't working on a brand new engine design.
+Responses:
+Oh, ok then. -> leave
+New engines? Really. -> doing
+
+Block: engines
+Well of course it is. It will generate enough power to double the speed of any ship in the galaxy in sublight.
+See I used a reflux capacitor to return the overflow generation current back to the dampers, which causes an increase in power flow.
+This allows more power to be achieved with the same fuel supply. Quite simple really.
+Responses:
+Wouldn't that cause a massive overload on the main coils? -> coil
+!if npc.ally! Thats my man. Good work. -> leave
+
+Block: new
+Well yeah. Thats what our entire department is about. Did you get lost on the way to the coffee room perchance?
+Responses:
+Maybe. Yeah. -> leave
+Nah. Whats up with those engines you were talking about? -> engines
+
+Block: coil
+That? Pah, use some ultracooled stock cells, link them up with the subspace manifold and you avoid all that. Are you trying to steal my work?
+Responses:
+No. Just interested. -> leave
+Maybe. -> leave

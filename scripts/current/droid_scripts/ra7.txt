@@ -1,0 +1,11 @@
+Block: start
+Hi there. I may be fluent in over 3 billion forms of communication. I may also be telling a pack of lies. Who can say?
+Responses:
+Uh, yeah. -> yeah
+Do you speak Botchi? -> botchi
+
+Block: yeah
+Good choice good %character.race%. I'll be on my way now.
+
+Block: botchi
+What? Why on earth would I speak that?

@@ -1,0 +1,46 @@
+Block: start
+Hello there %character.name%, I hope %faction.name% are treating you well? I hope %faction.leader% is a good leader.
+Responses:
+Wha...? -> force
+You know too much. Time to die! -> die
+This is a scam isn't it? -> scam
+
+Block: force
+I know much of you. In fact much of everyone. I am in tune with the force, a mystical energy that pervades every living thing around you.
+In fact, it is something that is widely wished for, yet almost universally is extremely hard to obtain.
+Responses:
+Oh. Right. The force. Well, I'll be seeing you then. -> leave
+Wow, tell me more! -> more
+Meh, already know everything I need. -> sure
+
+Block: die
+If you insist, you may die. I feel nothing either way about it.
+Responses:
+Wha...you...gah! -> leave
+
+Block: scam
+No, just pure knowledge obtained through the Force. Do you wish to know more?
+Responses:
+Sure, why not: -> force
+Pah, that mystical nonsense. -> leave
+
+Block: leave
+Enjoy yourself over the next few days. Many wondrous things will happen to you.
+
+Block: more
+Very few people ever have the ability to use the force. These people are called Force Sensitives. However, even these few do not know of their abilities straight away.
+Though they may seem slightly better at certain things that others, they cannot proactively use their abilities. They need to be revealed.
+Responses:
+How would they get revealed then? -> reveal
+
+Block: reveal
+Ah. Such people would need to find other Force Sensitive people. Those that have trained for years have the ability to determine if someone is Force Sensitive or not.
+They can also show that person their gifts, allowing them to begin to use these powers. Finding these people is not a trivial task.
+!if character.faction! Best to ask around your faction, since many arrange tests for all their members at one time.
+!ifnot character.faction! Might be very hard for you. Factions generally arrange tests for all their members, but that may be hard for you huh?
+Responses:
+!if character.faction! Excellent, thanks. I'll go ask them now. -> leave
+Could you explain all that again please? -> force
+
+Block: sure
+Are you sure? Many come to me because they have questions. Oh well, have fun.

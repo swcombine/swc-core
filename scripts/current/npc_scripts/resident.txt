@@ -1,0 +1,62 @@
+Block: start
+Hi there, I'm %npc.name%. Welcome to my little home.
+!if location.planet! This place, %location.planet% is my little home. Not much maybe for someone so grand, but it suits me fine.
+!ifnot location.planet! I've not settled down yet. Still got some adventure left in me I think.
+Responses:
+Hi, I'm %character.name%. What do you get up to? -> job
+!if location.planet! This is a nice little planet. I may end up settling down here too. -> settle
+!if location.planet! Pah, I wouldn't grant this little hunk of rock the name planet. -> hate
+!ifnot location.planet! Where do you think you may end up? -> end
+
+Block: job
+Not much. A little bit of this, a little of that. Do the odd jobs that usually turn up everywhere.
+Responses:
+Interesting. You've made yourself a nice place. -> place
+Ah. One of them. -> one
+Thanks. I'd better be going. -> leave
+
+Block: leave
+Sure. See you around then. Nice talking to you.
+
+Block: settle
+Yeah. I like the weather we get here, some really nice sunsets and all that. Makes you really glad to be alive some days.
+What about you, what do you like about this place?
+Responses:
+Actually, I don't really like it here. -> hate
+Yeah the sunsets are nice. I like the wildlife. -> creatures
+
+Block: creatures
+Yeah. A bit fierce for my liking some of them, but some are quite fantastic. 
+Anyway, I had better go - catch you later.
+Responses:
+Sure thing. -> leave
+
+Block: one
+What do you mean? I make my way as best as I can. Can't all be flying on super secret missions all over the galaxy.
+Responses:
+Hmm. Well I had better continue on my mission then. -> leave
+
+Block: place
+Why thank you. It's not great, but its the best around. And its home, like nothing else is.
+Responses:
+I can see that. Oh well, better be off then. -> leave
+!if location.planet! This is a nice little planet. I may end up settling down here too. -> settle
+!if location.planet! Pah, I wouldn't grant this little hunk of rock the name planet. -> hate
+!ifnot location.planet! Where do you think you may end up? -> end
+
+Block: know
+Isn't it obvious? Fancy clothes, a personal spaceship, and a swagger that is detectable even by a blind man.
+Responses:
+Oh. Better leave you alone then huh? -> leave
+
+Block: hate
+Oh? Well I suppose %location.planet% is not for everyone. More for me I suppose.
+I suppose you will be leaving now to get away? If you hate it that much that is.
+Responses:
+Ha, sorry. Was lying there. Quite like this place. -> settle
+
+Block: end
+To be honest, no idea at the moment. I wander from place to place, and when I find something that is interesting, I'll settle down for a bit. 
+May get the urge to wander again later, but wouldn't be for a while I would guess.
+Responses:
+Ah, well good luck. -> leave

@@ -1,0 +1,7 @@
+Block: start
+Beep. Beep beep. Beeeep!
+Responses:
+Huh? -> huh
+
+Block: huh
+*The droid whistles and beeps continously for minutes, before shutting down*

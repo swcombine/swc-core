@@ -1,0 +1,55 @@
+Block: start
+Ahoy, land-lover. How are you this wonderful %time.ofday%?
+Responses:
+I am well. How are you? -> well
+!if character.race in [Aqualish, Mon Calamari, Gungan, Kaminoan, Selkath, Quarren, Nautolan, Ishi Tib]! Excuse, I am no land-lover. I am a %character.race% afterall. -> excuse
+
+Block: well
+Good to hear, good to hear. I am exceptional today, it is a good day to be on the sea.
+Responses:
+!ifnot character.race in [Aqualish, Mon Calamari, Gungan, Kaminoan, Selkath, Quarren, Nautolan, Ishi Tib]! The sea? What's the big deal about some water. -> water
+!if character.race in [Aqualish, Mon Calamari, Gungan, Kaminoan, Selkath, Quarren, Nautolan, Ishi Tib]! !ifnot npc.race in [Aqualish, Mon Calamari, Gungan, Kaminoan, Selkath, Quarren, Nautolan, Ishi Tib]! I agree my friend. Say, how did a %npc.race% like you come to love the sea. -> love
+
+Block: excuse
+My apologies. I meant no offense. It's good to see someone who appreciates a day at sea as much as myself.
+Responses:
+I may not be a land-lover, but who says I love the ocean either? -> either
+!ifnot npc.race in [Aqualish, Mon Calamari, Gungan, Kaminoan, Selkath, Quarren, Nautolan, Ishi Tib]! So tell me, how did a %npc.race% such as yourself come to love the water? -> love
+
+Block: water
+The sea, all seas, are alive. They are amazing worlds in and of themselves. They give life...but if you are not careful they can also take yours.
+Responses:
+Keep it. Give me a starship and the open expanse of space anyday. -> space
+I never thought of it that before. -> before
+
+Block: love
+My love of the water comes from my parents. They were biologists and spent much of their lives studying ocean life all over the galaxy. I spent most of my childhood and young adult life living on !random [Glee Anselm, Kamino, Ando, Chad IV, Mon Calamari, Tibrin]!. I learned to love and respect the water there.
+Responses:
+Whatever. Give me a starship and the open expanse of the galaxy anyday. -> space
+I can understand that. I guess I've never really thought much of the water before. -> before
+!if character.race in [Aqualish, Mon Calamari, Gungan, Kaminoan, Selkath, Quarren, Nautolan, Ishi Tib]! Yes, yes I can see how that much time spent around the water can breed a healthy respect. -> respect
+
+Block: either
+Again, I offer my apologies. I just assumed that you would share my affection for the sea.
+Responses:
+I do share your respect for the water. I was demostrating the dangers of assuming. -> respect
+
+Block: space
+Space?! you've got to be kidding me. Space is dark, cold and lifeless. Give me a sunny day and the feel of a nice ocean breeze over that, any day.
+Responses:
+Different strokes for different folks, as they say. -> leave
+
+Block: before
+Not many people do. Most just see it as an obstacle or at a be a place to get a drink or perhaps something to eat.
+Responses:
+Well I thank you for opening my eyes to a new perspective. -> leave
+!ifnot npc.race in [Aqualish, Mon Calamari, Gungan, Kaminoan, Selkath, Quarren, Nautolan, Ishi Tib]! So how did a %npc.race% as yourself come to love the sea so much? -> love
+!if npc.race in [Aqualish, Mon Calamari, Gungan, Kaminoan, Selkath, Quarren, Nautolan, Ishi Tib]! Well that makes sense for you as a %npc.race%. -> leave
+
+Block: respect
+Respect is a very important thing to have in regards to the sea. Just as being a space pilot, being a boat pilot is very dangerous. Especially if you get cocky. It takes a combination of skill, determination, and humility to navigate the sea.
+Responses:
+You are correct. Arrogance is not a quality for the careful. -> leave
+
+Block: leave
+Well as much as I have enjoyed our conversation, I need to return to work before the boss catches me slacking. Have a nice %time.ofday%.

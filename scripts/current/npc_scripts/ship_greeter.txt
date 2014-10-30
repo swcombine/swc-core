@@ -1,0 +1,57 @@
+Block: start
+Welcome on board the !container.type! <i>!container.name!</i>. 
+Please let me check you're ID tag.
+*They take your ID tag, scan it on their datapad, then hand it back*
+That is perfectly satisfactory, %character.name%. Please make yourself comfortable.
+Responses:
+Sheesh, is everyone around here so chipper? -> grumpy
+I sure will. Is there anything I shouldn't touch? -> touch
+
+Block: yours
+Ah, I wish it were. Unfortunately I'm merely hanging around here, making myself useful.
+What about you, are you here for a reason?
+Responses:
+Not sure. I banged my head and now I cannot remember where I am! -> location
+Actually, I'm going to steal everything here. -> ohnoes
+
+Block: grumpy
+Of course. Someone passed through here last week with a few crates of Ryll. We still have some spare if you want a taste.
+Responses:
+No siree, I'm not a druggie, whatever you may think! -> leave
+Sure, why not. -> drug
+Maybe. Is there a catch? -> catch
+
+Block: touch
+Yeah, pretty much everything I'm afraid.
+Best to just sit in the corner - that's what I do.
+
+Block: location
+Well now, its pretty simple. See, if you look outside for a second, can you see that star to the left? Or the one to the right? Yes? No?
+!ifnot location.sector! Sheesh, you are blind hey! No matter, I know where we are. We're not in any sector. How about that?
+!if location.sector! !ifnot location.system! Nah, I lied. We're actually in %location.sector%. Not many planets around though huh?
+!if location.system! !ifnot location.planet! You may have noticed the other stuff outside? Means we're in the %location.system% system.
+!if location.planet! And you see that huge planet just there? No? Are you visually impaired? Its %location.planet%.
+Anything else?
+Responses:
+Wow, that's pretty cool. Thanks. -> leave
+Is that all? Man, I thought we were elsewhere. -> leave
+
+Block: ohnoes
+Really? Honestly? Wow, you really are an idiot. My boss won't be too happy.
+Responses:
+Meh, I'll take what I want and leave - see ya! -> leave
+
+Block: trust
+Meh, thats ok. I don't trust you. 
+See you around.
+
+Block: leave
+Oh well, catch you later mate.
+
+Block: drug
+Ha, fooled ya. No drugs here. In fact, I may have some nice bracelets for you to wear.
+Responses:
+Actually, I don't want any. Goodbye. -> leave
+
+Block: catch
+Well, I suppose there is one small catch. We don't actually have any. Oh well.

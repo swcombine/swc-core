@@ -1,0 +1,70 @@
+Block: start
+*%npc.name% approaches you with his speeder, looking kind of cool when doing so.. you suddenly wish to be as cool as him*
+Hey sentient, anything me and my speeder can help you with?
+Responses:
+Ohhh myyyy Godd YOU'RE A SPEEDER PILOT!? WHAT'S YOUR NAME -> name
+..... No, you and your speeder can't do anything for me apart from pissing me off -> rage
+Uh... well yeah I guess, I was just wandering around with nothing to do, would you like to have a small talk? -> talk
+
+Block: name
+*%npc.name% smiles at you slightly*
+Heh, another admirer looking to meet me, I feel so cool.
+My name is %npc.name%, I'm the best speeder pilot in this area, but of course, you must have noticed that already, I mean, who wouldn't?
+Responses:
+Oh my God you're actually talking with me! I feel so cool of a sudden, my name is %character.formal% -> ok
+
+Block: ok
+Ok... sooo... nice name I guess? Almost as nice as mine, sadly it's not as nice as mine is.
+Responses:
+You started well, now you're just being arrogant.. I better be off.. -> leave2
+
+Block: freak
+*%npc.name% stares at you weirdly, as if he had seen a ghost*
+Ehm... oh.. oh hey! Look at the hour, it's time to go do.. erm... the thing.. yeah! The thing I had to do before.. er... well I'll just go.
+
+Block: reasons
+How dare you say that? I've won every prize in every contest I've been in and you dare to just come by and call me arrogant? That's a blasphemy!
+Responses:
+Oh dear I'm.. I'm so sorry, I DIDN'T WANT TO HURT YOUR FEELINGS, PLASE TELL ME YOU STILL LIKE ME -> freak
+Just.. just... blah, I'll leave -> leave2
+
+Block: leave2
+Fine! go away! And be aware that you'll NEVER find a speeder pilot as good as me!
+
+Block: rage
+You lookin' for a fight? You can insult me, you can insult my friends, you can insult my girlfriend, you can even insult my family, but NO ONE ever, and I mean EVER insults my speeder bike! got that straight, punk?
+Responses:
+You're just a joker, you're nothing more than an arrogant guy pretending to be a professional speeder pilot! -> reasons
+I'm always in for a fight! Come here so I can knock you on the floor! -> rage2
+
+Block: rage2
+You want a fight? then you'll have a fight!
+Don't think you'll fight me, noooo.. it's not me who you insulted! my speeder is the one that wants revenge!
+*%npc.name% drives his speeder, sending all the pipe's dust directly to your face*
+
+Block: talk
+*%npc.name% holds tight to his speeder*
+Allright boy, what do you want to talk about? Hurry up, I have to run in a few minutes.
+Responses:
+How's your life as a speeder? I mean, what drove you to choose speeder piloting as your career? -> passion
+Oh, then I don't want to take any more time away from you, we'll talk later I guess -> leave
+I just came here to give you a good pay to become my personal speeder pilot... but seeing that the 'run' is more important than me, I'll just have to go look for another one, peace out man! -> leave2
+
+Block: passion
+*%npc.owner% starts thinking with a smile on his face for a second*
+When I was a kid, I had this passion for everything that could be droven... since the first time my dad brought me that real size speeder bike for kids.. everything started there.. yeah..
+I was 8 years old, I lived under a poor family my entire life.. oh, it reminds me I didn't stop peeing my pants untill I was 8, but that's a whole different story.. hum.
+Oh well anyways, he bought me that real size speeder for my birthday, since he didn't buy anything for me in any birthday before that one, he really wanted to make a special gift to me.. soon, my only toy became my speeder bike, it even drove me to save some money for the future. 
+Some years after that, my passion for biking made me buy a better speeder bike, not so fast, not so slow.. but enough as to start my career.. of course I had to start as a pizza delivery guy but hey, look where I'm now, talking to a total stranger in the middle of nowhere about my not so interesting past life. 
+Actually, that's pretty fail, not very cool I would say.
+Responses:
+I'm sorry about your past experience, and I'm glad you're making enough money to live with your speeder piloting career -> leave3
+Jeeze stop crying about your past, what a baby, I'll better be off -> leave2
+
+Block: leave
+Allright pal, smell ya later, come again later so we finish our talk.
+
+Block: leave3
+*%npc.name% checks the hour*
+Nice to talk with you dude, you're a nice chap, but I have to go, the run is starting in 10 minutes! Peace out!
+*%npc.name% turns on his speeder bike and drives away*

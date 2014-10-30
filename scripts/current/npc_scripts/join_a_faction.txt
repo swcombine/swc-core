@@ -1,0 +1,43 @@
+Block: start
+Hi there. What's up?
+Responses:
+Not much, having a look around. -> look
+Huh? Leave me alone! -> leave
+I'm looking for a good time. You free? -> time
+
+Block: look
+Really? That's good. Not much to look at though around here.
+Hey, you may want to have a look at joining a faction; they usually will find something for you to look at.
+Responses:
+A faction huh? Care to explain a bit more? -> faction
+You know what, that's some pseudo-political talk right there. -> leave
+Thanks, but I've already found one. -> already
+
+Block: leave
+You feel like that, hmm? Fine, see you around. Don't need that kind of attitude.
+
+Block: time
+Maybe. Tell you what though, better times are had if you find yourself a faction.
+They can help you out with all sorts of things.
+Responses:
+Really? Well that sounds interesting, do you know anything more? -> faction
+I was actually after something a bit more personal than that. -> leave
+To be honest I've already found myself one. -> already
+
+Block: faction
+Well, factions are complicated beasts. They are groups of sentients that work together for a common goal. There are many different types and they incorporate many varied areas of life.
+For instance a Droid Production faction will be involved in the construction of various different droids, while a Religious faction will lean more towards spreading their religion and bringing in tithes from their churches and chapels.
+There is a public listing of factions available that you can peruse at your leisure. Here, I have a copy you can borrow.
+*The sentient in front of you passes over a small holodisc with the listing visible under the title: <a href="http://www.swcombine.com/community/factions.php">Galactic Faction Registry</a>*
+Responses:
+Meh, sounds a bit boring to tell you the truth. -> leave
+
+Block: already
+Thats excellent. I hope you are enjoying yourself there.
+Just remember that there are plenty more factions out there, so don't think you are stuck there. Though I do warn you that factions don't take too kindly to sentients that hop in and out of them like yo-yos.
+Responses:
+Thanks for that, I'll keep it in mind. See ya. -> leave2
+Spoil sport, that's my entire plan, muhahaha! -> leave
+
+Block: leave2
+Sure thing. Have fun, whatever you choose.

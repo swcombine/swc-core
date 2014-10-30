@@ -1,0 +1,57 @@
+Block: start
+*A slightly deshelved and jittery looking %npc.race% stands before you* Hey you. You got a droid that needs to be fixed? I am a master at repairing droids.
+Responses:
+Is that so? -> thatso
+No, I don't even own any droids. They give me the creeps. -> creeps
+In fact I do. How much do you charge? -> charge
+
+Block: thatso
+Yeah, yeah, yeah. I'm so good that most people call me the droid-whisperer.
+Responses:
+The droid-whisperer? -> whisper
+Really? Interesting. -> whisper
+Okay, now I know you are crazy. -> leave
+
+Block: creeps
+*%npc.name% twitches a bit* How do you mean?
+Responses:
+They are cold and lifeless. I prefer living beings over machines. -> beings
+I was just joking with you. I don't mind them doing work I don't want to do. -> work
+
+Block: charge
+Depends on what I have to fix. My normal rates are failry low. I don't much time for freelance work these days though...not since I started working for %owner.name%.
+Responses:
+Well I wouldn't want to get you in trouble with your boss. I should let you get back to work. -> leave
+
+Block: whisper
+Yeah, I have a gift. I can hear what is wrong even when there is not an obvious cause.
+Responses:
+Yeah, okay. Good luck with all of that. -> leave
+
+Block: leave
+*You walk away* 
+Hey, where ya going?
+
+Block: beings
+!ifnot npc.race in [Hutt, Gungan, Rodian]! Not me. Give me a droid over a !seed [Hutt, Gungan, Rodian] any day.
+!if npc.race in [Hutt, Gungan, Rodian]! Not me. I'd much rather deal with a droid than some rude sentient.
+Responses:
+!if character.race in [Hutt, Gungan, Rodian]! Hey now! That's rude. -> rude
+!ifnot character.race in [Hutt, Gungan, Rodian]! I hear ya, pal. -> back
+
+Block: work
+That's one of the many reasons that droids are great. They won't complain about any job they are given. There are so many more too, like...
+Responses:
+I'm going to you stop right there. Droids really are great afterall. -> back
+Yeah, okay nice talking to you. -> leave
+
+Block: rude
+I'm so sorry, I did not mean to offend you.
+Responses:
+Well you did. -> leave
+No worries, not all %character.race%s are as great as me. -> back
+
+Block: back
+So yeah, droids are amazing, huh?
+Responses:
+I should let you get back to work. -> leave

@@ -1,0 +1,82 @@
+Block: start
+!if npc.ally! *%npc.name% puts away a spanner and walks toward you with a friendly nod*
+!if npc.ally! Good %time.ofday% to you. May I do you a service?
+!if npc.neutral! *%npc.name% puts away a spanner and politely nods in your direction*
+!if npc.neutral! Greetings, %character.formal%, do you require assistance?
+!if npc.enemy! *%npc.name% hefts a spanner and walks cautiously toward you*
+!if npc.enemy! Members of %character.faction% are not welcome in this area. I can direct you to the nearest exit.
+Responses:
+!if npc.ally! And a good %time.ofday% to you as well. I'd like to know a bit more about your work. -> facrepair
+!if npc.ally! Greetings! Could you tell me anything about our location? -> location
+!if npc.ally! Not at this time, thank you. I have other pressing business. -> end
+!if npc.neutral! Yes indeed. I need some information, and you're just the %npc.race% repair worker I'm looking for. -> facrepair
+!if npc.neutral! Could you tell me anything about our location? -> location
+!if npc.neutral! Not at this time, thank you. I have other pressing business. -> end
+!if npc.enemy! Settle down and put away that spanner, %npc.race%, I just wanted some information. -> facrepfoe
+!if npc.enemy! Forget it. I'll show myself out. -> end
+
+Block: facrepair
+*%npc.name% grins widely*
+Glad you asked, I love talking about my job.
+As you can see, I'm doing some finishing work on this room here, after we had a bit of minor damage recently. Nothing to be concerned about. 
+Right now, I'm sealing up the last cracks in this load-bearing wall, then I'll run atmo tests to make sure we're sealed tightly. Then it's painting, a few more tests, and it'll be just like new.
+Responses:
+Fascinating. Tell me, what sort of job is your favorite? -> bestwork
+How did you get into this line of work? -> history
+!ifnot npc.enemy! That's very interesting. But can you tell me a bit about our current location? -> location
+!if npc.enemy! That's very interesting. But can you tell me a bit about our current location? -> locationfoe
+Great to hear. Well, thank you for your time. -> end
+
+Block: bestwork
+I'm fully qualified to conduct every step of a facility repair job, from electrical to structural to life support, to detailed finish work. My favorite job? Anything involving heavy construction. I love swinging hammers, laser-cutting, and heavy-lifting.
+Responses:
+So you're not into precision work as much? More of the big-picture sorts of repairs? -> heavywork
+How did you get into this line of work? -> history
+!ifnot npc.enemy! That's very interesting. But can you tell me a bit about our current location? -> location
+!if npc.enemy! That's very interesting. But can you tell me a bit about our current location? -> locationfoe
+Great to hear. Well, thank you for your time. -> end
+
+Block: history
+I've always been skilled with tools. Back on my homeworld, I worked odd jobs to put myself through a building trades program, then I apprenticed on a series of construction projects around the galaxy. I actually did some of the electrical work when they were building Centrepoint Station. 
+After that, I wound up here, and I'm happy with my current employer.
+Responses:
+!ifnot npc.enemy! That's very interesting. Now, can you tell me a bit about our current location? -> location
+!if npc.enemy! That's very interesting. Now, can you tell me a bit about our current location? -> locationfoe
+Great to hear. Well, thank you for your time. -> end
+
+Block: heavywork
+Exactly. I'm good at fussy little jobs, like this one. But give me, say, a corridor where some fool accidentally set off a thermal detonator, and tell me to fix the damage, and I'm happy as a Gungan in the water.
+Responses:
+Great. So how did you get into this line of work? -> history
+!ifnot npc.enemy! That's very interesting. But can you tell me a bit about our current location? -> location
+!if npc.enemy! That's very interesting. But can you tell me a bit about our current location? -> locationfoe
+Inspiring! Well, thank you for your time. -> end
+
+Block: location
+*%npc.name% gestures around the room*
+!if location.sector! !if location.system! !if location.planet! !if location.city! We're in the lovely city of %location.city% on %location.planet%. This is located in the %location.system% system of %location.sector%. At this moment, you're standing aboard the %container.type% %container.name%.
+!if location.sector! !if location.system! !if location.planet! !ifnot location.city! We're on %location.planet%. That is located in the %location.system% system of %location.sector%. At this moment, you're standing aboard the %container.type% %container.name%.
+!if location.sector! !if location.system! !ifnot location.planet! !ifnot location.city! We're in the %location.system% system of %location.sector%. At this moment, you're standing aboard the %container.type% %container.name%. 
+!if location.sector! !ifnot location.system! !ifnot location.planet! !ifnot location.city! We're located in the %location.sector%. At this moment, you're standing aboard the %container.type% %container.name%. 
+!ifnot location.sector! !ifnot location.system! !ifnot location.planet! !ifnot location.city! We're in Deep Space, aboard the %container.type% %container.name%.
+Responses:
+Thank you. Could you tell me more about your job? -> facrepair
+Thank you, that's helpful. Well, I appreciate your time, farewell. -> end
+
+Block: end
+*%npc.name% nods*
+Good %time.ofday% to you, %character.formal%.
+
+Block: facrepfoe
+*%npc.name% eyes you suspiciously.*
+OK, but I will not divulge any sensitive information, and I think I'll keep my tools handy, thank you very much. What do you require?
+Responses:
+I'm curious: What does your job involve? -> facrepair
+Tell me about our current location. -> locationfoe
+
+Block: locationfoe
+What do I look like, a tour guide? If you can't figure out where you are, then I'm amazed you've gotten this far in the galaxy.
+Do you require anything else?
+Responses:
+OK, well, can you tell me about your job? -> facrepair
+Forget it, carry on. -> end

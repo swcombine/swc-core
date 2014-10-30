@@ -1,0 +1,59 @@
+Block: start
+!if npc.ally! *%npc.name% is busy cleaning one of his grenades when he sees you approaching and puts it away*
+!if npc.ally! Well, hello there, %character.formal%. How can I help?
+!ifnot npc.ally! *%npc.name% appears to be cleaning one of his grenades, when he suddenly looks up and notices you*
+!ifnot npc.ally! What is it? Can't you see I'm busy?
+Responses:
+!if npc.ally! At ease, soldier. I just wanted to see what you are doing. -> doing
+!if npc.ally! I would like to have a word with your superior. -> boss
+!ifnot npc.ally! What are you doing? -> doing2
+Cleaning explosives... that's an unusual hobby. -> grenade
+Just having a look around, sorry for disturbing you. -> leave
+
+Block: doing
+I'm just cleaning my grenades. I like to keep my darlings in top condition at all times, you never know when you'll need them. Anything I can do for you, %character.formal%?
+Responses:
+Tell me a bit about yourself. Working with explosives seems like an interesting thing to do for a living. -> story
+Well, I'm looking for the person you work for. -> boss
+
+Block: boss
+That's %owner.name%. No idea where they are though.
+Responses:
+Thanks. You can go back to cleaning those grenades now. -> leave2
+
+Block: doing2
+Isn't that obvious? I'm cleaning my darlings. Now get lost before I throw Little Timmy here at you.
+*%npc.name% nods at the grenade he's holding.
+Responses:
+I'll leave you and your... friend in peace. -> leave3
+
+Block: boss2
+That's %owner.name%. Good luck finding them though.
+Responses:
+Thanks. You can go back to cleaning those grenades now. -> leave2
+Maybe I should report your behaviour to them. -> leave3
+
+Block: grenade
+They're like my children, and I am their loving mother. These precious little things have kept me alive in a lot of battles.
+Responses:
+I'd love to hear more about those battles. -> story
+You're crazy, do you know that? -> leave3
+
+Block: leave
+Alright. Have a nice day.
+*%npc.name% starts to clean his grenade again*
+
+Block: story
+I've been fascinated by explosives ever since I was a child. Such relatively small things, causing such explosions... Such destruction... So I decided to make grenades my specialty, and here I am now. One time, a Cucul tried to kill me when I was travelling through a swamp. Luckily for me, he was allergic to explosions. I owe my life to good old Sally... she gave her life to protect me from that beast...
+*%npc.name% stares at you and seems sad*
+Responses:
+Yes, poor old Sally. Time for me to go though. -> leave
+They're just grenades, you know. You need friends. Real friends. -> leave3
+
+Block: leave2
+Oh, I will. Don't worry about that.
+*%npc.name% starts to clean his grenade again, no longer paying attention to you*
+
+Block: leave3
+Beat it!
+*%npc.name% snarls*

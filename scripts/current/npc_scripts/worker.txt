@@ -1,0 +1,90 @@
+Block: start
+*The %npc.race% in front of you lounges against some cargo containers, and looks at you curiously*
+Hi there. Looking for anyone in particular?
+Responses:
+Not really. Just taking a look around. -> look
+!ifnot character.isowner! Yeah. I'm looking for %owner.name%. -> owner
+!if character.isowner! Give me a status report. -> status
+What are you up to at the moment? -> moment
+
+Block: look
+Really? Not much to look at around here. 
+!if container.entityType in [City, Planet]! There is a nice breeze here don'tcha think? I like coming out here to think and enjoy my breaks.
+!if container.entityType in [City, Planet]! !if time.ofday=Evening! Look at that sunset. Its glorious. Wish I could stay here forever and watch it.
+!ifnot container.entityType in [City, Planet]! Pah, would you look at this place. Bulkheads, metal, and minimalist design everywhere. If only for some nice wall coverings and other paraphernalia to liven the place up.
+Might want to return back where you came from really.
+Responses:
+!if container.entityType in [City, Planet]! !ifnot location.planet=Alderaan! Yeah it is nice here. Not a patch on the vistas on Alderaan though. -> alderaan
+!if container.entityType in [City, Planet]! !if location.planet=Alderaan! Yeah. One of the nicer planets I think. -> nice
+Yeah. Might do that actually. -> leave
+
+Block: leave
+Ok then, have fun. I won't expect to see you around again.
+
+Block: owner
+Ah, everyone seems to want them. I haven't seen them for a while actually, so you might find it easier to just contact them.
+Here, I have their holoaddress that you can send to.
+Responses:
+Thanks. -> leave
+Actually, didn't care that much. -> care
+*Shrug* -> leave
+
+Block: status
+Sure thing %character.formal%. 
+There actually has been a small hiccup in the project, but with the help of the foreman, we've managed to get past it and we're back on track.
+We should be completed on time, and in budget.
+Responses:
+Hiccup? How come I didn't head about this before? -> hiccup
+Excellent. Carry on. -> start
+Well, I suppose that is ok. I'll be off, so no slacking. -> leave2
+
+Block: leave2
+Sure thing boss. I'll see you again I suppose.
+
+Block: care
+Really? Then why ask? Bloody nusiance disturbing me in my break and asking pointless questions!
+Go back to where you came from, and don't bother me again!
+
+Block: hiccup
+Oh, it was only a small thing. Barely disrupted us for an hour. Nothing to get worried about to be honest.
+
+Block: moment
+Me? Not much. In the middle of my break at the moment. Not much going on at the moment.
+!if time.ofday=Morning! Really, I've only just come on shift a few hours ago. Got the rest of the day to work.
+!if time.ofday=Afternoon! Shift is almost over. Another few hours, and then off to the sack. Or the tavern. Might need a few drinks after this.
+!if time.ofday=Evening! Well, looking at the time, its basically time for me to go home.
+Responses:
+Ah ok then. I'll leave you to it then. -> leave
+!if time.ofday=Evening! Want to head to the local tavern with me? -> tavern
+Can you spare some credits? -> credits
+
+Block: credits
+Nah, sorry. Got just enough for me and my family to live off, and not much more than that.
+
+Block: tavern
+Might be an idea. Have to check with my boss first though.
+
+Block: alderaan
+Well, it sure is mighty pretty, but sometimes it gets boring. Sometimes a little imperfection magnifies the rest and makes it much more impressive.
+But horses for courses as they say. I like my little patch.
+Repsonses:
+Yeah. -> leave
+Hmm. Actually got a few more questions for you. -> start
+
+Block: nice
+Yeah. Some say that Alderaan is just too pretty, too perfect, but they are crazy. Too perfect? Are they listening to what they are saying?
+Responses:
+Anyway, I have a few other things to chat about. -> start
+
+Block: like
+Yeah, well some people should be shot, killed, and restored to life so they can be shot again. 
+They just don't have any <i>style</i>. What about you?
+Responses:
+I quite like it actually. -> shot
+Meh, not my style at all. -> style
+
+Block: shot
+That ... thats ... I ... oh to hell with it. I don't think I can talk with you anymore.
+
+Block: style
+Excatly. Oh well, at least one kindrid spirit around here anyway.

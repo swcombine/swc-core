@@ -1,0 +1,67 @@
+Block: start
+!ifnot npc.enemy! !if character.gender=Male! Good %time.ofday% Brother. Have you heard the Good Word?
+!ifnot npc.enemy! !if character.gender=Female! Good %time.ofday% Sister. Have you heard the Good Word?
+!if npc.enemy! Repent! REPENT! Evil has gripped ye, and sin covers ye like a shroud.
+Responses:
+!ifnot npc.enemy! No, I have not head the Good Word. What is is? -> word
+!ifnot npc.enemy! I have. The word is 'panic'. -> panic
+!if npc.enemy! It does, does it? Interesting. -> interest
+!if npc.enemy! And piousness covers you in return. -> pious
+
+Block: panic
+What? What ridiculous thing is that? Panic indeed. Pah. Time was I would be treated with respect. Look what I get nowadays.
+Two-bit religions popping up on every street corner, nonsense Words, and filthy congregations!
+Responses:
+Whats your Word then? -> word
+Whats your religion then old %npc.gender%? -> religion
+
+Block: interest
+Aye. I can do a cleansing for you if you wish. Special, one time offer. I'll even let you use my equipment.
+Responses:
+No thanks, I'm off. -> leave
+Sure, why not. What do you need me to do? -> need
+
+Block: pious
+Blasphemy! Pagan, infidel, heretic! I shall wipe you from existance, and none shall know of your existance, you %character.race%.
+Responses:
+This I <i>have</i> to see. -> see
+Catch me if you can! -> leave
+
+Block: leave
+Run away. The deity's wrath shall follow you to kingdom come!
+
+Block: religion
+Ah, a bit of this, a bit of that. Many times I have left a religion just as it reaches the peak of existance and then falls into depravity. I have a knack for sensing this.
+At the moment I am doing some freelancing work.
+Responses:
+Freelancing religion? -> free
+Ah. Then what is this Word you are spreading? -> word
+
+Block: free
+Yes. Got something against that? Makes me a good income, all these people from different religions paying me. Ah, here come some now, so I'd better be off.
+
+Block: see
+*The %npc.race% feebly swings his fist at you, misses, and twirls around before falling in a heap on the floor*
+Responses:
+I'll leave you to wallow in piousness then huh? -> pious
+
+Block: need
+Well I will need your clothes. Any credit slips you have on you. And any ships or vehicles or anything like that really.
+I will be rebirthing you, and you will not need any of that heretical stuff afterwards.
+Responses:
+You have got to be joking! I'm outta here. -> leave
+I'm sorry, my stuff is my stuff. -> leave
+
+Block: word
+The Good Word is what every sentient should follow. Doesn't matter which religion you are from, they all have the same meaning. Each shows themselves as different, and yet they are all alike.
+Or, if you prefer, the Word is 'peace'. Of course, everyone will ignore that word anyway, but there it is.
+Responses:
+Thats it? Seems simple. -> simple
+You're a charlatan. I will have no more of oyu. -> leave
+
+Block: simple
+Indeed. Much that is important is simple, but many do not see that. Anyway, go spread the word, and may your travels be fruitful.
+!if character.race=Gungan! And though you may be ridiculed now, in time your race will be honoured above all else, and then you will be vindicated.
+Responses:
+Thank you. Good bye. -> leave
+!if character.race=Gungan! You believe so? Meesa going to be rich! -> leave

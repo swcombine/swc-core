@@ -1,0 +1,95 @@
+Block: start
+!if character.isowner! *%npc.name% gives you a deferential nod*
+!if character.isowner! Greetings Commodore.
+!ifnot character.isowner! !if character.ismanager! !ifnot character.issupervisor! *%npc.name% gives you a deferential nod*
+!ifnot character.isowner! !if character.ismanager! !ifnot character.issupervisor! Greetings Commodore.
+!ifnot character.isowner! !ifnot character.ismanager! !if character.issupervisor! *%npc.name% gives you a deferential nod*
+!ifnot character.isowner! !ifnot character.ismanager! !if character.issupervisor! Greetings Commodore.
+!ifnot character.isowner! !ifnot character.ismanager! !ifnot character.issupervisor! *%npc.name% gives you a polite nod*
+!ifnot character.isowner! !ifnot character.ismanager! !ifnot character.issupervisor! Greetings %character.formal%, how may I assist you?
+Responses:
+!if character.isowner! Good %time.ofday%, %npc.name%, I have a job for you. -> job
+Good %time.ofday%, %npc.race%, I'm curious about your job. -> tasks
+!if character.isowner! %npc.name%, I'm afraid I'll no longer be requiring your services. -> fired
+!if character.isowner! Good %time.ofday%, %npc.name%, please carry on. -> end
+!ifnot character.isowner! !if character.ismanager! !ifnot character.issupervisor! Good %time.ofday%, %npc.name%, I have a job for you. -> job
+!ifnot character.isowner! !if character.ismanager! !ifnot character.issupervisor! %npc.name%, I'm afraid I'll no longer be requiring your services. -> fired
+!ifnot character.isowner! !if character.ismanager! !ifnot character.issupervisor! Good %time.ofday%, %npc.name%, please carry on. -> end
+!ifnot character.isowner! !ifnot character.ismanager! !if character.issupervisor! Good %time.ofday%, %npc.name%, I have a job for you. -> job
+!ifnot character.isowner! !ifnot character.ismanager! !if character.issupervisor! %npc.name%, I'm afraid I'll no longer be requiring your services. -> fired
+!ifnot character.isowner! !ifnot character.ismanager! !if character.issupervisor! Good %time.ofday%, %npc.name%, please carry on. -> end
+Greetings, %npc.race%, I'm looking to hire a capital ship pilot. -> hire
+Actually, I have other business to attend. -> end
+
+Block: tasks
+*%npc.name% nods seriously*
+Our job is critical. We are highly trained professionals who are able to maneuver vessels that can be thousands of meters long, while monitoring and directing a host of in-ship systems. We can move you into position to deploy smaller ships, or provide a stable platform to put your payload on-target every time, all the while protecting you and your cargo.
+Responses:
+That must require intense training and experience. -> training
+I don't know, I'm probably just as good a pilot as anyone else. -> whylicense
+Where can I hire some qualified pilots? -> hire
+Good to know, thank you for your time. -> end
+
+Block: hire
+If you're looking to hire a cap pilot or two, you should check around any tavern, landing pad or starport. There are usually several hanging around, just waiting to provide your fleet with excellent service.
+Responses:
+This job must require intense training and experience. -> training
+I don't know, I'm probably just as good a pilot as anyone else. -> whylicense
+Good to know, thank you for your time. -> end
+
+Block: whylicense
+*%npc.name% looks you over, doubtingly*
+Well %character.formal%, that might be true. But you might have other tasks to take care of in the heat of a mission. Why not trust a trained professional? You can't put a price on safety and reliability.
+Responses:
+This job requires intense training and experience, eh? -> training
+You've convinced me. Where can I hire some qualified pilots? -> hire
+Good point. Well, thank you for this refresher course. Good %time.ofday% to you. -> end
+
+Block: training
+Indeed it does. Every capital ship pilot you can hire has undergone thousands of hours of training at one of the regional flight schools. We are trained in simulator to handle everything from the DP-20 series up to SSDs. We then go through a two-year apprenticeship on a bridge crew. 
+And every pilot goes through a re-certification course after each thousand parsecs of flight, so you know your pilots are always current with their training.
+Responses:
+Impressive. So where can I hire some qualified pilots? -> hire
+That is good to know. Thank you for your time, and carry on. -> end
+
+Block: job
+*%npc.name% stands to attention*
+Excellent news, what is my task?
+Responses:
+I'm assembling a fleet for a secret mission, would you be interested in a command? -> yayjob
+I'll have some large courier work to do, will you be available in the near future? -> yayjob
+I can't tell you just now, but do you have any deployments planned? -> yayjob
+
+Block: yayjob
+*%npc.name% salutes*
+I will wrap up my business presently, and would be honored to fly for you.
+Responses:
+Great! Now, can you tell me more about what a capital ship pilot does? -> tasks
+Excellent, I will assign you when the mission is ready to launch. -> end
+
+Block: fired
+*%npc.name% looks crestfallen*
+I don't understand, commodore. Haven't I given good service?
+Responses:
+Of course you have, this is just a budgetary thing, no reflection on you. -> goodfire
+You have the nerve to ask me that? After that last incident !random [in the asteriod field, with the docking port, exiting hyperspace]!? -> badfire
+
+Block: goodfire
+I see. May I depend on you for a good recommendation?
+Responses:
+Of course. Just contact me with details and I'll see to it you get a good berth. -> end
+Certainly. I'm hoping we can find a way to keep you. I'll be in touch. -> end
+
+Block: badfire
+That wasn't my fault, honest!
+Responses:
+Tell that to the !random [Ewoks, damage control staff, space traffic controllers]!, they were none too thrilled. -> badend
+Regardless, pack your gear, your term of service will be ending soon. -> badend
+
+Block: badend
+*%npc.name% shuffles away*
+So this is the reward for loyalty and dedicated service. What will I tell my parents?
+
+Block: end
+*%npc.name% waves and turns away.*
+Good %time.ofday%, %character.formal%.

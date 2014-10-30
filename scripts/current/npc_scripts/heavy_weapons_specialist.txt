@@ -1,0 +1,65 @@
+Block: start
+*You see a %npc.race% cleaning a very intimidating looking gun. They look up as you approach*
+!if npc.ally! Good %time.ofday%, %character.formal%. *%npc.name% continues cleaning the weapon*
+!ifnot npc.ally! *The %npc.race% stops working and stands, giving you an unfriendly look* Something I can help you with there, chief?
+!if character.issupervisor! !if character.ismanager! !if character.isowner! *The %npc.race% stands and wipes their hands on their clothing* We moving out, boss?
+Responses:
+!ifnot npc.ally! Nice gun you have there, interested in selling it? -> sale
+!if character.issupervisor! !if character.ismanager! !if character.isowner! No not quite yet. We will be as soon as everyone is ready. -> boss
+
+Block: got
+This here is !random [Miss Betty, Matilda, Hoss, The Gundark Slayer]. I've made a few adjustments to make us more effective. *The %npc.race% lovingly runs a hand down the barrel of the weapon*
+Responses:
+You named your gun? -> name
+
+Block: sale
+No. Now move along, I have work to do.
+Responses:
+Just think, you can sell me that one and use the credits to buy a bigger gun. -> bigger
+
+Block: boss
+Great. Me and !random [Miss Betty, Matilda, Hoss, The Gundark Slayer]! here are ready for action.
+Responses:
+Fantastic. I'll let you now once I've finished checking with the others. -> others
+
+Block: deadlier
+A solider is as good as their weapon. And if the job is killing, I want to be the best.
+Responses:
+Violence isn't always the answer. -> violence
+Of course. So those notches there, those your kill count? -> count
+
+Block: name
+All your friends have names, right? This here is the only friend I need. *%npc.name% continues stroking the weapon*
+Responses:
+You two need a room? -> room
+
+Block: bigger
+While that is slightly tempting. Why don't ya get outta here before you need those credits for your funeral.
+Responses:
+Easy there killer. A simple no would sufice. -> exit
+
+Block: others
+We will be right here waiting on your word, boss.
+
+Block: violence
+Now you sound like one of those peace loving Jedi. It may not be the only answer, but when I am giving it, its the loudest.
+Responses:
+Right. Okay well have fun killing everything. -> exit
+
+Block: count
+Sure are. Well the direct ones anyway, I'd need two of three more barrels on here to track the collateral ones.
+Responses:
+Wow. Well make sure you let me know if I'm anywhere around when you start firing. -> exit
+
+Block: room
+No, but some peace and quiet would be nice.
+Responses:
+You got it there, killer. Have a good %time.ofday%. -> exit
+
+Block: exit
+*You walk away as %npc.name% goes back to work cleaning the gun*
+
+Block: pay
+Just make sure I am the one you pay. *The %npc.race% goes back to cleaning the gun, laughing a little too much*
+Repsonses:
+I'll let you 'two' know when we are ready to head out. -> others

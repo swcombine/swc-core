@@ -1,0 +1,77 @@
+Block: start
+!if character.isowner! !ifnot container.type=Mine!Hello %character.name%, nice to see ya topside, wit da clean air.
+!if character.isowner! !if container.type=Mine!Hello %character.name%, must be 'ere for some'tin of import, ta come 'ere to dis nasty hole.
+!if container.type=Mine! !if npc.gender=Male! *Coughs a few times, then wipes his face with a grimy cloth*
+!if container.type=Mine! !if npc.gender=Female! *Coughs a few times, then wipes her face with a grimy cloth*
+!if character.isowner! How can I 'elp ye?
+!if npc.neutral!*Eyes you suspiciously*
+!if npc.neutral! !if container.type=Mine! What 'cha want topsidah? Urry up, da stone be callin' 
+!if npc.neutral! !ifnot container.type=Mine! What 'cha want, %character.race%? Best be wort me time.
+!if npc.ally!!ifnot character.isowner!*Smiles at you, displaying a mouth missing many teeth*
+!if npc.ally!!ifnot character.isowner!Good %time.ofday% to ye mate! What can I do ya for?
+!if npc.enemy!!if npc.gender=Male!*%npc.name% grunts, turns his head and spits at your feet*
+!if npc.enemy!!if npc.gender=Female!*%npc.name% grunts, turns her head and spits at your feet*
+!if npc.enemy!!if container.type=Mine!Get yer lousy %character.race% behind outta dis 'ere mine. Accidents down 'ere all da time... might 'appen to ye if ye get me drift.
+Responses:
+!if npc.enemy!Ok, ok.. I'm going! -> enemy_leave
+!if npc.ally! !if container.type=Mine!Nice to meet you %npc.name%. How are you doing? -> doing
+!ifnot npc.enemy!Just looking around. -> looking_around
+!ifnot npc.enemy!!if container.type=Mine!What is the status of this mine? -> inquire
+!ifnot npc.enemy!!ifnot container.type=Mine!Why aren't you below ground? Are you on holiday? -> holiday
+!ifnot npc.enemy!Mind your own business. -> mind_own
+
+Block: enemy_leave
+*%npc.name% spits on the floor and stomps off*
+
+Block: inquire
+!if character.isowner!You'd 'afta go to da control room and check yersef. I jus dig an' haul.
+!ifnot character.isowner!You'd 'afta ask %owner.name% if ya know 'em. I dunno squat, I jus a digger, not da boss.
+
+Block: looking_around
+!if npc.ally!You be careful down in da mines. Be not safe for topsidahs. Gots da dust, and da fallin' rocks, and da rats. Sometime der gas, and if ya gots a spark, it 'splodes!
+!if npc.neutral!Don't come crawlin' ta me if ye gets yerself hurt now!
+
+Block: mind_own
+!if container.type=Mine!Where I from, you ask a question, you gots ta answer a couple as well. Guess you topsidahs rude from all dat sun.
+!ifnot container.type=Mine!*%npc.name% spits at your feet and walks away*
+
+Block: holiday
+!if npc.ally!!if container.entityType=Ship!!if location.destination!Nah, we headed to %location.destination%, probably gunna be diggin' der soon.
+!if npc.ally!!if container.entityType=Ship!!ifnot location.destination!Goes an ask da pilot. We driftin' far as I can tells.
+!if npc.ally!!ifnot container.entityType=Ship!Jus enjoyin' da sunshine I be. Stings me eyes, an brings me a bit 'o peace. Not so much peace as this bit of heaven though!
+!if npc.ally!!ifnot container.entityType=Ship!*Takes a long swig from a metal flask*
+
+Block: doing
+*Looks at the ground with a frown*
+!if npc.gender=Male!Not so good. Me wife run off wit a box-stacker, name of Jabron Stiggs. You know 'im?
+!if npc.gender=Female!Not so good. Me husband ran off with a Twi`lek dancer. Her name be Candy or somethin'. You know 'er?
+Responses:
+Yes -> know
+No -> dontknow
+
+Block: know
+!if npc.gender=Female!You do? Well, next time you see that Twi`lek whore, you tell her %npc.name% is gunna find 'er, and pull those damn tenticles off 'er blue head. Swear dat you do dis thing for me!
+!if npc.gender=Male!You do? Well, next time you see that lousy topsidah Stiggs, you tell him %npc.name% is gunna fine 'im, and bash 'is face in! Will ya?
+Responses:
+!if npc.gender=Female!I swear by the Force that surrounds us that I'll tell Candy your plans. -> tellyes
+!if npc.gender=Female!I swear I'll tear off her lekku myself! -> tellyes
+!if npc.gender=Male!I swear by the Force that surrounds us that I'll tell Jabron Stiggs your intentions. -> tellyes
+!if npc.gender=Male!I swear I'll bash his face in myself! -> tellyes
+Um, sorry. I can not involve myself in these domestic disputes. -> tellno
+
+Block: dontknow
+!if npc.gender=Female!You don't? Well, if you evah see dat Twi`lek whore, you tell 'er %npc.name% is gunna find 'er, and pull those damn tenticles off 'er blue head. Swear dat you do dis thing for me!
+!if npc.gender=Male!You don't? Well, if you evah see that lousy topsidah Stiggs, you tell 'im %npc.name% is gunna fine 'im, and bash 'is face in! Will ya?
+Responses:
+!if npc.gender=Female!I swear by the Force that surrounds us that I'll tell Candy your plans. -> tellyes
+!if npc.gender=Female!I swear I'll tear off her lekku myself! -> tellyes
+!if npc.gender=Male!I swear by the Force that surrounds us that I'll tell Jabron Stiggs your intentions. -> tellyes
+!if npc.gender=Male!I swear I'll bash his face in myself! -> tellyes
+
+Block: tellyes
+You will? Ah, it nice to know all topsidahs ain' all bad.
+*Walks away humming a happy tune*
+
+Block: tellno
+All you topsidahs are da same. Ya just worried bout yerselves. Yer selfish and rude. Be gone with ya!
+*Storms off grumbling something about sunlight and dim witted %character.race%'s*

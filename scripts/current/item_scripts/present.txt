@@ -1,0 +1,12 @@
+Block: start
+Run: Quest->accessible[quest=25,node=1] => done : not_done
+
+Block: done
+Run: ItemHandler->take_item[item_type=376] => take : not_done
+
+Block: take
+*You open a present to find your gift of CPs*
+Run: Quest->move_to[quest=25,node=2]
+
+Block: not_done
+*You cannot open the present, as you have not received this present from Santa, or maybe you should have this in your utility slot...*

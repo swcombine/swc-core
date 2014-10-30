@@ -1,0 +1,3 @@
+Block: start
+* %npc.name% looks at you in a funny way*
+'geroff, i'm not in the mood.

@@ -1,0 +1,50 @@
+Block: start
+!if npc.ally! *%npc.name% is searching frantically for something*
+!if npc.ally! Hey %character.formal%, you seen my hydro spanner?
+!ifnot npc.ally! *%npc.name% ignores you approaching*
+!ifnot npc.ally! Where did I put that blasted hydro spanner!
+Responses:
+What kind of technician losses his tools? -> Losses
+
+Block: Seen
+Where at? 'cause I need to get these shields online ASAP.
+Response:
+I found it laying behind a crate. -> Found
+Just kidding. I have no idea where it is. -> Kidding
+
+Block: Losses
+If I had time to smack you a new one I would, but I'm busy!
+Response:
+Sorry, I'll just leave you to your work. -> Leave
+Don't be such a baby about it. Lighten up. -> Baby
+
+Block: Found
+Thanks boss, you're one in a trillion.
+Response:
+Anytime. Now get back to work. -> Leave2
+
+Block: Kidding
+You think it is funny?! These shields are the only thing keeping us alive!
+Response:
+Someone is a little self-conceded. -> Self
+Whatever. Save your doom and gloom for someone who cares. -> Leave3
+
+Block: Baby
+I'll lighten up when I hit you with my hydro spanner!
+Response:
+You have a challenge then! That is, if you find it. -> Find
+
+Block: Self
+It cause my job is important. Unlike you who can only mouth off.
+Response:
+At least I know where all my tools are. -> Know
+
+Block: Find
+Or I can just weld your lips shut!
+Response:
+... Maybe another day. -> Leave4
+
+Block: Know
+I bet you don't even know how to use a crafting kit. Go back to school kid.
+Response:
+At least I learned the lesson on keeping my tools where I can find them! -> Leave5
