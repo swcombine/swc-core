@@ -1,11 +1,10 @@
-Block: start
-Hi there. I may be fluent in over 3 billion forms of communication. I may also be telling a pack of lies. Who can say?
-Responses:
-Uh, yeah. -> yeah
-Do you speak Botchi? -> botchi
-
-Block: yeah
-Good choice good %character.race%. I'll be on my way now.
-
-Block: botchi
-What? Why on earth would I speak that?
+(defun start
+	(say "Hi there. I may be fluent in all modern and old business regulations and tax codes for thousands of governments. I may also be telling a pack of lies. Who can say?")
+	(add-response "Uh, yeah." yeah)
+	(add-response "Do you speak Bocce?" bocce))
+	
+(defun yeah
+	(say "Good choice "(get-race self)". I'll be on my way now."))
+	
+(defun bocce
+	(say "What? Why on earth would I speak that?"))
