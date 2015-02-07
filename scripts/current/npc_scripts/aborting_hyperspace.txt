@@ -1,5 +1,5 @@
 (defun start
-(say "Dangers await you, young %character.race%. Beware of all around you.")
+(say "Dangers await you, young (get-race character). Beware of all around you.")
 (add-response "Yeah, yeah, whatever." ever)
 (add-response "Are you part of that danger?" danger))
 
