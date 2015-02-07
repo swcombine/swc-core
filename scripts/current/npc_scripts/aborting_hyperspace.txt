@@ -1,5 +1,5 @@
 (defun start
-(say "Dangers await you, young (get-race character). Beware of all around you.")
+(say (concat "Dangers await you, young " (get-race character) ". Beware of all around you."))
 (add-response "Yeah, yeah, whatever." ever)
 (add-response "Are you part of that danger?" danger))
 
@@ -13,7 +13,7 @@
 
 (defun danger
 (say "Maybe, maybe not. You never know, and that is the truth. For as I speak, I may have nefarious friends who are now quietly sneaking up on you!")
-(describe (get-name self) " starts laughing as you look behind you")
+(describe (concat (get-name self) " starts laughing as you look behind you"))
 (say "Or maybe not, ha ha ha.")
 (add-response "Not funny. I am not dealing with you further." leave)
 (add-response "Ok then, any <i>real</i> dangers around then?" question))
@@ -39,3 +39,5 @@
 
 (defun slim
 (say "Slim is still possible though. But up to you though."))
+
+(defun no-response #t)
