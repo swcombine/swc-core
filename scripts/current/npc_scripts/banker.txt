@@ -12,7 +12,7 @@
 [(eq? (timeofday) "Afternoon")  (eg? (get-container-type) "Bank") (add-response "I sure do, what sort of services are provided?" service)]
 [(eq? (timeofday) "Afternoon")  (eg? (get-container-type) "Bank") (add-response "Yeah, I was wondering about currencies around the galaxy." currency)]
 [(eq? (timeofday) "Afternoon")  (eg? (get-container-type) "Bank") (add-response "What do you think of the stock market?" stock)]
-[(eq? (timeofday) "Afternoon")  (add-response "How come you are not in a bank at the moment?" not)])
+[(eq? (timeofday) "Afternoon")  (add-response "How come you are not in a bank at the moment?" not)]))
 
 (defun leave
 (say "Ok, I will see you later then will I. Goodbye."))
@@ -79,13 +79,13 @@
 
 (defun service
 (say "Banks generally have a few different options available. Most will at least offer some sort of loan system, some will offer credit accounts, and then there will be some more specific services they can provide."))
-
+(cond
 [(eq? (timeofday) "Morning") (add-response "Oh, thanks." leave)]
 [(eq? (timeofday) "Evening") (add-response "Hmm, might be of some use." leave)]
 [(eq? (timeofday) "Afternoon") (eg? (get-container-type) "Bank") (add-response "Interesting. Could you tell me about loans?" loan)]
 [(eq? (timeofday) "Afternoon")  (eg? (get-container-type) "Bank") (add-response "I've been looking for an account for weeks." account)]
 [(eq? (timeofday) "Afternoon")  (eg? (get-container-type) "Bank") (add-response "Other services?" oservice)]
-[(eq? (timeofday) "Afternoon") (add-response "Ah. Better find one of your fellows in a bank then huh." leave))]
+[(eq? (timeofday) "Afternoon") (add-response "Ah. Better find one of your fellows in a bank then huh." leave)])
 
 (defun loan
 (say "Sure. Many banking companies, and occasionally other groups, will offer to loan credits in exchange for some form of collateral as protection against you running off with the money.")
