@@ -1,21 +1,27 @@
 (defun  start
-(describe (concat "A " (get-gender self) " " (get-race self) " is wandering around the area")
+(describe (concat "A " (get-gender self) " " (get-race self) " is wandering around the area"))
 (add-response "Ahem." hmm)
-(add-response "Excus..." interupt)
-(add-response "I wa..." interupt))
+(add-response "I wa..." interupt)
+(add-response "Excus..." interupt-clone))
 
-(defun  hmm
+(defun hmm
 (say "Yes? Can I help you?")
 (add-response "Maybe. Do you know where I can search for a planet?" planet)
 (add-response "Not particularly, was just looking around." wander)
 (cond
-[(eq? (get-gender character) "Male") (eq? (get-gender self) "Female") (add-response "You're one foxy lady." foxy)]))
+[(eq? (get-gender character) "male") (eq? (get-gender self) "female") (add-response "You're one foxy lady." foxy)]))
 
-(defun  interupt
+(defun interupt
 (say "SILENCE! You will be quite in this place!")
 (add-response "But I..." cont)
-(add-response (describe "Nod your head and walk away") leave)
-(add-response (concat (describe "Whisper") (say "Can you help me?" help)))))
+(add-response "<i>*Nod your head and walk away* </i>" leave)
+(add-response (concat "<i>*Whisper* </i>" " Can you help me?") help))
+
+(defun interupt-clone
+(say "SILENCE! You will be quite in this place!")
+(add-response "But I..." cont)
+(add-response "<i>*Nod your head and walk away* </i>" leave)
+(add-response (concat "<i>*Whisper* </i>" " Can you help me?") help))
 
 (defun  leave
 (describe "The Librarian watches you walk off, staring at you as though they could kill you with a stare"))
@@ -26,13 +32,13 @@
 (add-response "Maybe. Do you know where I can search for a planet?" planet)
 (add-response "Not particularly, was just looking around." wander)
 (cond
-[(eq? (get-gender character) "Male") (eq? (get-gender self) "Female") (add-response "You're one foxy lady." foxy)]))
+[(eq? (get-gender character) "male") (eq? (get-gender self) "female") (add-response "You're one foxy lady." foxy)]))
 
 (defun  cont
 (say "I WILL HAVE SILENCE! Please remove yourself from this place before I do something I may regret.")
 (add-response (describe "Walk away ... quietly") leave)
 (cond
-[(eq? (get-gender character) "Male") (eq? (get-gender self) "Female") (add-response "You're one foxy lady." foxy)]))
+[(eq? (get-gender character) "male") (eq? (get-gender self) "female") (add-response "You're one foxy lady." foxy)]))
 
 (defun  planet
 (say "Thats simple. There are many terminals around here that connect to the holonet. A rudimentary map of the galaxy is available to anyone with basic understandings of anything.")
