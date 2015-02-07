@@ -1,118 +1,107 @@
-Block: start
-Hi there, Good %time.ofday%. How may I help you?
-!if time.ofday=Morning! I'm afraid I cannot answer too many questions at the moment - we're not quite open yet.
-!if time.ofday=Afternoon! !if container.type=Bank! Do you have any questions about our services?
-!if time.ofday=Afternoon! !ifnot container.type=Bank! I believe the banks are open, but I am not sure I can be much help at the moment.
-!if time.ofday=Evening! I'm sorry, but we have just closed. You can try coming back tomorrow, or I could answer some small questions now.
-Responses:
-!if time.ofday=Morning! Oh, I'll come back in a few hours then. -> leave
-!if time.ofday=Morning! I'm just wondering what services you may be able to provide. -> service
-!if time.ofday=Evening! Damn, too late. I'll be back tomorrow then. -> leave
-!if time.ofday=Evening! Sorry, was just curious about services I can use. -> service
-!if time.ofday=Afternoon! !ifnot container.type=Bank! How come you are not in a bank at the moment? -> not
-!if time.ofday=Afternoon! !if container.type=Bank! I sure do, what sort of services are provided? -> service
-!if time.ofday=Afternoon! !if container.type=Bank! Yeah, I was wondering about currencies around the galaxy. -> currency
-!if time.ofday=Afternoon! !if container.type=Bank! What do you think of the stock market? -> stock
+(defun start
+(say (concat "Hi there, "Good timeofday "."))
+(cond
+[(eq? (timeofday) "Morning") (say "I'm afraid I cannot answer too many questions at the moment - we're not quite open yet.")]
+[(eq? (timeofday) "Afternoon") (eg? (get-container-type) "Bank") (say "Do you have any questions about our services?")]
+[(eq? (timeofday) "Afternoon") (say "I believe the banks are open, but I am not sure I can be much help at the moment.")]
+[(eq? (timeofday) "Evening")  (say "I'm sorry, but we have just closed. You can try coming back tomorrow, or I could answer some small questions now.")]
+[(eq? (timeofday) "Morning") (add-response "Oh, I'll come back in a few hours then." leave)]
+[(eq? (timeofday) "Morning")  (add-response "I'm just wondering what services you may be able to provide." service)]
+[(eq? (timeofday) "Evening") (add-response "Damn, too late. I'll be back tomorrow then." leave)]
+[(eq? (timeofday) "Evening")  (add-response "Sorry, was just curious about services I can use." service)]
+[(eq? (timeofday) "Afternoon")  (eg? (get-container-type) "Bank") (add-response "I sure do, what sort of services are provided?" service)]
+[(eq? (timeofday) "Afternoon")  (eg? (get-container-type) "Bank") (add-response "Yeah, I was wondering about currencies around the galaxy." currency)]
+[(eq? (timeofday) "Afternoon")  (eg? (get-container-type) "Bank") (add-response "What do you think of the stock market?" stock)]
+[(eq? (timeofday) "Afternoon")  (add-response "How come you are not in a bank at the moment?" not)])
 
-Block: leave
-Ok, I will see you later then will I. Goodbye.
+(defun leave
+(say "Ok, I will see you later then will I. Goodbye."))
 
-Block: stock
-Its ... interesting. I'm not an expert in it, I leave it up to others to buy high and sell low, or is it the other way around?
-In any case, I only know of the broadest of angles about stocks and what you can use them for.
-Responses:
-Hmm, I am just wondering what use they are - seem a little pointless to me. -> pointless
-How can you get some? -> get
-How do you know which groups have stocks? -> have
-Is there anything intersting about them? -> interest
+(defun stock
+(say "Its ... interesting. I'm not an expert in it, I leave it up to others to buy high and sell low, or is it the other way around?")
+(say "In any case, I only know of the broadest of angles about stocks and what you can use them for.")
+(add-response "Hmm, I am just wondering what use they are - seem a little pointless to me." pointless)
+(add-response "How can you get some?" get)
+(add-response "How do you know which groups have stocks?" have)
+(add-response "Is there anything intersting about them?" interest))
 
-Block: pointless
-Yes, the majority of people do. However I believe as a stockowner you gain access to certain privy information on the group.
-Things like how much credit they have to their name, who the other stockowners are, what are their chances in the near future and so on.
-There is one important aspect about stocks that most people like to keep in mind however.
-Responses:
-Whats that then? -> important
-Oh. Doesn't sound like something I would be interested in. -> general
-Nice way to spy on other groups. -> spy
+(defun pointless
+(say "Yes, the majority of people do. However I believe as a stockowner you gain access to certain privy information on the group.")
+(say "Things like how much credit they have to their name, who the other stockowners are, what are their chances in the near future and so on.")
+(say "There is one important aspect about stocks that most people like to keep in mind however.")
+(add-response "Whats that then?" important)
+(add-response "Oh. Doesn't sound like something I would be interested in." general)
+(add-response "Nice way to spy on other groups." spy))
 
-Block: important
-Well, whoever owns 51% of more of a particular groups stock, is considered the owner. They can control certain aspects of the group, though in some ways the leader has more control.
+(defun important
+(say "Well, whoever owns 51% of more of a particular groups stock, is considered the owner. They can control certain aspects of the group, though in some ways the leader has more control."))
 
-Block: spy
-Yeah, could be. See if any faction is missing some critical staff that may give you leverage in buy outs. If you are into that sort of thing.
-Responses:
-I may just be. Time for more questions? -> general
+(defun spy
+(say "Yeah, could be. See if any faction is missing some critical staff that may give you leverage in buy outs. If you are into that sort of thing.")
+(add-response "I may just be. Time for more questions?" general))
 
-Block: get
-A lot of groups sell them directly, so contacting them when they advertise is a good opportunity. However most stocks are traded on the open market by individuals or groups.
-Buying them here is much like buying directly from the group, though occasionally more expensive.
-Responses:
-Thank you. -> general
+(defun get
+(say "A lot of groups sell them directly, so contacting them when they advertise is a good opportunity. However most stocks are traded on the open market by individuals or groups.")
+(say "Buying them here is much like buying directly from the group, though occasionally more expensive.")
+(add-response "Thank you." general))
 
-Block: have
-This can be quite tricky. A lot of groups and companies get by without releasing any stock at all. Some can only release a limited amount and this is kept within their leadership.
-However, looking at the open market will give you an idea of which factions have stocks available, and their rarity.
-Responses:
-Hmm. -> general
+(defun have
+(say "This can be quite tricky. A lot of groups and companies get by without releasing any stock at all. Some can only release a limited amount and this is kept within their leadership.")
+(say "However, looking at the open market will give you an idea of which factions have stocks available, and their rarity.")
+(add-response "Hmm." general))
 
-Block: interest
-Depends on what you want. They can give information on the faction, or allow you to control who owns it. Beyond that there is not much more exciting.
-Occasionally a company or group will offer benefits to owning their stock, but they are rare.
-Responses:
-Thanks. -> general
+(defun interest
+(say "Depends on what you want. They can give information on the faction, or allow you to control who owns it. Beyond that there is not much more exciting.")
+(say "Occasionally a company or group will offer benefits to owning their stock, but they are rare.")
+(add-response "Thanks." general))
 
-Block: general
-Do you have any more questions?
-Responses:
-I sure do, what sort of services are provided? -> service
-Yeah, I was wondering about currencies around the galaxy. -> currency
-What do you think of the stock market? -> stock
-No, you have answered them all thanks. -> leave
+(defun general
+(say "Do you have any more questions?")
+(add-response "I sure do, what sort of services are provided?" service)
+(add-response "Yeah, I was wondering about currencies around the galaxy." currency)
+(add-response "What do you think of the stock market?" stock)
+(add-response "No, you have answered them all thanks." leave))
 
-Block: currency
-Yes, a lot of planets have their own individual currencies they use, and many companies and governments whose influence stretches across multiple planets, systems or even sectors will have their own.
-However most of the galaxy uses the credit. This is a common and widely accepted form of payment for everyone.
-Responses:
-I've heard of the Nova Crystal currency - whats that? -> nova
-Do we use those other currencies at all? -> other
+(defun currency
+(say "Yes, a lot of planets have their own individual currencies they use, and many companies and governments whose influence stretches across multiple planets, systems or even sectors will have their own.")
+(say "However most of the galaxy uses the credit. This is a common and widely accepted form of payment for everyone.")
+(add-response "I've heard of the Nova Crystal currency - whats that?" nova)
+(add-response "Do we use those other currencies at all?" other))
 
-Block: nova
-Yes, that is one of the government owned currencies. I believe it is the Krath Dynasty that controls its value and distribution.
-I'm sorry, but I don't know much about it. You may want to contact them for more information.
-Responses:
-Thanks. -> general
+(defun nova
+(say "Yes, that is one of the government owned currencies. I believe it is the Krath Dynasty that controls its value and distribution.")
+(say "I'm sorry, but I don't know much about it. You may want to contact them for more information.")
+(add-response "Thanks." general))
 
-Block: other
-Not really no. Sometimes one company or group will set up some alternative methods of payment, but in the end its generally credits that are used in anything.
-Responses:
-Hmm. -> general
+(defun other
+(say "Not really no. Sometimes one company or group will set up some alternative methods of payment, but in the end its generally credits that are used in anything.")
+(add-response "Hmm." general))
 
-Block: service
-Banks generally have a few different options available. Most will at least offer some sort of loan system, some will offer credit accounts, and then there will be some more specific services they can provide.
-Responses:
-!if time.ofday=Morning! Oh, thanks. -> leave
-!if time.ofday=Evening! Hmm, might be of some use. -> leave
-!if time.ofday=Afternoon! !ifnot container.type=Bank! Ah. Better find one of your fellows in a bank then huh. -> leave
-!if time.ofday=Afternoon! !if container.type=Bank! Interesting. Could you tell me about loans? -> loan
-!if time.ofday=Afternoon! !if container.type=Bank! I've been looking for an account for weeks. -> account
-!if time.ofday=Afternoon! !if container.type=Bank! Other services? -> oservice
+(defun service
+(say "Banks generally have a few different options available. Most will at least offer some sort of loan system, some will offer credit accounts, and then there will be some more specific services they can provide."))
 
-Block: loan
-Sure. Many banking companies, and occasionally other groups, will offer to loan credits in exchange for some form of collateral as protection against you running off with the money.
-They will generally also have some form of interest that you will have to pay off to ensure that the loan is paid off in a timely fashion.
-Responses:
-Thanks. Got some other questions. -> general
+[(eq? (timeofday) "Morning") (add-response "Oh, thanks." leave)]
+[(eq? (timeofday) "Evening") (add-response "Hmm, might be of some use." leave)]
+[(eq? (timeofday) "Afternoon") (eg? (get-container-type) "Bank") (add-response "Interesting. Could you tell me about loans?" loan)]
+[(eq? (timeofday) "Afternoon")  (eg? (get-container-type) "Bank") (add-response "I've been looking for an account for weeks." account)]
+[(eq? (timeofday) "Afternoon")  (eg? (get-container-type) "Bank") (add-response "Other services?" oservice)]
+[(eq? (timeofday) "Afternoon") (add-response "Ah. Better find one of your fellows in a bank then huh." leave))]
 
-Block: account
-Really? This service is generally a bit rarer than loans because it involves a lot more work, and there is a real possibility that they bankrupt themselves by taking on too many accounts.
-Generally though they will take your credits and then add a set percentage to it each month or year, allowing you to remove funds at certain points.
-Responses:
-Hmm, might not need one now. -> general
+(defun loan
+(say "Sure. Many banking companies, and occasionally other groups, will offer to loan credits in exchange for some form of collateral as protection against you running off with the money.")
+(say "They will generally also have some form of interest that you will have to pay off to ensure that the loan is paid off in a timely fashion.")
+(add-response "Thanks. Got some other questions." general))
 
-Block: oservice
-Yes. Some will keep a track on the stockmarket, some may keep bounty lists, others may hold an exchange rate booth. For as many ways as there are to use credits, there are almost the same amount of ways to use money and information about money.
-Responses:
-Enlightening. -> general
+(defun account
+(say "Really? This service is generally a bit rarer than loans because it involves a lot more work, and there is a real possibility that they bankrupt themselves by taking on too many accounts.")
+(say "Generally though they will take your credits and then add a set percentage to it each month or year, allowing you to remove funds at certain points.")
+(add-response "Hmm, might not need one now." general))
 
-Block: not
-Oh. I'm on holiday.
+(defun oservice
+(say "Yes. Some will keep a track on the stockmarket, some may keep bounty lists, others may hold an exchange rate booth. For as many ways as there are to use credits, there are almost the same amount of ways to use money and information about money.")
+(add-response "Enlightening." general))
+
+(defun not
+(say "Oh. I'm on holiday."))
+
+(defun no-response #t)
