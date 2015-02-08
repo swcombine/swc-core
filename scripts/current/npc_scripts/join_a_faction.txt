@@ -1,43 +1,67 @@
-Block: start
-Hi there. What's up?
-Responses:
-Not much, having a look around. -> look
-Huh? Leave me alone! -> leave
-I'm looking for a good time. You free? -> time
-
-Block: look
-Really? That's good. Not much to look at though around here.
-Hey, you may want to have a look at joining a faction; they usually will find something for you to look at.
-Responses:
-A faction huh? Care to explain a bit more? -> faction
-You know what, that's some pseudo-political talk right there. -> leave
-Thanks, but I've already found one. -> already
-
-Block: leave
-You feel like that, hmm? Fine, see you around. Don't need that kind of attitude.
-
-Block: time
-Maybe. Tell you what though, better times are had if you find yourself a faction.
-They can help you out with all sorts of things.
-Responses:
-Really? Well that sounds interesting, do you know anything more? -> faction
-I was actually after something a bit more personal than that. -> leave
-To be honest I've already found myself one. -> already
-
-Block: faction
-Well, factions are complicated beasts. They are groups of sentients that work together for a common goal. There are many different types and they incorporate many varied areas of life.
-For instance a Droid Production faction will be involved in the construction of various different droids, while a Religious faction will lean more towards spreading their religion and bringing in tithes from their churches and chapels.
-There is a public listing of factions available that you can peruse at your leisure. Here, I have a copy you can borrow.
-*The sentient in front of you passes over a small holodisc with the listing visible under the title: <a href="http://www.swcombine.com/community/factions.php">Galactic Faction Registry</a>*
-Responses:
-Meh, sounds a bit boring to tell you the truth. -> leave
-
-Block: already
-Thats excellent. I hope you are enjoying yourself there.
-Just remember that there are plenty more factions out there, so don't think you are stuck there. Though I do warn you that factions don't take too kindly to sentients that hop in and out of them like yo-yos.
-Responses:
-Thanks for that, I'll keep it in mind. See ya. -> leave2
-Spoil sport, that's my entire plan, muhahaha! -> leave
-
-Block: leave2
-Sure thing. Have fun, whatever you choose.
+;; Earlier definitions omitted
+;; Defining variable of the quest, do not know the get-quest ID number so I filled it in with 007 for James Bond, since we all want to be heroes. Replace before use.
+(defvar JOIN_A_FACTION (get-quest 007))
+;; Replace JOIN_A_FACTION with the actual Quest Number in the SWCombine Server
+;; This quest is roughly converted into the new system and needs to be redone.
+ 
+;;starts quest
+(defun start
+  (cond
+    [(quest-finished? JOIN_A_FACTION) (say "You were sent a message via the Darkness Messaging system. This can be found at http://www.swcombine.com/members/messages/ if you are unable to find the mail icon at your notifications bar just below the top of the web page on the main site after you login. If you finished the quest more than two weeks ago then it may not be there. If so, please go to http://www.swcombine.com/community/factions.php to find the current factions list.")]
+    [(quest-started? JOIN_A_FACTION) (start)]
+    [#t (say "Please consider joining a faction, your level of success may be dependent upon it!")
+        )))
+;; Finishing the quest gives XP/Credits + sends a message via Darkness. If they have already finished the quest, they will get an OOC message that covers the basics.
+ 
+(defun start
+    (say "Hi there. What's up?")
+    (add-response "Not much, having a look around." look)
+    (add-response "Huh? Leave me alone!" leave)
+    (add-response "I'm looking for a good time. You free?" time))
+ 
+(defun look
+    (say "Really? That's good. Not much to look at though around here. Hey, you may want to have a look at joining a faction; they usually will find something for you to look at. They usually pay for it too.")
+    (add-response "A faction huh? Care to explain a bit more?" faction)
+    (add-response "You know what, that's some pseudo-political talk right there." leave)
+    (add-response "Thanks, but I've already found one." already))
+ 
+(defun leave
+    (say "You feel like that, hmm? Fine, not that I like that sort of attitude, but I am not paid for what I like or not like. I get paid to help new members of the galactic society. My assistant will see to it you get the message we are paid to send to even folks like you.")
+    (send-message self character (say "Welcome to SWCombine.com, we wish you to have a wonderful experience here. At times this game can be difficult for people and we have several resources to help new players. To find a new faction, please go to <a href='http://www.swcombine.com/community/factions.php'>The Faction Page</a> , to get general help you can post or search for assistance <a href='http://www.swcombine.com/forum/index.php?board=2'>HERE.</a> Forge your own destiny among the stars."))
+    (quest-finish JOIN_A_FACTION)
+    (add-xp 100 (say "Finished quest: Joining a Faction"))
+    (add-credits 5000))
+ 
+(defun time
+    (say "Maybe. Tell you what though, better times are had if you find yourself a faction. They can help you out with all sorts of things.")
+    (add-response "Really? Well that sounds interesting, do you know anything more?" faction)
+    (add-response "I was actually after something a bit more personal than that." leave)
+    (add-response "To be honest I've already found myself one." already))
+ 
+(defun faction
+    (say "Well, factions are complicated beasts. They are groups of sentients that work together for a common goal. There are many different types and they incorporate many varied areas of life. For instance a Droid Production faction will be involved in the construction of various different droids, while a Religious faction will lean more towards spreading their religion and bringing in tithes from their churches and chapels. There is a public listing of factions available that you can peruse at your leisure.")
+    (add-response "Meh, sounds a bit boring to tell you the truth." leave)
+    (add-response "Interesting, thank you." leave2)
+    (add-response "Where can I find this public listing?" message))
+;; Added the second response so this quest was not all negative sounding.
+;; Added the third response to send the listing location via Darkness Message
+ 
+(defun already
+    (say "Thats excellent. I hope you are enjoying yourself there. Just remember that there are plenty more factions out there, so don't think you are stuck there. Though I do warn you that factions don't take too kindly to sentients that hop in and out of them like yo-yos.")
+    (add-response "Thanks for that, I'll keep it in mind. See ya." leave2)
+    (add-response "Spoil sport, that's my entire plan, muhahaha!" leave))
+ 
+(defun leave2
+    (say "Sure thing, I will have my assistant send you the current faction list just in case. And have fun, whatever you choose.")
+    (send-message sender-object character (say "Welcome to SWCombine.com, we wish you to have a wonderful experience here. At times this game can be difficult for people and we have several resources to help new players. To find a new faction, please go to <a href='http://www.swcombine.com/community/factions.php'>The Faction Page</a> , to get general help you can post or search for assistance <a href='http://www.swcombine.com/forum/index.php?board=2'>HERE.</a> Forge your own destiny among the stars."))
+    (quest-finish JOIN_A_FACTION)
+    (add-xp 100 (say "Finished quest: Joining a Faction"))
+    (add-credits 5000))
+ 
+(defun message
+    (say "I will have my assistant send it to your data pad, in the mean time here is some credits to help you on your way with a new life")
+    (send-message sender-object character (say "Welcome to SWCombine.com, we wish you to have a wonderful experience here. At times this game can be difficult for people and we have several resources to help new players. To find a new faction, please go to <a href='http://www.swcombine.com/community/factions.php'>The Faction Page</a> , to get general help you can post or search for assistance <a href='http://www.swcombine.com/forum/index.php?board=2'>HERE.</a> Forge your own destiny among the stars."))
+    (quest-finish JOIN_A_FACTION)
+    (add-xp 100 (say "Finished quest: Joining a Faction"))
+    (add-credits 5000))
+;; This is the end of the script
