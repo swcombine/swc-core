@@ -1,54 +1,45 @@
-Block: start
-Hello there, its a wonderful %time.ofday% wouldn't you say?
-Is there something you want from me?
-Responses:
-Yeah, I'm wondering if you can heal me? -> heal
-Just looking around, seeing what everyone does. -> look
-I'm wondering what the best bacta tank is. -> tank
+(defun start
+  (say (concat "Hello there, its a wonderful " timeofday " wouldn't you say?"))
+  (say "Is there something you want from me?")
+  (add-response "Yeah, I'm wondering if you can heal me?" heal)
+  (add-response "Just looking around, seeing what everyone does." look)
+  (add-response "I'm wondering what the best bacta tank is." tank))
 
-Block: heal
-Ah, I'm afraid I've been getting that a lot recently. Without the right equipment, I cannot perform any operations, even minor cuts or scrapes. 
-You'll have to take it up with the nearest medical establishment, see if they can help you there.
-Responses:
-Really? Oh well. I'll just bleed to death then. -> bleed
-Ach. Pah in that case I'll look around. -> look
+(defun heal
+  (say "Ah, I'm afraid I've been getting that a lot recently. Without the right equipment, I cannot perform any operations, even minor cuts or scrapes. You'll have to take it up with the nearest medical establishment, see if they can help you there.")
+  (add-response "Really? Oh well. I'll just bleed to death then." bleed)
+  (add-response "Ach. Pah in that case I'll look around." look))
 
-Block: look
-Well you can look, just don't touch. Some of these tools are expensive, and even I am not allowed to touch them yet.
-%npc.owner% wouldn't be too happy with you if you did.
-Responses:
-Sheesh does anyone do any work around here? -> work
-Oh. Can't you use them to heal me? -> heal
+(defun look
+  (say "Well you can look, just don't touch. Some of these tools are expensive, and even I am not allowed to touch them yet.") 
+  (add-response "Sheesh does anyone do any work around here?" work)
+  (add-response "Oh. Can't you use them to heal me?" heal))
 
-Block: bleed
-Looks like you might have to then. I'm afraid I really cannot do anything to help you as of the moment.
-Tell you what, %npc.owner% might cut you a deal if you tell them I sent you. But don't pin your hopes on it.
-Responses:
-Pah, some medic you are. -> leave
-Thanks, I'll try that. -> leave
+(defun bleed
+  (say (concat "Looks like you might have to then. I'm afraid I really cannot do anything to help you as of the moment. Tell you what, " (get-owner self) " might cut you a deal if you tell them I sent you. But don't pin your hopes on it."))
+  (add-response "Pah, some medic you are." leave)
+  (add-response "Thanks, I'll try that." leave))
 
-Block: leave
-Ok, see you later. Hopefully. That cut looks nasty.
+(defun leave
+  (say "Ok, see you later. Hopefully. That cut looks nasty."))
 
-Block: work
-Of course they do. Its just that while people like you are sniffing around, asking innane questions, no-one can get any work done. Therefore we all look like slackers.
-Responses:
-Right. Sure. Well, I had better leave then hadn't I? -> leave
-Ah, makes a lot of sense now you say that. -> leave
-Well, since I'm disturbing you anyway, whats the best bacta tank? -> tank
+(defun work
+  (say "Of course they do. Its just that while people like you are sniffing around, asking innane questions, no-one can get any work done. Therefore we all look like slackers.")
+  (add-response "Right. Sure. Well, I had better leave then hadn't I?" leave)
+  (add-response "Ah, makes a lot of sense now you say that." leave)
+  (add-response "Well, since I'm disturbing you anyway, whats the best bacta tank?" tank))
 
-Block: tank
-The best? Well really they are all the same, at least for most uses. 
-!if faction.type=Medical! I hear the ones that %faction.name% has are quite unique, but I'm not sure if they are selling them. Might to you though.
-!ifnot faction.type=Medical! You may what to look around. I don't think your company can actually supply them.
-Responses:
-Thanks, that was useful. -> leave
-That was completely useless. -> useless
-Hmm, but they are so expensive! -> expensive
+(defun tank
+  (say "The best? Well really they are all the same, at least for most uses.")
+  (cond
+    [(eq? (faction-type (get-faction character)) "Medical") (say (concat "I hear the ones that " (get-name (get-faction character)) " has are quite unique, but I'm not sure if they are selling them. Might to you though."))]
+    [#t (say "You may what to look around. I don't think your company can actually supply them.")])
+  (add-response "Thanks, that was useful." leave)
+  (add-response "That was completely useless." useless)
+  (add-response "Hmm, but they are so expensive!" expensive))
 
-Block: expensive
-Yeah, but if you want quality merchandise, you have to pay. Its your health after all.
+(defun expensive
+  (say "Yeah, but if you want quality merchandise, you have to pay. Its your health after all."))
 
-Block: useless
-Well, if thats what you think, sure why not. But some people have found it helps. 
-Do your own research if you don't like what I have to say. In fact do it anyway.
+(defun useless
+  (say "Well, if thats what you think, sure why not. But some people have found it helps. Do your own research if you don't like what I have to say. In fact do it anyway."))
