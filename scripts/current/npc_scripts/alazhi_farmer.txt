@@ -1,56 +1,61 @@
-Block: start
-!if npc.ally! *%npc.name% waves to you as he leans on his gaderffii stick and wipes the sweat from his brow*
-!if npc.ally! What brings you out this far my friend?
-!ifnot npc.ally! *%npc.name% steps in front of you to block your path*
-!ifnot npc.ally! This is private property and a restricted area. What is your business here?
-Responses:
-!if npc.ally! I was curious to know what you are doing. -> doing
-I suggest you move to the side and let me pass -> gun
-Who is the owner of this farm? -> owner
-I was just on a short expedition. I should be getting back now. Good Day. -> leave
+(defun start
+(cond
+[(is-ally? self) (descrip (concat (get-name self) " waves to you as he leans on his gaderffii stick and wipes the sweat from his brow.")) 
+(say "What brings you out this far my friend?") 
+(add-response "I was curious to know what you are doing." doing)]
+[#t (descrip (concat (get-name self) "steps in front of you to block your path") 
+(say "This is private property and a restricted area. What is your business here?")))]
+(add-response "I suggest you move to the side and let me pass" gun)
+(add-response "Who is the owner of this farm?" owner) (add-response "I was just on a short expedition. I should be getting back now. Good Day." leave)
+)
 
-Block: doing
-At the moment I am checking the oxidation levels to ensure optimum production levels from the xoorzi. It's a bit technical but I could take a few hours to explain it to you ... I could use the break.
-Responses:
-That wont be necessary. Perhaps another time. -> leave
-Why do I get the impression that you are wasting my time on purpose? -> gun
-No thank you. I am more interested in where I could make a purchase. -> Purchase
-That would be great. I've always been interested in farming -> work
-Could you first tell me who owns this facility? -> owner
+(defun doing
+(say "At the moment I am checking the oxidation levels to ensure optimum production levels from the xoorzi. _
+It's a bit technical but I could take a few hours to explain it to you ... I could use the break.")
+(add-response "That wont be necessary. Perhaps another time." leave)
+(add-response "Why do I get the impression that you are wasting my time on purpose?" gun)
+(add-response "No thank you. I am more interested in where I could make a purchase." Purchase1)
+(add-response "That would be great. I've always been interested in farming." work)
+(add-response "Could you first tell me who owns this facility?" owner)
+)
 
-Block: work
-Actually, I've got to get back to work. Sorry. Please don't distrub anything.
+(defun work
+(say "Actually, I've got to get back to work. Sorry. Please don't distrub anything.")
+)
 
-Block: owner
-I cannot, I do not that. I do not know, they tell me nothing!.
-Responses:
-Ok, ok. I'll leave. -> leave
+(defun owner
+(say "I cannot, I do not that. I do not know, they tell me nothing!")
+(add-response "Ok, ok. I'll leave." leave)
+)
 
-Block: gun
-Stop! There is no need for violence. I am but a simple farmer armed only with a stick! Please Sir!
-Responses:
-You're right. My apologies. Please tell me a bit about what you are doing. -> doing
-Then stop waisting my time and tell me who owns this facility. -> owner
-Oh, right. Sorry. My temper got the best of me. Ill just go about my business. -> leave
+(defun gun
+(say "Stop! There is no need for violence. I am but a simple farmer armed only with a stick! Please Sir!")
+(add-response "You're right. My apologies. Please tell me a bit about what you are doing." doing)
+(add-response "Then stop wasting my time and tell me who owns this facility." owner)
+(add-response "Oh, right. Sorry. My temper got the best of me. Ill just go about my business." leave)
+)
 
-Block: leave
-Thanks for the visit. Perhaps next time you could bring refreshments. Good day to you.
+(defun leave
+(say "Thanks for the visit. Perhaps next time you could bring refreshments. Good day to you.")
+)
 
-Block: Purchase
-Unfortunately we do not sell directly to the public. I believe our harvest is sold directly for the manufacture of bacta. Perhaps you could try the market?
-Responses:
-That's unfortunate. -> leave
-This is unacceptable. I want to speak to the owner of this facility! -> message
-That's not the answer I was looking for! -> gun
-Well, perhaps you could explain to me what you are doing so I can start my own farm. -> doing
+(defun Purchase1
+(say "Unfortunately we do not sell directly to the public. I believe our harvest is sold directly for the manufacture of bacta._
+ Perhaps you could try the market?")
+ (add-response "That's unfortunate." leave)
+ (add-response "This is unacceptable. I want to speak to the owner of this facility!" message) 
+ (add-response "That's not the answer I was looking for!" gun)
+ (add-response "Well, perhaps you could explain to me what you are doing so I can start my own farm." doing)
+)
 
-Block: message
-Well, actually I do not have the ability to take a message at the moment. My apologies...
-Responses:
-Very well. Ill be on my way then -> leave
-That's ok. Id rather speak to you. What are you doing here with this fungi? -> doing
-If you can not deliver a message can you tell me where to go to purchase some Alazhi? -> purchase
-I've had enough of you giving me the run around. -> gun
+(defun message
+(say "Well, actually I do not have the ability to take a message at the moment. My apologies...")
+(add-response "Very well. I'll be on my way then" leave)
+(add-response "That's ok. I'd rather speak to you. What are you doing here with this fungi?" doing)
+(add-response "If you cannot deliver a message can you tell me where to go to purchase some Alazhi?" purchase)
+(add-response "I've had enough of you giving me the run around." gun)
+)
 
-Block: purchase
-Sure, just go talk to any of the medical groups out there.
+(defun purchase
+(say "Sure, just go talk to any of the medical groups out there.")
+)
