@@ -1,7 +1,7 @@
 (defun start
   (cond
-    [(is-ally? self) (describe "(get-name self) comes to attention and salutes you")(say "Welcome (get-formal character). It's a bit quiet, so I could answer any questions you may have.")]
-    [#t              (describe "(get-name self) eyes you suspiciously")             (say "Excuse me (get-formal character), but what are you doing here?")])
+    [(is-ally? self) (describe (concat (get-name self) " comes to attention and salutes you")) (say (concat "Welcome " (get-formal character)". It's a bit quiet, so I could answer any questions you may have."))]
+    [#t              (describe (concat (get-name self) " eyes you suspiciously")) (say (concat "Excuse me " (get-formal character) ", but what are you doing here?"))])
   (add-response "I have a bigger gun than you." gun)
   (add-response "I have a message for your boss." boss))
 
@@ -10,24 +10,24 @@
   (say "Look, do you want anything?")
   (cond
     [(is-ally? self) (add-response "At ease soldier. I just wish to ask what you are doing." doing)]
-    [#t (add-response "I am just having a look around." look]))
+    [#t (add-response "I am just having a look around." look])))
 
 (defun boss
-  (say "Sure. (get-owner self) is not currently available, and is not taking any visitors, except by appointment.")
+  (say (concat "Sure. " (get-owner self) " is not currently available, and is not taking any visitors, except by appointment."))
   (add-response "Oh, sorry. Didn't realise." leave)
   (cond
     [(is-ally? self) (add-response "At ease soldier. I just wish to ask what you are doing." doing)]
-    [#t (add-response "I am just having a look around." look]))
+    [#t (add-response "I am just having a look around." look])))
 
 (defun doing
   (say "I am currently guarding this stretch. A bit boring to be honest, but it's something that is needed.")
-  (say "Do you need me for anything, (get-formal character)?")
+  (say (concat "Do you need me for anything, " (get-formal character) "?"))
   (add-response "Oh, no. I was just passing by. Continue soldier." politeleave)
   (add-response "Actually, I was interested in how you joined up." join)
   (add-response "I'm looking for your boss." boss))
 
 (defun look
-  (say "Well, I would be wary. This is an area owned by (get-owner self) and trespassers are not treated too kindly.")
+  (say (concat "Well, I would be wary. This is an area owned by " (get-owner self) " and trespassers are not treated too kindly."))
   (say "I would suggest you leave immediately, before I am forced to shoot you.")
   (add-response "Shoot me? You've got to be kidding!" shoot)
   (add-response "Ok, ok, I'm leaving." leave))
@@ -45,18 +45,18 @@
   (add-response "No. I will talk with your boss." boss))
 
 (defun join
-  (say "Ah well (get-formal character), it was because of my early years. Spent many a year on my parents' land on a frontier world. Life was hard, and lessons harder.")
+  (say (concat "Ah well " (get-formal character) ", it was because of my early years. Spent many a year on my parents' land on a frontier world. Life was hard, and lessons harder."))
   (say "Everyone had to learn how to use a gun as early as possible. Creatures and raiders and other things were rife.")
   (add-response "Must have been hard." hard)
   (add-response "Oh. Thanks for the story, I must leave." politeleave))
 
 (defun hard
   (say "Aye, hard and fulfilling. I won most of the shooting contests while I lived there, and it was natural to settle in a life that has a predominance of weapons around.")
-  (say "Anyway, if you don't mind (get-formal character), I must be getting back to my duties. Otherwise my boss will have my head.")
+  (say (concat "Anyway, if you don't mind " (get-formal character) ", I must be getting back to my duties. Otherwise my boss will have my head."))
   (add-response "Ok then, goodbye." politeleave))
 
 (defun politeleave
-  (say "(timeofday) (get-formal character), enjoy the rest of the day."))
+  (say (concat timeofday " " (get-formal character) ", enjoy the rest of the day.")))
 
 (defun leave
   (say "Evidently. Goodbye."))
