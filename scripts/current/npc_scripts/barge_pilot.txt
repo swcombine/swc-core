@@ -41,7 +41,7 @@
 (defun job
 	(say "I am sure it would seem that way, but its not at all. I am usually the most popular person in the camp. I have even heard from families of fallen troops telling how they would talk about being to see me roll up.")
 	(add-response "Wow. I guess soldiers eating was something I never really thought about before now." bye)
-	(add-response I guess you are more important than I thought. I bet you are full of stories, huh?" story))
+	(add-response "I guess you are more important than I thought. I bet you are full of stories, huh?" story))
 
 (defun story
 	(say (concat "Stories, have I got stories. My favorite is the one where old " (get-name self) " here drove a transport into the heart of battle. It was during the Clone Wars, on " (rand-from-list (list "Malastare" "Christophsis" "some backwater rock in the Outer Rim"))", I had shown up with rations for a battalion of clone troopers. Their regular barge pilot had celebrated his birthday a little too hard the night before. I've never seen a hangover like that before, and the sounds he was making...like a gundark getting its ears torn off, let me tell ya. Being the only one around with any driving experience, the general in charge handed me a map and told me to be quick."))
