@@ -1,47 +1,43 @@
-Block: start
-Dangers await you, young %character.race%. Beware of all around you.
-Responses:
-Yeah, yeah, whatever. -> ever
-Are you part of that danger? -> danger
+(defun start
+(say (concat "Dangers await you, young " (get-race character) ". Beware of all around you."))
+(add-response "Yeah, yeah, whatever." ever)
+(add-response "Are you part of that danger?" danger))
 
-Block: ever
-Well, your doom then. No skin off me. Enjoy the last few moments of your living future.
+(defun ever
+(say "Well, your doom then. No skin off me. Enjoy the last few moments of your living future."))
 
-Block: question
-Indeed there are. The main one however is hyperspace. Suns too, but not so much.
-Responses:
-Suns? -> sun
-Hyperspace? Is there something I should know? -> pilot
+(defun question
+(say "Indeed there are. The main one however is hyperspace. Suns too, but not so much.")
+(add-response "Suns?" sun)
+(add-response "Hyperspace? Is there something I should know?" pilot))
 
-Block: danger
-Maybe, maybe not. You never know, and that is the truth. For as I speak, I may have nefarious friends who are now quietly sneaking up on you!
-*%npc.name% starts laughing as you look behind you*
-Or maybe not, ha ha ha.
-Responses:
-Not funny. I am not dealing with you further. -> leave
-Ok then, any <i>real</i> dangers around then? -> question
+(defun danger
+(say "Maybe, maybe not. You never know, and that is the truth. For as I speak, I may have nefarious friends who are now quietly sneaking up on you!")
+(describe (concat (get-name self) " starts laughing as you look behind you"))
+(say "Or maybe not, ha ha ha.")
+(add-response "Not funny. I am not dealing with you further." leave)
+(add-response "Ok then, any <i>real</i> dangers around then?" question))
 
-Block: pilot
-Of course you must. Throughout your travels you will be traveling in hyperspace. And occasionally you may have need to abort that travel.
-But be aware! Some danger exists when you attempt this. If you happen to be anywhere near a system with planets, there is a very real danger of exiting hyperspace inside one of them.
-Responses:
-Inside? -> inside
-Pah, the chances of that are slim to none. -> slim
+(defun pilot
+(say "Of course you must. Throughout your travels you will be traveling in hyperspace. And occasionally you may have need to abort that travel.")
+(say "But be aware! Some danger exists when you attempt this. If you happen to be anywhere near a system with planets, there is a very real danger of exiting hyperspace inside one of them.")
+(add-response "Inside?" inside)
+(add-response "Pah, the chances of that are slim to none." slim))
 
-Block: sun
-Yeah, they are dangerous. But not what I am alluding to, I'm afraid. More dangerous than that.
-Responses:
-What then? Should I know? -> pilot
-Meh, whatever. -> ever
+(defun sun
+(say "Yeah, they are dangerous. But not what I am alluding to, I'm afraid. More dangerous than that.")
+(add-response "What then? Should I know?" pilot)
+(add-response "Meh, whatever." ever))
 
-Block: leave
-Ok, do what you want. I'll stay here.
+(defun leave
+(say "Ok, do what you want. I'll stay here."))
 
-Block: inside
-Aye, inside. Not very pretty, as you can imagine. Anyway, keep that in mind while you're whizzing around in nothingness up there. 
-Me, my feet will stay on the ground as much as possible.
-Responses:
-Thanks. -> leave
+(defun inside
+(say "Aye, inside. Not very pretty, as you can imagine. Anyway, keep that in mind while you're whizzing around in nothingness up there.")
+(say "Me, my feet will stay on the ground as much as possible.")
+(add-response "Thanks." leave))
 
-Block: slim
-Slim is still possible though. But up to you though.
+(defun slim
+(say "Slim is still possible though. But up to you though."))
+
+(defun no-response #t)
