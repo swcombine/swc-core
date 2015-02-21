@@ -13,7 +13,7 @@
 	(add-response "No, I am not. And shouldn't you be waiting for some kind of rations if you are feeding soldiers?" solider)
 	(add-response "I am still a little confused, what exactly is going on here?" here))
 
-(defun solider
+(defun soldier
 	(say "I like to have something different for the troops. They get their fill of rations. I mean right now I have crates and crates of ration cubes, ration bars, ready rations, q-rations, Gleb rations. Heck, I've even got a couple dozen of K-18 rations ready to go. It's nice to have something with a little taste to it, ya know.")
 	(add-response "Yeah, I guess so. Aren't you a little old to be in the military, though?" old)
 	(add-response "So you're a supplier for the military. Which military do you work for?" work))
