@@ -2,7 +2,7 @@
 	(describe (concat "An older looking " (get-race self) " is looking over a datapad while softly talking to themselves"))
 	(say (concat "Check...check...better load a few more of those... where is that shipment of " (rand-from-list (list "Cheefa cakes" "zoonchberries" "bofa fruit")) "."))
 	(describe (concat "The " (get-race self) " stashes the datapad as you approach"))
-	(say "Finally, I thought you wouldn't make it on time. Show me where to sign and I will show you where to unload the cargo. I've got hungry soliders to feed.")
+	(say "Finally, I thought you wouldn't make it on time. Show me where to sign and I will show you where to unload the cargo. I've got hungry soldiers to feed.")
 	(add-response "What are you talking about?" about)
 	(add-response "That stuff doesn't sound like soldier food." soldier)
 	(add-response "Aren't you a little old for the military?" old)
@@ -10,7 +10,7 @@
 	
 (defun about
 	(say "The shipment I have been waiting for, I've only got a couple hours before I need to head out...wait you aren't from the delivery service are you?")
-	(add-response "No, I am not. And shouldn't you be waiting for some kind of rations if you are feeding soldiers?" solider)
+	(add-response "No, I am not. And shouldn't you be waiting for some kind of rations if you are feeding soldiers?" soldier)
 	(add-response "I am still a little confused, what exactly is going on here?" here))
 
 (defun soldier
@@ -30,11 +30,11 @@
 (defun here
 	(describe (concat "The " (get-race self) " chuckles a bit"))
 	(say (concat "Good to see I'm not the only one. It's actually not that confusing, really. The name's " (get-name self) ", and I move cargo, mostly food. I take it from the warehouses into the field so that the grunts don't die of starvation. I've been waiting here to meet a courier so I can finish loading up the barge and head out."))
-	(add-response "Oh, I see now, but I thought the only food soldiers ate were rations." solider)
+	(add-response "Oh, I see now, but I thought the only food soldiers ate were rations." soldier)
 	(add-response "Ah, okay. Thanks for explaining that. I will let you get back to waiting. Be careful out there." leave))
 
 (defun work
-	(say "Not to be a braggart, but I like to think of myself as more than a supplier. A well fed solider is a happy solider, so think of me more as an unoffical morale officer. And as for who I am currently working for...I think it's best to keep that confidential, makes us all a little safer.")
+	(say "Not to be a braggart, but I like to think of myself as more than a supplier. A well fed soldier is a happy soldier, so think of me more as an unoffical morale officer. And as for who I am currently working for...I think it's best to keep that confidential, makes us all a little safer.")
 	(add-response "I see, well I should be going now." leave)
 	(add-response "I bet you have all kinds of good stories, huh?" story))
 
