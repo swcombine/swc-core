@@ -6,8 +6,8 @@
 		(add-response "What do you have?" inquiry)
 		(add-response "Umm... gimme whatever's on tap" drink)
 		(add-response "Blue milk" milk)
-		(add-response I'm Looking for a little companionship" companion)
-		(add-response Heard any good rumours?" rumour)]))
+		(add-response "I'm Looking for a little companionship" companion)
+		(add-response "Heard any good rumours?" rumour)]))
 		
 (defun inquiry
 	(say "Nothing but the finest rotgut from everywhere in the galaxy. What'll it be?")
@@ -40,8 +40,8 @@
 	(say "Nothing much happening around here. Although I hear disturbing things from the edge of the unknown territories.")
 	(add-response "Oh? What have you been hearing?" rumour2)
 	(add-response "Umm...gimme whatever's on tap" drink)
-	(add-response "Blue milk milk)
-	(add-response "Nothing. Thanks leave))
+	(add-response "Blue milk" milk)
+	(add-response "Nothing. Thanks." leave))
 
 (defun rumour2
 	(say "I hear strange things from spacers all of the time you see, but lately I have been hearing of mysterious encounters and of ships returning home from exploring, completely empty. Ghost ships and the like. But I have my own things to think of.")
