@@ -52,7 +52,7 @@
 (defun drink
 	(say "Here ya go. Pay up and drink up. Anything else?")
 	(add-response "I'm looking for a little companionship." companion)
-	(add-response "Heard any unusual news?" rumor)
+	(add-response "Heard any unusual news?" rumour)
 	(add-response "Another of the same please." drink)
 	(add-response "Garmorrl" drink)
 	(add-response "Beer" drink)
@@ -121,4 +121,4 @@
 	(add-response "I think it is time I left" leave))
 
 (defun leave
-	(describe The bartender grunts as you leave)
+	(describe The bartender grunts as you leave))
