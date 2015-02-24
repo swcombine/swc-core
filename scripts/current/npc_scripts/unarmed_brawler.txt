@@ -1,3 +1,215 @@
-Block: start
-* %npc.name% looks at you in a funny way*
-'geroff, i'm not in the mood.
+; Strength variables
+(defvar pc-str (+ (get-skill character 'strength) 1))
+; between - (strength -1) and 6 - Strength
+(defvar npc-str (svar  'myStr (+ (get-skill self 'strength) 1) ))
+(defvar total-str (+ pc-str npc-str))
+; stun/hp variables
+
+(defun setNPC-str
+(defvar ranmod (rand (- 1 (get-skill self 'strength) )  (- 6 (get-skill self 'strength))))
+(set-var! npc-str (+ (get-skill self 'strength) ranmod))
+)
+
+(let ((ptempStr pc-str) (ntempStr npc-str))
+(defvar pc-stun (svar 'pc-stun ptempStr))
+(defvar npc-stun (svar 'npc-stun ntempStr))
+)
+; more o-variables for recovering from an interrupted interaction and later stat use.
+(defvar roundnum (svar 'roundnum 0))
+(defvar numfights (svar 'numfights 0))
+(defvar numwins (svar 'numwins 0))
+(defvar numlosses (svar 'numlosses 0))
+(defvar numties (svar 'numties 0))
+(defvar firstround (svar 'firstround 0))
+(defvar pronounHeShe (cond [(eq? (get-gender self) 'Female) ('She)] [#t 'He]))
+(defvar pronounheshe (cond [(eq? (get-gender self) 'Female) ('she)] [#t 'he]))
+(defvar pronounherhis (cond [(eq? (get-gender self) 'Female) ('her)] [#t 'his]))
+(defvar pronounHerHis (cond [(eq? (get-gender self) 'Female) ('Her)] [#t 'His]))
+(defvar pronounherhim (cond [(eq? (get-gender self) 'Female) ('her)] [#t 'him]))
+(defvar pronounHerHim (cond [(eq? (get-gender self) 'Female) ('Her)] [#t 'Him]))
+
+(defun (descriptor-str pc-Npc-object)
+(cond
+[(eq? pc-Npc-object self)
+ (cond
+ [(ge? npc-str 5) "powerful"]
+ [(ge? npc-str 3) "strong"]
+ [(ge? npc-str 2) "average"]
+ [#t "weak"]
+ )] 
+[#t 
+(cond [(ge? pc-str 5) "powerful"]
+ [(ge? pc-str 3) "strong"]
+ [(ge? pc-str 2) "average"]
+ [#t "weak"])
+ ])
+)
+ 
+(defun start
+(cond
+[(eq? firstround 0) (setNPC-str) (set-var! firstround 1)(describe (concat "A " (descriptor-str self) "-looking " (get-race self) " stands here. " pronounHeShe " is dressed in comfortable clothing and shifts side to side as if impatiently awaiting something.")) 
+(say (concat "You look " (descriptor-str character) "." ))
+]
+[#t (describe (concat "The " (get-race self) " looks expectantly at you. ")) 
+])
+
+; start fight - If fight in progress (Roundnum >0) then give option to continue fight or forfeit.
+(cond
+[(gt? roundnum 0) (say "Ready to continue the fight?") (add-response "Sure." do-Fight) (add-response "No, I want to surrender this fight." do-forfeit-fight) (add-response "No, I'd rather talk about stuff first." do-talk) (add-response "No, not right now. I'm going to go." pleave)]
+[#t (say "You looking to fight?")
+
+(add-response "Let's Fight!" do-Fight) (add-response "No, not right now. I'm going to go." pleave) 
+(add-response "No, I'd rather talk about stuff first." do-talk)]
+)
+;(add-response "Debug: ResetAll" resetAll)
+)
+
+(defun do-talk
+  (describe (concat "The " (get-race self) " looks annoyed." ))
+(say "Right, talking.  What do you want to talk about?")
+(add-response "Statistics. You know, our record of fights?" stats)
+(add-response "I want a better challenge" advancedBrawler)
+(add-response "I need an easier brawling partner" devancedBrawler)
+
+(cond 
+[(gt? roundnum 0) 
+(add-response "Let's continue the fight." do-Fight) 
+(add-response "I want surrender our current fight." do-forfeit-fight) 
+]
+[#t (add-response "Enough talk, let's fight!" do-Fight)]
+)
+(add-response "Nothing, nevermind." pleave)
+)
+
+(defun resetAll
+(set-var! roundnum 0)
+(set-var! numfights 0)
+(set-var! numwins 0)
+(set-var! numlosses 0)
+(set-var! numties 0)
+(set-var! pc-stun pc-str)
+(set-var! npc-stun npc-str)
+(ooc (concat "roundnum: " roundnum ", numfights: " numfights ", W:L:T " numwins ":" numlosses ":" numties ", pc-stun: " pc-stun ", npc-stun: " npc-stun))
+(add-action "Back to Start" start)
+(add-action "Leave" pleave)
+)
+
+(defun pleave
+(describe (concat "The brawler gruffly nods and turns " pronounherhis " attention elsewhere."))
+)
+(defun action-leave (describe ""))
+
+(defun advancedBrawler
+(say "Oh, you think you're better than me?  You'll just have to find a Brawler who's tougher than me.  Try to find one from a race that's tougher than mine, or ask around.")
+(say "Get a move on, now.") 
+(add-action "leave." action-leave)
+(add-response "No no, wait.  I want to talk some more." do-talk)
+(add-response "Wait, let's fight some more." do-Fight)
+)
+(defun devancedBrawler
+(say "Can't handle me, eh?  Look around for a Brawler who is weaker than me.  Try a race that's less tough than I am, or ask around.")
+)
+
+(defun stats
+(say (concat "Well out of " numfights " fights, you've Won " numwins ", Lost " numlosses ", and Tied " numties " times.") )
+
+(cond 
+[(gt? roundnum 0) (say (concat "We're in Round Number: " roundnum " of fight #" numfights ".")) 
+(say "Ready to continue the fight?") (add-response "Sure." do-Fight) 
+(add-response "No, I want to surrender this fight." do-forfeit-fight) 
+(add-response "No, I'd rather talk about stuff first." do-talk) (add-response "No, not right now. I'm going to go." pleave)
+]
+[#t (say "We're not in the middle of a fight right now.")]
+)
+(add-response "Let's talk about something else." do-talk)
+(add-response "Let's fight." do-Fight) 
+(add-response "Thanks. See you later." pleave)
+)
+
+
+; Determine if the player with the given strength hits
+(defun (hit-by-x? str)
+(cond
+[(le? (rand 1 total-str) str) #t]
+[#t #f]))
+
+(defun do-attack
+; Player attacks
+(cond
+[(hit-by-x? pc-str) (set-var! npc-stun (- npc-stun 1)) (describe "You land a hit!")]
+[#t (describe "You miss!")])
+; NPC attacks
+(cond
+[(hit-by-x? npc-str) (set-var! pc-stun (- pc-stun 1)) (describe "Your opponent lands a hit!")]
+[#t (describe "Your opponent misses!")]))
+
+(defun do-forfeit-fight
+  (do-EndFight 'forfeit)
+  )
+
+
+(defun (do-EndFight result) 
+; 'forfeit 'win 'lose or 'tie expected
+; exits are back to Start or end the interaction.
+(set-var! roundnum 0)
+(cond
+[(eq? result 'forfeit) (set-var! roundnum 0)(flash 'info "You have forfeited the Brawl") (describe "You throw up your hands and give up. You can try again later.")
+ (set-var! numlosses (+ numlosses 1)) (set-var! pc-stun pc-str) (set-var! npc-stun npc-str) (add-response "Give me a moment, we'll start again." start)
+ (add-response "That's enough for me." pleave)]
+
+[(eq? result 'win) (set-var! roundnum 0)(set-var! numwins (+ numwins 1)) (set-var! pc-stun pc-str)
+  (set-var! npc-stun npc-str)(flash 'green "You have Won the Brawl!")(describe (concat "You stand triumphantly over your battered opponent as " pronounheshe " slowly regains consciousness. "))
+  (add-response "Patch us up." start) (add-response "(Leave.)" pleave)
+ ]
+
+[(eq? result 'lose) (set-var! roundnum 0)(set-var! numlosses (+ numlosses 1)) (set-var! pc-stun pc-str)
+  (set-var! npc-stun npc-str)(describe (concat "Your opponent stands triumphantly over your battered body as you slowly regain consciousness."))
+ (flash 'bad "You have Lost the Brawl!") (add-response "Patch us up." start) (add-response "(Leave.)" pleave)
+ ]
+
+[(eq? result 'tie) (set-var! roundnum 0)(set-var! numties (+ numties 1)) (set-var! pc-stun pc-str)
+  (set-var! npc-stun npc-str)(describe "You both slowly come back to consciousness after knocking each other out.") 
+(flash 'info "You have Tied the Brawl!") (add-response "Patch us up." start) (add-response "(Leave.)" pleave)
+ ]
+
+[#t (say "Error. Didn't get forfeit, win, lose, or tie")(add-response "(Leave)" pleave)]
+)
+
+
+)
+ 
+ 
+(defun do-Fight 
+; Round by Round summary (basic variable-spitting at this point)
+; will pick up in the middle of a round if have to break the NPC interaction
+; note: With placing round checks after do-attack instead of IN do-attack, effectively both attacks are 'simultaneous'
+; PC win condition is PC-Stun > 0 and NPC-Stun <= 0
+(cond 
+  [(le? roundnum 0) (set-var! numfights (+ numfights 1)) (set-var! roundnum (+ roundnum 1))
+; every first round, increase the numfights by 1 and set Roundnum to 1.
+(describe "The fight begins! You and your opponent circle each other, sizing each other up. You both make your moves at the same time.") 
+(do-attack)]
+
+  [#t (set-var! roundnum (+ roundnum 1))(describe (concat "Round " roundnum " starts, and you both make your moves at the same time.")) (do-attack)]
+)
+  ; end of round check
+(cond [(and (gt? pc-stun 0) (le? npc-stun 0)) (do-EndFight 'win)]
+[(and (gt? npc-stun 0) (le? pc-stun 0)) (do-EndFight 'lose)] 
+[(and (le? pc-stun 0) (le? npc-stun 0)) (do-EndFight 'tie)]
+; if no win/L/T then just summarize and give options.
+[#t (describe (concat "At the end of round " roundnum " You are at " pc-stun "/" pc-str "HP, and your opponent is at " npc-stun "/" npc-str "HP.")) 
+(add-action "attack" do-Fight) 
+(add-action "give up" do-forfeit-fight)
+(add-response "I need a break!" break-leave)]
+)
+
+
+
+) ; end defun
+
+(defun break-leave
+(describe "You signal your opponent that you need a break and the fight stops.")
+(add-response "Just a moment to catch my breath and we can continue." start)
+  (add-action "give up" do-forfeit-fight)
+ (add-response "I'm outta here for now." pleave)
+)
