@@ -64,7 +64,7 @@
 	(add-response "Yes, it is that bad." bad)
 	(add-response "You are right, things will get better" better)
 	(cond
-		[(eq? (get-gender character) "Male") (add-response "But you see there is this girl..." love)]
+		[(eq? (get-gender character) "male") (add-response "But you see there is this girl..." love)]
 		[#t (add-response "But you see there is this guy..." love)]))
 
 (defun bad
@@ -96,7 +96,7 @@
 	(add-response "No thank you" leave))
 
 (defun continue
-	(describe The bartender nods)
+	(describe "The bartender nods")
 	(say "It is not that I do not mind being a bartender but sometimes I imagine hitting it big you know. Maybe hook up with some outfit and make something more of myself. I was thinking of quitting this job and running for mayor back home. What do you think?")
 	(add-response "What about your past?" past)
 	(add-response "Seriously" seriously)
@@ -121,4 +121,4 @@
 	(add-response "I think it is time I left" leave))
 
 (defun leave
-	(describe The bartender grunts as you leave))
+	(describe "The bartender grunts as you leave"))
