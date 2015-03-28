@@ -1,42 +1,42 @@
-Block: start
-*The %npc.race% is secretly tapping away on a console*
-Responses:
-I wouldn't do that I think. -> do
+(defun start
+	(describe (concat "The "(get-race self)" is secretly tapping away on a console"))
+	(add-response "I wouldn't do that I think." doing)
+)
 
-Block: what
-Nothing. I'm not doing nuthing! Leave me alone.
-Responses:
-A double negative huh? -> negative
-Sure, you've just tapping on a console. -> console
+(defun what 
+	(say "Nothing. I'm doing nothing! Leave me alone.")
+	(add-response "A  double negative huh?" negative)
+	(add-response "Sure, you've just been tapping on a console." console)
+)
 
-Block: do
-Why, what do you think I'm doing? I'm checking my credit account if you must know.
-Responses:
-Sure. You need to make sure no-one is watching you too? -> watch
-Yeah yeah. On a public console? -> console
+(defun doing
+	(say "Why, what do you think I'm doing? I'm checking my credit account if you must know.")
+	(add-response "Sure. You need to make sure no-one is watching you too?" watch)
+	(add-response "Yeah yeah. On a public console?" console)
+)
 
-Block: negative
-You what? Listen, just leave me alone.
-Responses:
-Ok, sure. -> leave
-I know what you are doing. -> do
+(defun negative 
+	(say "You what? Listen, just leave me alone.")
+	(add-repsonse "Ok, sure." leave)
+	(add-response "I know what you are doing." doing)
+)
 
-Block: console
-Yeah. Its public. I can do what I want on it. None of your buisness friend.
-Responses:
-But you are making sure no-one is watching you. -> watch
+(defun console
+	(say "Yeah. Its public. I can do what I want on it. None of your buisness friend.")
+	(add-response "But you're making sure no-one is watching you." watch)
+)
 
-Block: leave
-Yeah, and stay away friend. I've not got time for your kind.
+(defun leave
+	(say "Yeah, and stay away friend. I've not got time for your kind.")
+)
 
-Block: watch
-Not working so well is it - you're watching me. Fine. I'm looking into other people's accounts, and skimming out the fractional credits that they don't know about.
-They all add up, you see. Soon, I can buy myself a ship, and some flying lessons.
-Responses:
-Oh ok. Thats pretty cool. I'll leave you to it. -> leave
-Can you show me how to do it? -> show
+(defun watch 
+	(say "Not working so well is it, you're watching me. Fine. I'm looking into other people's accounts, and skimming out the fractional credits they don't know about.")
+	(add-response "Oh ok. Thats pretty cool. I'll leave you to it." leave)
+	(add-response "Can you show me how to do it?" show)
+)
 
-Block: show
-I'm afraid not. Sorry, but it takes a certain amount of competence to work it.
-Responses:
-Ah ok then. See ya. -> leave
+(defun show 
+	(say "I'm afraid not. Sorry, but it takes a certain amount of competence to work it.")
+	(add-response "Ah ok then. Bye." leave)
+)
