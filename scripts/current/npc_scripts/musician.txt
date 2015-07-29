@@ -1,2 +1,28 @@
-Block: start
-Go away, I'm busy!
+(defun start
+	(describe (concat "The "(get-race self)" infront of you is practicing thier "(rand-from-list '("Guitar" "Flute" "Piano"))))
+	(say "Oh. Sorry, I didn't see you there. Can I help?")
+	(add-response "I just find it interesting, how people get into music." music)
+	(add-response "Sorry, I was just watching." leave)
+)
+
+(defun music
+	(say "I've always found music helps me relax, and I thought, if my music helps me, maybe, it can help others.")
+	(add-response "Wow. How did you learn?" learn)
+	(add-response "I won't waste anymore of your time." leave)
+)
+
+(defun learn
+	(say "There was a Bith on my home world who taught my class how to play.")
+	(add-response "Can you play for me now?" play)
+	(add-response "Okay, well. See you around." leave)
+)
+
+(defun leave
+	(say "See you around, maybe you can see me play sometime.")
+)
+
+(defun play
+	(say "No. Sorry, i'm busy right now.")
+	(add-response "Oh. Okay, bye." leave)
+)
+

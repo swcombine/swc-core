@@ -1,46 +1,50 @@
-Block: start
-Excuse me, why are you trying to force open that door there? Do you have a burning reason to be inside?
-Responses:
-Its my facility, I can do whatever I want with it. -> mine
-Not really, just exploring the place. -> explore
-No reason. I'll just slip around the corner here. -> leave
+(defun start
+	(say "Excuse me, why are you trying to force open that dor there? Do you have a burning reason to be inside?")
+	(add-response "It's my facility, I can do whatever I want with it." mine)
+	(add-response "Not really, just exploring the place." explore)
+	(add-response "No reason. I'll just slip around the corner here." leave)
+)
 
-Block: mine
-Yeah, sure it is, mate. That's why you are trying to break in. Look, there is a reason it's locked.
-I'll even tell you why, if you are interested. And not going to rush off.
-Responses:
-Sure, why not. I have nothing better to do. -> lock
+(defun mine
+	(say "Yea, sure it is, mate. That's wju you are trying to break in. Look, there is a reason it's locked.")
+	(say "I'll even tell you why, if you are interested. And not going to rush off.")
+	(add-response "Sure, why not. I have nothing better to do." lock)
+)
 
-Block: leave
-Oh ok. See you around. Just don't try breaking into locked doors, y'hear!
+(defun leave
+	(say "Oh ok. See you around. Just don't try breaking into any locked doors, y'hear!")
+)
 
-Block: explore
-Exploring huh? A noble cause indeed, but one that may be better off without trying to break into others property.
-Tell you what, I'll forget I saw you if you stop breaking in, hows that sound?
-Responses:
-Yeah, that maybe for the best: -> leave
-Nah, I like trying to get into where I am not allowed. -> reject
+(defun explore 
+	(say "Exploring huh? A noble cause indeed, but one that may be better off without trying to break into others property.")
+	(say "Tell you what, I'll forget I saw you if you leave. How does that sound?")
+	(add-response "Yeah, that may be for the best" leave)
+	(add-response "Nah, I like trying to get into where I am not allowed" reject)
+)
 
-Block: reject
-Oh really? Umm, well, I'd better be going then. Don't want to be seen with you. Guilty by association and all that.
+(defun reject
+	(say "Oh really? Umm, well, I'd better get going then. Don't want to be seen with you. Guilty by association and all that.")
+)
 
-Block: lock
-Different facilities around here will have various states of access. Facilities that generate income for its manager will usually be set so that anyone can enter.
-This allows people to come in and pay for the services inside, which generates income. If these facilities are shut, its generally to avoid debt building up for various reasons.
-Responses:
-Continue, please. -> crewlist
-Sorry, something has come up. Goobye. -> leave
+(defun lock 
+	(say "Different facilities around here will have various states of access. Facilities that generate income for its manager will usually be set so that anyone can enter.")
+	(say "This allows people to come in and pay for the services inside, which generates income. If these facilities are shut, its generally to avoid debt building up for various reasons.")
+	(add-response "Continue, please." crewlist)
+	(add-response "Sorry, something has come up. Goodbye." leave)
+)
 
-Block: crewlist
-A lot of facilities, however, will be locked to most people. This is either because they are storage facilities, production centers, or others such as military locations.
-If something isn't open to everyone, there are two ways you could gain access. Either you yourself are added to the crewlist, giving just you access, or your entire faction can be added, letting anyone in that faction to enter at will.
-Responses:
-That's cool. Anything else? -> further
-Interesting. I have to leave though. -> leave
+(defun crewlist
+	(say "A lot of facilities, however, will be locked to most people. This is either because they are storage facilities, production centers, or others such as military locations.")
+	(say "If something isn't open to everyone, there are two ways you could gain access. Either you yourself are added to the crewlist, giving just you access, or your entire faction can be added, letting anyone in that faction to enter at will.")
+	(add-response "That's cool. Anything else?" further)
+	(add-response "Interesting. I have to leave though." leave)
+)
 
-Block: further
-Indeed. You can mix and match the crewlists. So you could have a couple of factions, and some sentients listed, allowing all of those groups to enter. 
-Anyway, that's why they are locked, and how to gain access. Hope you found it informative.
-Responses:
-Sure it was. Time to go test it. -> leave
-Could you repeat that, please? -> lock
+(defun further
+	(say "Indeed. You can mix and match the crewlists. So you could have a couple of factions, and some sentients listed, allowing all of those groups to enter.")
+	(say "Anyway, that's why they are locked, and how to gain access. Hope you found it informative.")
+	(add-response "Sure it was. Time to go test it." leave)
+	(add-response "Could you repeat that, please?" lock)
+)
+
+ 
