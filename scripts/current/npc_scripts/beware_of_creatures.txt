@@ -1,58 +1,43 @@
-Block: start
-Crikey, look at the size of that one. Hold back mate, I wouldn't get any closer if I were you!
-Responses:
-Woah, ok. Dangerous? -> danger
-Nah, I'm ok. I know what I'm doing. -> know
+(defun start
+(say "Crikey, look at the size of that one. Hold back mate, I wouldn't get any closer if I were you!")
+(add-response "Woah, ok. Dangerous?" danger)
+(add-response "Nah, I'm ok. I know what I'm doing." know)
+)
+(defun insect
+(say "Well, its your own life mate. Just let me know so I can back off a little - they're nasty little rippers. Tell you what, how about I just pick it up and move it out of the way then?")
+(add-response "Move it? You just said it was dangerous." move)
+(add-response "Sure, I'll, umm, stand over here." stand)
+(add-response "So its dangerous then?" danger)
+)
+(defun danger 
+(say "Well yeah. Everything around here is dripping with venom, or claws or would otherwise like to see what you taste like. ")
+(say "Now ya see this little thing here? One little nip, and you're taking a nap for at least a week.")
+(add-response "Wow. Maybe I'll just head over there for a sec then." stand)
+(add-response "It's just an insect. Can't really be that dangerous can it?" insect)
+(add-response "Hmm, seems to dangerous to be around. I'm off." leave)
+)
+(defun know
+(say "Yeah yeah, that's what the last bloke said. See those bones over there? That's not him, but could just of easily have been. He's been in hospital for the last 5 months. Up to you, though.")
+(add-response "Sure, but I think I can handle a little insect." insect)
+)
+(defun leave
+(say "I'll see you at sundown then, hey mate. Good luck. Watch out for those Quizzer!"))
 
-Block: insect
-Well, its your own life mate. Just let me know so I can back off a little - they're nasty little rippers.
-Tell you what, how about I just pick it up and move it out of the way then?
-Responses:
-Move it? You just said it was dangerous. -> move
-Sure, I'll, umm, stand over here. -> stand
-So its dangerous then? -> danger
-
-Block: danger
-Well yeah. Everything around here is dripping with venom, or claws or would otherwise like to see what you taste like. 
-Now ya see this little thing here? One little nip, and you're taking a nap for at least a week.
-Responses:
-Wow. Maybe I'll just head over there for a sec then. -> stand
-Its just an insect. Can't really be that dangerous can it? -> insect
-Hmm, seems to dangerous to be around. I'm off. -> leave
-
-Block: know
-Yeah yeah, that's what the last bloke said. See those bones over there? That's not him, but could just of easily have been.
-Hes been in hospital for the last 5 months. Up to you, though.
-Responses:
-Sure, but I think I can handle a little insect. -> insect
-
-Block: leave
-I'll see you at sundown then, hey mate. Good luck. Watch out for those Quizzer!
-
-Block: stand
-If you think it will help, sure. But crikey, these things can strike even from over here. Hope you got the reflexes of Draagax.
-Tell you what, there is a nice herd of Banthas over the next rise. The worst they can do is trample you.
-Responses:
-Thanks for the tip, I'm off. -> leave
-Aww, but I like this insect. -> insect
-
-Block: move
-!ifnot character.race=Gungan! Yeah mate? You point is?  I've moved hundreds of these things around with nary a mark. Lets see you try that!
-!if character.race=Gungan! Yeah mate? Your point is? I've moved ... no, wait, hang on ... don't touch tha...
-Responses:
-!ifnot character.race=Gungan! Ah, yeah, better not. -> leave
-!if character.race=Gungan! *Fall on the ground* -> gungan
-
-Block: gungan
-Quick, get the medikit! Put that syringe on the ground, and help me move this.
-No, not the Gungan. The useless fool can stay there for a second. This creature is much more worthy of saving.
-Responses:
-Gurgle -> gurgle
-*Go unconcious* -> collapse
-
-Block: gurgle
-Excellent, this creature is saved. Now to see to that Gungan. Get me a scalpel, by crikey its time for some field surgery!
-*Time passes as they deal with you*
-
-Block: collapse
-Daft bugger. Leave the Gungan alone lads, he's gonna wake up with a nasty headache.
+(defun stand
+(say "If you think it will help, sure. But crikey, these things can strike even from over here. Hope you got the reflexes of Draagax. Tell you what, there is a nice herd of Banthas over the next rise. The worst they can do is trample you.")
+(add-response "Thanks for the tip. I'm off." leave)
+(add-response "Aww, but I like this insect." insect)
+)
+(defun move 
+(cond [(eq? (get-race character) 'Gungan) (say "Yeah mate? Your point is? I've moved ... no, wait, hang on ... don't touch tha...") (add-action "Fall on the ground" gungan)] [#t (say "Yeah mate? You point is?  I've moved hundreds of these things around with nary a mark. Lets see you try that!")(add-response "Ah, yeah.  Better not." leave)])
+)
+(defun gungan
+(say "Quick, get the medikit! Put that syringe on the ground, and help me move this.  No, not the Gungan. The useless fool can stay there for a second. This creature is much more worthy of saving.")
+(add-action "gurgle" gurgle)
+(add-action "go unconscious" collapse)
+)
+(defun gurgle
+(say "Excellent, this creature is saved. Now to see to that Gungan. Get me a scalpel, by crikey its time for some field surgery!")
+(describe "Time passes as they deal with you"))
+(defun collapse
+(say "Daft bugger. Leave the Gungan alone lads, he's gonna wake up with a nasty headache."))
