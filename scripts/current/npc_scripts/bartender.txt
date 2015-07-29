@@ -1,154 +1,124 @@
-Block: start
-!if npc.enemy! "Sorry, we don't serve your kind here."
-!ifnot npc.enemy! %time.ofday% %npc.formal%, whatcha want?
-Responses:
-!if npc.enemy! "Yes, you. Now leave" -> leave
-!ifnot npc.enemy! "What do you have?" -> inquiry
-!ifnot npc.enemy! "Umm...gimme whatever's on tap" -> drink
-!ifnot npc.enemy! "Blue milk" -> milk
-!ifnot npc.enemy! "I'm looking for a little companionship?" -> companion
-!ifnot npc.enemy! "Heard any good rumors?" -> rumor
+(defun start
+	(cond
+		[(is-enemy? character) (say "Sorry, we don't serve your kind here.")
+		(add-response "Yes, you. Now leave." leave)]
+		[#t (say (concat timeofday " " (get-formal self) ", whatch want?"))
+		(add-response "What do you have?" inquiry)
+		(add-response "Umm... gimme whatever's on tap" drink)
+		(add-response "Blue milk" milk)
+		(add-response "I'm Looking for a little companionship" companion)
+		(add-response "Heard any good rumours?" rumour)]))
+		
+(defun inquiry
+	(say "Nothing but the finest rotgut from everywhere in the galaxy. What'll it be?")
+	(add-response "Garmorrl" drink)
+	(add-response "Corellian Whiskey" drink)
+	(add-response "Beer" drink)
+	(add-response "Blue Milk" milk)
+	(add-response "Anything interesting happening?" rumour)
+	(add-response "Nothing. Thanks" leave))
+	
 
-Block: inquiry
-"Nothing but the finest rotgut from everywhere in the galaxy. What'll it be?"
-Responses:
-"Garmorrl" -> drink
-"Corellian Whiskey" -> drink
-"Beer" -> drink
-"Blue Milk" -> milk
-"Anything interesting happening?" -> rumor
-"Nothing. Thanks" -> leave
+(defun milk
+	(say "MILK! I suppose you want it in a dirty glass to make you seem hard?! Look, if you want Blue Milk I can give it to you or I can get you a real drink.")
+	(add-response "Umm...gimme whatever's on tap" drink)
+	(add-response "I think I will dare a Garmorrl" drink)
+	(add-response "Corellian Whiskey instead" drink)
+	(add-response "Beer instead." drink)
+	(add-response "Nothing. Thanks" leave))
 
-Block: milk
-"MILK! I suppose you want it in a dirty glass to make you seem hard?! Look, if you want Blue Milk I can give it to you or I can get you a real drink."
-Responses:
-"Umm...gimme whatever's on tap" -> drink
-"I think I will dare a Garmorrl" -> drink
-"Corellian Whiskey instead" -> drink
-"Beer instead." -> drink
-"Nothing. Thanks" -> leave
+(defun companion
+	(say "Does this look like a brothel or an escort service?? You want a drink or not?")
+	(add-response "Umm...gimme whatever's on tap" drink)
+	(add-response "Garmorrl" drink)
+	(add-response "Corellian Whiskey" drink)
+	(add-response "Beer" drink)
+	(add-response "Blue milk" milk)
+	(add-response "Nothing. Thanks" leave))
 
-Block: companion
-"Does this look like a brothel or an escort service?? You want a drink or not?"
-Responses:
-"Umm...gimme whatever's on tap" -> drink
-"Garmorrl" -> drink
-"Corellian Whiskey" -> drink
-"Beer" -> drink
-"Blue milk" -> milk
-"Nothing. Thanks" -> leave
+(defun rumour
+	(say "Nothing much happening around here. Although I hear disturbing things from the edge of the unknown territories.")
+	(add-response "Oh? What have you been hearing?" rumour2)
+	(add-response "Umm...gimme whatever's on tap" drink)
+	(add-response "Blue milk" milk)
+	(add-response "Nothing. Thanks." leave))
 
-Block: rumor
-"Nothing much happening around here. Although I hear disturbing things from the edge of the unknown territories."
-Responses:
-"Oh? What have you been hearing?" -> rumor2
-"Umm...gimme whatever's on tap -> drink
-"Blue milk -> milk
-"Nothing. Thanks -> leave
+(defun rumour2
+	(say "I hear strange things from spacers all of the time you see, but lately I have been hearing of mysterious encounters and of ships returning home from exploring, completely empty. Ghost ships and the like. But I have my own things to think of.")
+	(add-response "Weird... another please" drink)
+	(add-response "I have problems of my own too." woes)
+	(add-response "I think it is best if I leave." leave))
 
-Block: rumor2
-"I hear strange things from spacers all of the time you see, but lately I have been hearing of mysterious encounters and of ships returning home from exploring, completely empty. Ghost ships and the like. But I have my own things to think of."
-Responses:
-"Weird... another please" -> drink
-"I have problems of my own too." -> woes
-"I think it is best if I leave." -> leave
+(defun drink
+	(say "Here ya go. Pay up and drink up. Anything else?")
+	(add-response "I'm looking for a little companionship." companion)
+	(add-response "Heard any unusual news?" rumour)
+	(add-response "Another of the same please." drink)
+	(add-response "Garmorrl" drink)
+	(add-response "Beer" drink)
+	(add-response "Tell the bar tender of your woes" woes)
+	(add-response "Nothing. Thanks" leave))
 
-Block: drink
-"Here ya go. Pay up and drink up. Anything else?"
-Responses:
-"I'm looking for a little companionship." -> companion
-"Heard any unusual news?" -> rumor
-"Another of the same please." -> drink
-"Garmorrl" -> drink
-"Beer" -> drink
-"Tell the bar tender of your woes" -> woes
-"Nothing. Thanks" -> leave
+(defun woes
+	(say "Really? It cannot be that bad.")
+	(add-response "Yes, it is that bad." bad)
+	(add-response "You are right, things will get better" better)
+	(cond
+		[(eq? (get-gender character) "male") (add-response "But you see there is this girl..." love)]
+		[#t (add-response "But you see there is this guy..." love)]))
 
-Block: milk2
-"Ahhhh now you are speaking my language. Here you go *spikes the milk* No pay up and drink up. Anything else?
-Responses:
-"I'm looking for a little companionship..." -> companion
-"Heard any unusual news?" -> rumor
-"Another of the same please." -> drink
-"Garmorrl" -> drink
-"Beer" -> drink
-"Nothing. Thanks" -> leave
+(defun bad
+	(say "Hmmm, I recommend you step back and look at the situation. I know when I was young and had troubles...")
+	(add-response "Not interested in your troubles" notinterested)
+	(add-response "Oh? Tell me more" interested)
+	(add-response "*interrupt* Can I have a drink?" drink))
 
-Block: woes
-"Really? It cannot be that bad."
-Responses:
-"Yes, it is that bad." -> bad
-"You are right, things will get better" -> better
-!if character.gender= male! "But you see there is this girl..." -> girl
-!if character.gender= female! "But you see there is this guy..." -> guy
+(defun better
+	(say "See, things are improving already. Keep positive and anything is possible. Now care for another drink?")
+	(add-response "Sure, I will have another" drink)
+	(add-response "No, I think I will do something productive" leave))
 
-Block: bad
-"Hmmm, I recommend you step back and look at the situation. I know when I was young and had troubles..."
-Responses:
-"Not interested in your troubles" -> notinterested
-"Oh? Tell me more" -> interested
-*interupt* "Can I have a drink? -> drink
+(defun love
+	(say "Oh dear... I know when I was young and had such troubles...")
+	(add-response "Not interested in your troubles" notinterested)
+	(add-response "Oh? Tell me more" interested)
+	(add-response "*interupt* Can I have a drink?" drink))
 
-Block: better
-"See, things are improving already. Keep positive and anything is possible. Now care for another drink?"
-Responses:
-"Sure, I will have another" -> drink
-"No, I think I will do something productive" -> leave
+(defun notinterested
+	(describe The bartender snorts)
+	(say "Fine, be that way. Want a drink or not?")
+	(add-response "*sigh* Another drink" drink)
+	(add-response "*shake head* No, I think I will take my leave." leave))
 
-Block: girl
-"Oh dear... I know when I was young and had such troubles..."
-Responses:
-"Not interested in your troubles" -> notinterested
-"Oh? Tell me more" -> interested
-*interupt* "Can I have a drink? -> drink
+(defun interested
+	(say (concat "Yes, such troubles... well different from yours you see, everyone has a unique situation. You see I was interested in this young " (get-race self) " but my father did not approve, always yelling at me to focus on my schooling. It was too much and despite going to the flight academy I ran away. Odd job here and there, scrounging for food and hanging out in places of ill repute, I came to learn some things and meet some people. And behold here I am now, fallen from grace, servicing you. Care for another drink or shall I go on?"))
+	(add-response "Please continue" continue)
+	(add-response "No thank you" leave))
 
-Block: guy
-"Oh dear... I know when I was young and had such troubles"
-Responses:
-"Not interested in your troubles" -> notinterested
-"Oh? Tell me more" -> interested
-*interupt* "Can I have a drink? -> drink
+(defun continue
+	(describe "The bartender nods")
+	(say "It is not that I do not mind being a bartender but sometimes I imagine hitting it big you know. Maybe hook up with some outfit and make something more of myself. I was thinking of quitting this job and running for mayor back home. What do you think?")
+	(add-response "What about your past?" past)
+	(add-response "Seriously" seriously)
+	(add-response "Ummm" past)
+	(add-response "Woah, now I need another." drink)
+	(add-response "I think it is time I left" leave))
 
-Block: notinterested
-The bartender snorts, "Fine, be that way. Want a drink or not?"
-Responses:
-*sigh* "Another drink" -> drink
-*shake head* "No, I think I will take my leave. -> leave
+(defun seriously
+	(say "Yeah, you are right. I have a good job here. Would you like another drink?")
+	(add-response "Yeah, I need another." drink)
+	(add-response "I think it is time I left" leave))
 
-Block: interested
-"Yes, such troubles... well different from yours you see, everyone has a unique situation. You see I was interested in this young %npc.race% but my father did not approve, always yelling at me to focus on my schooling. It was too much and despite going to the flight academy I ran away. Odd job here and there, scrounging for food and hanging out in places of ill repute, I came to learn some things and meet some people. And behold here I am now, fallen from grace, servicing you. Care for another drink or shall I go on?"
-Responses:
-"Please continue" -> continue
-"No thank you" -> leave
+(defun past
+	(say "Yeah you are right, I think the town would have a problem with one such as me being their mayor. But I miss my father so.")
+	(add-response "You should contact him." contact)
+	(add-response "Well, I need another." drink)
+	(add-response "I think it is time I left" leave))
 
-Block: continue
-*The bartender nods*
-"It is not that I do not mind being a bartender but sometimes I imagine hitting it big you know. Maybe hook up with some outfit and make something more of myself. I was thinking of quitting this job and running for mayor back home. What do you think?"
-Responses:
-"What about your past?" -> past
-"Seriously" -> seriously
-"Ummm" -> past
-"Woah, now I need another." -> drink
-"I think it is time I left" -> leave
+(defun contact
+	(say "Yeah, ya know... I think I will do just that when I get off work. Can I get you another?")
+	(add-response "Yes, please." drink)
+	(add-response "I think it is time I left" leave))
 
-Block: seriously
-"Yeah, you are right. I have a good job here. Would you like another drink?"
-Responses:
-"Yeah, I need another." -> drink
-"I think it is time I left" -> leave
-
-Block: past
-"Yeah you are right, I think the town would have a problem with one such as me being their mayor. But I miss my father so."
-Responses:
-"You should contact him." -> contact
-"Well, I need another." -> drink
-"I think it is time I left" -> leave
-
-Block: contact
-"Yeah, ya know... I think I will do just that when I get off work. Can I get you another?"
-Responses:
-"Yes, please." -> drink
-"I think it is time I left" -> leave
-
-Block: leave
-*The bartender grunts as you leave*
+(defun leave
+	(describe "The bartender grunts as you leave"))
