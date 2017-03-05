@@ -1,65 +1,89 @@
-Block: start
-!if faction.type in [Smugglers, Bounty Hunters, Mercenaries, Pirates]! *You notice a small %npc.race% merchant making a waving motion in your direction* Hey pal, you look like a %character.race% of discerning tastes. *The merchant winks at you.* I think I have some items that would be to your liking.
-!ifnot faction.type in [Smugglers, Bounty Hunters, Mercenaries, Pirates]! *You notice a small %npc.race% merchant making a summoning motion in your direction* Greetings %character.formal%, you look like a %character.race% with !random [some, a few, many]! credits buring a hole in your pocket. Lucky for you I am just the %npc.race% to relieve of you that burden.
-Responses:
-!if faction.type in [Smugglers, Bounty Hunters, Mercenaries, Pirates]! Now what makes you think that? -> black1
-!ifnot faction.type in [Smugglers, Bounty Hunters, Mercenaries, Pirates]! Perhaps I am, how exactly can you help me? -> shop
-!if faction.type in [Smugglers, Bounty Hunters, Mercenaries, Pirates]! You're aren't near as dumb as you look, are you? Whatcha got? -> black2
+; Converted by Abraari To
+; Year 18 D98
 
-Block: shop
-By trading those credits you have for some of the wonderful items I have, of course.
-Responses:
-I worked hard for these credits, you would have to have something fantastic for me to just give them to you. -> give
-Well I did just make some extra cash betting a speeder race. -> items
-Sorry, not interested. Thanks anyway. -> leave
+(defun start
+  (cond
+     [(or 
+         (or 
+            (or (eq? (faction-type (get-entity-faction character)) "Smugglers")
+                 (eq? (faction-type (get-entity-faction character)) "Bounty Hunters"))
+            (eq? (faction-type (get-entity-faction character)) "Mercenaries"))
+         (eq? (faction-type (get-entity-faction character)) "Pirates"))
+      (describe (concat "You notice a small " (get-race self) " merchant making a waving motion in your direction."))
+      (say (concat "Hey pal, you look like a " (get-race character) " of discerning tastes."))
+      (describe "The merchant winks at you.")
+      (say "I think I have some items that would be to your liking.")
+      (add-response "Now what makes you think that?" black1)
+      (add-response "You aren't near as dumb as you look, are you? Whatcha got?" black2)
+     ]
+     [#t
+      (describe (concat "You notice a small " (get-race self) " merchant making a summoning motion in your direction."))
+      (say (concat "Greetings " (get-formal character) ", you look like a " (get-race character) " with " (rand-from-list '(some, a few, many)) " credits buring a hole in your pocket. Lucky for you I am just the " (get-race self) " to relieve of you that burden."))
+      (add-response "Perhaps I am, how exactly can you help me?" shop)
+     ]
+  )
+)
 
-Block: black1
-*The merchant chuckles slightly*
-You have that special "look" about you. The looks of someone who knows what they need. I happen to be a someone that knows how to get you what you need.
-Responses:
-Okay, okay if it will shut you up, let me have a look at whatcha got. -> black2
-Actually you are right about me, I know what I need. And I need to leave. -> leave
+(defun shop
+  (say "By trading those credits you have for some of the wonderful items I have, of course!")
+  (add-response "I worked hard for these credits, you would have to have something fantastic for me to just give them to you." give)
+  (add-response "Well I did just make some extra cash betting a speeder race." items)
+  (add-response "Sorry, not interested. Thanks anyway." leave)
+)
 
-Block: black2
-You don't actually think I have keep that kinda stuff here with me, do you? Do I look like I wanna go to prison?
-Responses:
-What kinda scam are you trying to run here, sleemo? -> scam
-Just as I thought, go bother someone else. -> leave
+(defun black1
+  (describe "The merchant chuckles slightly.")
+  (say "You have that special \"look\" about you. The looks of someone who knows what they need. I happen to be a someone that knows how to get you what you need.")
+  (add-response "Okay, okay if it will shut you up, let me have a look at whatcha got." black2)
+  (add-response "Actually you are right about me, I know what I need. And I need to leave." leave)
+)
 
-Block: give
-You misundertand, I also worked hard building a business here. Think of it as a bartering of our skills, we can both benefit from each other's hard work.
-Responses:
-Since you put it that way, let me see what you have. -> items
-You slimey slick talking %npc.race%, just how many credits have you weasled out of people today? Take your 'hard work' and offer it to someone else. -> leave
+(defun black2
+  (say "You don't actually think I have keep that kinda stuff here with me, do you? Do I look like I wanna go to prison?")
+  (add-response "What kinda scam are you trying to run here, sleemo?" scam)
+  (add-response "Just as I thought, go bother someone else." leave)
+)
 
-Block: items
-*The merchant's eyes light up*
-I knew that would wo...er...*cough*...uhm... Take a look are my offerings, let me know what catches your eye.
-*You can tell within seconds that most of what is sold here is just junk. Many of the items look as if they haven't worked in years*
-Responses:
-I really don't see anything that I can't live without today. Maybe next time. -> offer
-This stuff is garbage. I would rather go back and bet on that race again, this time wagering on the loser. -> leave
+(defun give
+  (say "You misundertand, I also worked hard building a business here. Think of it as a bartering of our skills, we can both benefit from each other's hard work.")
+  (add-response "Since you put it that way, let me see what you have." items)
+  (add-response (concat "You slimey slick talking " (get-race self) ", just how many credits have you weasled out of people today? Take your 'hard work' and offer it to someone else.") leave)
+)
 
-Block: look
-Smart,!if character.gender=Male! handsome,!if character.gender=Female! beautiful, and funny. You are truly a triple threat aren't you.
-Responses:
-Flattery is going to get you nowhere. Now about these 'items'...is this just a scam? -> scam
+(defun items
+  (describe "The merchant's eyes light up.")
+  (say "I knew that would wo...er...*cough*...uhm... Take a look are my offerings, let me know what catches your eye.")
+  (describe "You can tell within seconds that most of what is sold here is just junk. Many of the items look as if they haven't worked in years.")
+  (add-response "I really don't see anything that I can't live without today. Maybe next time." offer)
+  (add-response "This stuff is garbage. I would rather go back and bet on that race again, this time wagering on the loser." leave)
+)
 
-Block: scam
-No, no. This a not a scam. I am simply a means to which you can get those hard to find items through. I work as a middleman for %owner.name%. If you contact my employer, you will have access to more things than you have ever imagined.
-Responses:
-So you do all the work, your boss makes all the credits. Smart. Thanks for the connection, I'll look them up sometime. -> thanks
-You sure do take a long time and use a lot of words to say very little of value. Good luck with that. -> leave
+(defun look
+  (cond
+    [(eq? (get-gender character) "Male") (say "Smart, handsome, and funny. You are truly a triple threat aren't you?")]
+    [(eq? (get-gender character) "Female") (say "Smart, beautiful, and funny. You are truly a triple threat aren't you?")]
+    [#t (say "Smart and funny. You are truly a gem aren't you?")]
+  )
+  (add-response "Flattery isn't going to get you anywhere. Now about these 'items'...is this just a scam?" scam)
+)
 
-Block: offer
-Hold on, don't leave. I actually work for %owner.name%. The boss keeps most of the good stuff to sell personally.
-Responses:
-But judging by what you have here, "the good stuff" is probably just garbage that has been cleaned. -> leave
-Next time I am in a shopping mood, I'll try to remember that name. Thanks. -> thanks
+(defun scam
+  (say (concat "No, no. This a not a scam. I am simply a means to which you can get those hard to find items through. I work as a middleman for " (get-owner self) ". If you contact my employer, you will have access to more things than you have ever imagined."))
+  (add-response "So you do all the work, your boss makes all the credits. Smart. Thanks for the connection, I'll look them up sometime." thanks)
+  (add-response "You sure do take a long time and use a lot of words to say very little of value. Good luck with that." leave)
+)
 
-Block: thanks
-Remember mention my name--%npc.name%, if the boss is in a good mood, you might get a discount.
-*As you walk away, you hear %npc.name% beginning another sales pitch to a nearby !random [Human, Wookiee, Kubaz]!*
+(defun offer
+  (say (concat "Hold on, don't leave. I actually work for " (get-owner self) ". The boss keeps most of the good stuff to sell personally."))
+  (add-response "But judging by what you have here, 'the good stuff' is probably just garbage that has been cleaned." leave)
+  (add-response "Next time I am in a shopping mood, I'll try to remember that name. Thanks." thanks)
+)
 
-Block: leave
-*As you walk away, you hear the merchant beginning another sales pitch to a nearby !random [Rodian, Bith, Weequay]!*
+(defun thanks
+  (say (concat "Remember mention my name, " (get-name self) ", if the boss is in a good mood, you might get a discount."))
+  (describe (concat "As you walk away, you hear " (get-name self) " beginning another sales pitch to a nearby " (rand-from-list '(Human, Wookiee, Kubaz)) "."))
+)
+
+(defun leave
+  (describe (concat "As you walk away, you hear the merchant beginning another sales pitch to a nearby " (rand-from-list '(Rodian, Bith, Weequay)) "."))
+)
