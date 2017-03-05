@@ -1,3 +1,6 @@
+; Converted by Abraari To
+; Year 18 D98
+
 (defun start
   (say "Alright me, old chiina? You got any bees and honey for you're Denny Glaver?")
   (add-response "Excuse me?" excuse)
@@ -10,8 +13,7 @@
 )
 
 (defun excuse
-  (say "You, geezer, you're a right ancient greek. Gotta Botany Bay, the pork chops are after me.
-Lor' luv a duck! Meet up later, yeah. Know what I mean?")
+  (say "You, geezer, you're a right ancient greek. Gotta Botany Bay, the pork chops are after me. Lor' luv a duck! Meet up later, yeah. Know what I mean?")
   (add-response "No actually, I have no clue what you're on about." clue)
   (cond
     [(eq? (timeofday) "Evening")
@@ -37,8 +39,7 @@ Lor' luv a duck! Meet up later, yeah. Know what I mean?")
 )
 
 (defun clue
-  (say "Sheesh, I'll speak slowly for the stupid then. I'm just on my way outta here, with these nice new things I got from that lady over there.
-Do you understand? Or would you rather I speak in Huttese?")
+  (say "Sheesh, I'll speak slowly for the stupid then. I'm just on my way outta here, with these nice new things I got from that lady over there. Do you understand? Or would you rather I speak in Huttese?")
   (add-response "Ah, much better. I can understand you now." finally)
   (add-response "You're still speaking in another language. I'm off." leave)
 )

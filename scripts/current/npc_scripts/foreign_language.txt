@@ -1,16 +1,18 @@
+; Converted by Abraari To
+; Year 18 D98
+
 (defun start
-  (describe "The (get-race self) in front of you opens a worn book, and reads slowly from it.")
+  (describe (concat "The "(get-race self) " in front of you opens a worn book, and reads slowly from it."))
   (say "Sa la do panksta/see'ybark/motal dee boonkee wata?")
   (ooc "Is there a spaceport/sail barge/motel around here?")
   (add-response "Sorry, I don't understand you." dont)
   (cond
-    [((or 
+    [(or 
           (or 
               (or (eq? (get-race character) "Hutt")
                   (eq? (get-race character) "Nimbanel"))
               (eq? (get-race character) "Toydarian"))
           (eq? (get-race character) "Klatooinian"))
-      )
       (add-response "Chut chut?" excuse)])
   (add-response "Um, bye." leave)
 )
@@ -22,7 +24,7 @@
 )
 
 (defun dont
-  (describe "The (get-race self) looks back at his book and points his finger at something.")
+  (describe (concat "The " (get-race self) " looks back at his book and points his finger at something."))
   (say "L nyiad endari nesseh erenedi. Te ventra?")
   (ooc "I need superior vehicle without equal. You come?")
   (add-response "Nope, still nothing." nothing)
@@ -33,7 +35,7 @@
 )
 
 (defun leave
-  (describe "The (get-race self) looks at you in confusion.")
+  (describe (concat "The " (get-race self) " looks at you in confusion."))
 )
 
 (defun regret
@@ -43,6 +45,6 @@
 )
 
 (defun nothing
-  (describe "The (get-race self) waves his hands, looks pointedly at you, then motions towards the nearest building.")
+  (describe (concat "The " (get-race self) " waves his hands, looks pointedly at you, then motions towards the nearest building."))
   (add-action "shrug." leave)
 )
