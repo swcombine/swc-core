@@ -6,12 +6,12 @@
 (defun start
   (cond 
     [(eq? (city-name self) null) (say "Morning all, hope today is just as fulfilling as yesterday.")]
-    [#t (say concat("Good Morning, Citizens of " (city-name character) "! Today is a wonderful day. I hope you are having an excellent time."))])
+    [#t (say (concat "Good Morning, Citizens of " (city-name character) "! Today is a wonderful day. I hope you are having an excellent time."))])
   (say "I see you are all enjoying the Corellian Whiskey, and the fried Bantha steaks. Anyone have any questions for me?")
   (cond 
     [(eq? (city-name self) null) (add-response "Are you going to run for a Mayor of a city soon?" run)]
-    [#t (add-response concat("What are your plans for " (city-name self) "?") plan)])
-  (add-action concat("throw a shoe at " (herhim self) ".") shoe)
+    [#t (add-response (concat "What are your plans for " (city-name self) "?") plan)])
+  (add-action (concat "throw a shoe at " (herhim self) ".") shoe)
   (add-response "God, this is boring." leave)
 )
 
@@ -20,10 +20,10 @@
 )
 
 (defun plan
-  (say concat("I do indeed have a plan for " (city-name self) ". It will be grand, with many parks to wander through with plenty of exotic flora and fauna from around the galaxy. I intend on removing any industrial blemishes on this great city, and free healthcare for everyone!")
+  (say (concat "I do indeed have a plan for " (city-name self) ". It will be grand, with many parks to wander through with plenty of exotic flora and fauna from around the galaxy. I intend on removing any industrial blemishes on this great city, and free healthcare for everyone!")
   (add-response "What about your relationship with your secretary?" secretary)
   (add-response "Isn't that kind of ambitious?" ambitious)
-  (add-action concat("throw a shoe at " (herhim self) ".") shoe)
+  (add-action (concat "throw a shoe at " (herhim self) ".") shoe)
 )
 
 (defun run
@@ -45,19 +45,19 @@
   (say "Unless there are any further questions, I believe I have a meeting to attend.")
   (cond 
     [(eq? (city-name self) null) (add-response "Do you expect to be a Mayor of a city soon?" run)]
-    [#t (add-response concat("Do you have any plans for " (city-name self) "?") plan)])
+    [#t (add-response (concat "Do you have any plans for " (city-name self) "?") plan)])
 )
 
 (defun ambitious
   (say "Not at all. Due to some prudent forging of alliances with certain groups that shall remain anonymous, I have a large funding base on which to work from. The only question you have to answer is, will you be there at the end?")
   (add-response (concat (get-name self) ", " (get-name self) " please, answer me!") exit)
-  (add-action concat("throw a shoe at " (herhim self) ".") shoe)
+  (add-action (concat "throw a shoe at " (herhim self) ".") shoe)
 )
 
 (defun creature
   (say "Not particularly. Any wild creatures that roam around MY city will be shot on sight. Might even award bounties for certain creatures if they prove bothersome. Don't worry, there will likely be plenty of work for such sentients as you willing to do work for the future of the city.")
   (add-response (concat (get-name self) ", " (get-name self) " please, answer me!") exit)
-  (add-action concat("throw a shoe at " (herhim self) ".") shoe)
+  (add-action (concat "throw a shoe at " (herhim self) ".") shoe)
 )
 
 (defun exit
