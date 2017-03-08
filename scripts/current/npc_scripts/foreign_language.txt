@@ -1,40 +1,50 @@
-Block: start
-*The %npc.race% in front of you opens a worn book, and reads slowly from it*
-Sa la do panksta/see'ybark/motal dee boonkee wata?
-<!--Is there a spaceport/sail barge/motel around here?-->
-Responses:
-Sorry, I don't understand you. -> dont
-!if character.race=Hutt! Chut chut? -> excuse
-!if character.race=Nimbanel! Chut chut? -> excuse
-!if character.race=Toydarian! Chut chut? -> excuse
-!if character.race=Klatooinian! Chut chut? -> excuse
-Um, bye. -> leave
+; Converted by Abraari To
+; Year 18 D98
 
-Block: excuse
-Hagwa jee-jee naga newpa patogga rundee waba?
-<!--Don't we want new pie to activate wish?-->
-Responses:
-Nah, sorry. You lost me there. -> dont
+(defun start
+  (describe (concat "The "(get-race self) " in front of you opens a worn book, and reads slowly from it."))
+  (say "Sa la do panksta/see'ybark/motal dee boonkee wata?")
+  (ooc "Is there a spaceport/sail barge/motel around here?")
+  (add-response "Sorry, I don't understand you." dont)
+  (cond
+    [(or 
+          (or 
+              (or (eq? (get-race character) "Hutt")
+                  (eq? (get-race character) "Nimbanel"))
+              (eq? (get-race character) "Toydarian"))
+          (eq? (get-race character) "Klatooinian"))
+      (add-response "Chut chut?" excuse)])
+  (add-response "Um, bye." leave)
+)
 
-Block: dont
-*The %npc.race% looks back at his book and points his finger at something*
-L nyiad endari nesseh erenedi. Te ventra?
-<!--I need superior vehicle without equal. You come?-->
-Responses:
-Nope, still nothing. -> nothing
-!if character.race=Hapan! L desiderii at. -> regret
-Sorry, can't help you. -> leave
+(defun excuse
+  (say "Hagwa jee-jee naga newpa patogga rundee waba?")
+  (ooc "Don't we want new pie to activate wish?")
+  (add-response "Nah, sorry. You lost me there." leave)
+)
 
-Block: leave
-*The %npc.race% looks at you in confusion*
+(defun dont
+  (describe (concat "The " (get-race self) " looks back at his book and points his finger at something."))
+  (say "L nyiad endari nesseh erenedi. Te ventra?")
+  (ooc "I need superior vehicle without equal. You come?")
+  (add-response "Nope, still nothing." nothing)
+  (cond
+    [(eq? (get-race character) "Hutt")
+     (add-response "L desiderii at." regret)])
+  (add-response "Sorry, can't help you." leave)
+)
 
-Block: regret
-Sentra aten`ka tenur meba ka 'neta?
-<!--Leave space then where are family?-->
-Responses:
-Sorry. Can't understand you. -> leave
+(defun leave
+  (describe (concat "The " (get-race self) " looks at you in confusion."))
+)
 
-Block: nothing
-*The %npc.race% waves his hands, looks pointedly at you, then motions towards the nearest building*
-Responses:
-*Shrug* -> leave
+(defun regret
+  (say "Sentra aten`ka tenur meba ka 'neta?")
+  (ooc "Leave space then where are family?")
+  (add-response "Sorry. Can't understand you." leave)
+)
+
+(defun nothing
+  (describe (concat "The " (get-race self) " waves his hands, looks pointedly at you, then motions towards the nearest building."))
+  (add-action "shrug." leave)
+)
